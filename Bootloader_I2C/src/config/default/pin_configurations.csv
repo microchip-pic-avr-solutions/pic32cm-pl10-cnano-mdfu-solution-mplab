@@ -1,0 +1,43 @@
+Pin Number,Pin ID,Custom Name,Function,Mode, Direction,Latch,Pull Up,Pull Down,Slew Rate Control
+1,PA05,,Available,,,,,,DISABLED
+2,PA06,,Available,,,,,,DISABLED
+3,PA07,,Available,,,,,,DISABLED
+4,PB00,,Available,,,,,,DISABLED
+5,PB01,,Available,,,,,,DISABLED
+6,PB02,BL_INDICATOR,GPIO,Digital,Out,Low,,,DISABLED
+7,PB03,,Available,,,,,,DISABLED
+8,PB04,,Available,,,,,,DISABLED
+9,PB05,,Available,,,,,,DISABLED
+10,PA08,,Available,,,,,,DISABLED
+11,PA09,,Available,,,,,,DISABLED
+12,PA10,,Available,,,,,,DISABLED
+13,PA11,,Available,,,,,,DISABLED
+16,PA12,,Available,,,,,,DISABLED
+17,PA13,,Available,,,,,,DISABLED
+18,PA14,,Available,,,,,,DISABLED
+19,PA15,,Available,,,,,,DISABLED
+20,PA16,,Available,,,,,,DISABLED
+21,PA17,,Available,,,,,,DISABLED
+22,PA18,,Available,,,,,,DISABLED
+23,PA19,,Available,,,,,,DISABLED
+24,PA20,,Available,,,,,,DISABLED
+25,PA21,,Available,,,,,,DISABLED
+26,PA22,,Available,,,,,,DISABLED
+27,PA23,,Available,,,,,,DISABLED
+30,PB08,,Available,,,,,,DISABLED
+31,PB09,,Available,,,,,,DISABLED
+32,PB10,,Available,,,,,,DISABLED
+33,PB11,,Available,,,,,,DISABLED
+34,PA24,,Available,,,,,,DISABLED
+35,PA25,,Available,,,,,,DISABLED
+36,PA26,,Available,,,,,,DISABLED
+37,PA27,,Available,,,,,,DISABLED
+38,PA28,,Available,,,,,,DISABLED
+39,PA29,,Available,,,,,,DISABLED
+40,PA30,,Available,,,,,,DISABLED
+41,PA31,,Available,,,,,,DISABLED
+44,PA00,,SERCOM0_PAD0,Digital,High Impedance,n/a,Yes,No,DISABLED
+45,PA01,,SERCOM0_PAD1,Digital,High Impedance,n/a,Yes,No,DISABLED
+46,PA02,,Available,,,,,,DISABLED
+47,PA03,,Available,,,,,,DISABLED
+48,PA04,,Available,,,,,,DISABLED

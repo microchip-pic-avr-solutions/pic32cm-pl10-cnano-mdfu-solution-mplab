@@ -1,0 +1,40 @@
+# MDFU Bootloader Configuration
+
+[bootloader]
+
+# This is the version of the file data format that the bootloader is configured to understand
+IMAGE_FORMAT_VERSION = "1.0.0"
+
+# No keys are required for this device so this will not be used
+PAGE_ERASE_KEY = 0x0000
+PAGE_WRITE_KEY = 0x0000
+PAGE_READ_KEY = 0x0000
+BYTE_WRITE_KEY = 0x0000
+
+# Device Id of the pic32cm6408pl10048
+DEVICE_ID = 0xBA02053
+
+# Write size data bytes will be sent in each file block
+WRITE_BLOCK_SIZE = 0x200
+
+# Application start address
+FLASH_START = 0xC002000
+
+# Total flash size of the device
+FLASH_END = 0xC010000
+
+# EEPROM and Config spaces are not supported as of now
+EEPROM_START = 0x00000000
+EEPROM_END = 0x00000000
+CONFIG_START = 0x00000000
+CONFIG_END = 0x00000000
+
+# The architecture of the target device. Used by pyfwimagebuilder to construct the target image format
+ARCH = "M0+"
+
+# DSU CRC32
+VERIFICATION = "CRC-32"
+
+[host]
+# This bootloader communicates with the host over I2C
+coms = "I2C"
