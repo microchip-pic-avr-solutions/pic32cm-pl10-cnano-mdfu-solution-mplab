@@ -142,7 +142,12 @@ void SYS_Initialize ( void* data )
     PORT_SetPeripheralMuxing(PORT_PIN_PB01, PORT_PERIPHERAL_FUNC_D);
     PORT_Setup(PORT_PIN_PB02);
     PORT_SetDirection(PORT_PIN_PB02, GPIO_OUTPUT);
-    
+
+    // Configure SW0 button (PB03) as input with pull-up
+    PORT_Setup(PORT_PIN_PB03);
+    PORT_SetDirection(PORT_PIN_PB03, GPIO_INPUT);
+    PORT_SetPullResistor(PORT_PIN_PB03, GPIO_PULL_UP);
+
     //Clock Initialize
     //OSC32KCTRL Initialize
     OSC32KCTRL_OSC32K_EnableOnDemand();

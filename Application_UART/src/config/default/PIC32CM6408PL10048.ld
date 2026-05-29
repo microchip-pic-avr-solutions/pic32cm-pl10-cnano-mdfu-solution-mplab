@@ -212,6 +212,6 @@ SECTIONS
     . = ALIGN(4);
     _end = . ;
     _ram_end_ = ORIGIN(ram) + LENGTH(ram) -1 ;
-    
+
 }
 

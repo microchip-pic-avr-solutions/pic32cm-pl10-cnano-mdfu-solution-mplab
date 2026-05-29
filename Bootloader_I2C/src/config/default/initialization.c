@@ -142,7 +142,13 @@ void SYS_Initialize ( void* data )
     PORT_SetPullResistor(PORT_PIN_PA00, GPIO_PULL_UP);
     PORT_SetPeripheralMuxing(PORT_PIN_PA01, PORT_PERIPHERAL_FUNC_C);
     PORT_SetPullResistor(PORT_PIN_PA01, GPIO_PULL_UP);
+    PORT_Setup(PORT_PIN_PB02);
     PORT_SetDirection(PORT_PIN_PB02, GPIO_OUTPUT);
+
+    // Configure SW0 button (PB03) as input with pull-up
+    PORT_Setup(PORT_PIN_PB03);
+    PORT_SetDirection(PORT_PIN_PB03, GPIO_INPUT);
+    PORT_SetPullResistor(PORT_PIN_PB03, GPIO_PULL_UP);
 
     //CLOCK Initialize
     //OSC32KCTRL Initialize
@@ -171,8 +177,10 @@ void SYS_Initialize ( void* data )
      /* Reset the module */
     SERCOM0_I2CS_ResetSoftware();
 
-    /* Set Operation Mode to I2C Client (slave) */
-    SERCOM0_I2CS_SetOperatingMode();
+    /* Configure CTRLA with clock stretching and no timeouts */
+    SERCOM0_REGS->I2CS.SERCOM_CTRLA =
+        SERCOM_I2CS_CTRLA_MODE(4U);                     /* I2C Client mode only */
+    while (SERCOM0_REGS->I2CS.SERCOM_SYNCBUSY != 0U) {}
 
     /* Set the client address: 0x20 */
     SERCOM0_I2CS_Set7bitAddress(0x20U);

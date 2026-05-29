@@ -1,5 +1,5 @@
 /**
- * © 2026 Microchip Technology Inc. and its subsidiaries.
+ * ï¿½ 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip
  * software and any derivatives exclusively with Microchip products.
@@ -88,11 +88,11 @@ static volatile com_transfer_state_t comResponseTransferState = NOTHING_TO_SEND;
 static volatile bool isCommandReadyToProcess = false;
 static volatile bool areTooManyBytesInCommand = false;
 
-static volatile uint16_t maxBufferLength = 0; 
+static volatile uint16_t maxBufferLength = 0;
 static volatile uint16_t comResponseBufferIndex = 0U;
 static uint8_t comResponseBuffer[MAX_RESPONSE_DATA_FIELD + RESPONSE_OFFSET];
 static uint8_t *comReceiveBuffer = NULL;
-static uint16_t *comReceiveBufferIndex = NULL;  
+static uint16_t *comReceiveBufferIndex = NULL;
 static volatile com_adapter_result_t comStatus;
 
 static void SERCOM_EventHandler(void);
@@ -127,36 +127,27 @@ static void SERCOM_EventHandler(void)
     switch(event)
     {
      case I2C_CLIENT_TRANSFER_EVENT_ADDR_MATCH:
-
         transferDirection = SERCOM0_I2CS_GetTransferDirection();
 
-        if (false == isCommandReadyToProcess)
+        if (I2C_CLIENT_DIR_WRITE == transferDirection)
         {
-            if (I2C_CLIENT_DIR_WRITE == transferDirection)
-            {
-                SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_ACK);
-                wasTransactionAcknowledged = true;
-                *comReceiveBufferIndex = 0x00U;
-                areTooManyBytesInCommand = false;
-            }
-            else
-            {
-                if (NOTHING_TO_SEND == comResponseTransferState)
-                {
-                    SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_ACK);
-                    wasTransactionAcknowledged = false;
-                }
-                else
-                {
-                    SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_ACK);
-                    wasTransactionAcknowledged = true;
-                }
-            }
+            SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_ACK);
+            wasTransactionAcknowledged = true;
+            *comReceiveBufferIndex = 0x00U;
+            areTooManyBytesInCommand = false;
         }
         else
         {
-            SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_NAK);
-            wasTransactionAcknowledged = false;
+            if (NOTHING_TO_SEND == comResponseTransferState)
+            {
+                SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_NAK);
+                wasTransactionAcknowledged = false;
+            }
+            else
+            {
+                SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_ACK);
+                wasTransactionAcknowledged = true;
+            }
         }
         SERCOM0_I2CS_ClearInterruptFlags(I2C_CLIENT_INTFLAG_AMATCH);
         break;
@@ -165,44 +156,45 @@ static void SERCOM_EventHandler(void)
         nextByte = SERCOM0_I2CS_ReceiveData();
         SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_ACK);
         SERCOM0_I2CS_ClearInterruptFlags(I2C_CLIENT_INTFLAG_DRDY);
- 
-        if (!isCommandReadyToProcess) 
+
+        if (!isCommandReadyToProcess)
         {
-            // Add byte to the buffer if there is space in the buffer
             if (*comReceiveBufferIndex < maxBufferLength)
             {
                 comReceiveBuffer[*comReceiveBufferIndex] = nextByte;
-                (*comReceiveBufferIndex)++;   
+                (*comReceiveBufferIndex)++;
             }
             else
-            { 
-                areTooManyBytesInCommand = true;  
+            {
+                areTooManyBytesInCommand = true;
             }
         }
         break;
 
     case I2C_CLIENT_TRANSFER_EVENT_TX_READY:
         {
-            uint8_t data_to_write = comResponseBuffer[comResponseBufferIndex];
-            comResponseBufferIndex = comResponseBufferIndex + 1U;
-            SERCOM0_I2CS_SendData(data_to_write);
-            SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_RECEIVE_ACK_NAK);
+            if (comResponseTransferState != NOTHING_TO_SEND)
+            {
+                uint8_t data_to_write = comResponseBuffer[comResponseBufferIndex];
+                comResponseBufferIndex = comResponseBufferIndex + 1U;
+                SERCOM0_I2CS_SendData(data_to_write);
+                SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_RECEIVE_ACK_NAK);
+            }
             SERCOM0_I2CS_ClearInterruptFlags(I2C_CLIENT_INTFLAG_DRDY);
             break;
         }
 
     case I2C_CLIENT_TRANSFER_EVENT_STOP_BIT_RECEIVED:
         SERCOM0_I2CS_ClearInterruptFlags(I2C_CLIENT_INTFLAG_PREC);
-        if(wasTransactionAcknowledged) 
+        if(wasTransactionAcknowledged)
         {
-            // Set the com response state to nothing if the transfer direction is host write
             if (I2C_CLIENT_DIR_WRITE == transferDirection)
-            {              
-                isCommandReadyToProcess = true;                
+            {
+                isCommandReadyToProcess = true;
                 comResponseTransferState = NOTHING_TO_SEND;
             }
-            else 
-            { 
+            else
+            {
                 if (SENDING_LENGTH == comResponseTransferState)
                 {
                     comResponseTransferState = SENDING_RESPONSE;
@@ -210,14 +202,16 @@ static void SERCOM_EventHandler(void)
                 }
                 else if (SENDING_RESPONSE == comResponseTransferState)
                 {
-                    comResponseTransferState = NOTHING_TO_SEND; 
+                    comResponseTransferState = NOTHING_TO_SEND;
+                    comResponseBufferIndex = 0U;
+                    isCommandReadyToProcess = false;
                     comStatus = COM_SEND_COMPLETE;
                 }
                 else
                 {
                     //do nothing
                 }
-            } 
+            }
         }
         else
         {
@@ -278,19 +272,15 @@ com_adapter_result_t COM_FrameTransfer(uint8_t *receiveBufferPtr,uint16_t *recei
     {
         if (isCommandReadyToProcess == true)
         {
-            // Set the status to buffer error when the received data length exceeds the max buffer size
-            if (areTooManyBytesInCommand) 
-            { 
+            if (areTooManyBytesInCommand)
+            {
                 areTooManyBytesInCommand = false;
                 result = COM_BUFFER_ERROR;
             }
-            else 
+            else
             {
+                uint16_t calcuatedFrameChecksum = FrameChecksumCalculate(receiveBufferPtr,*receiveIndexPtr - FRAME_CHECK_SIZE);
 
-                // Calculate the frame check sequence on the received packet 
-                uint16_t calcuatedFrameChecksum = FrameChecksumCalculate(receiveBufferPtr,*receiveIndexPtr - FRAME_CHECK_SIZE); 
-
-                // Extract the last two bytes from the packet
                 uint8_t *startOfWord = &receiveBufferPtr[*receiveIndexPtr - FRAME_CHECK_SIZE];
                 uint16_t frameCheckSequence = 0x0000U;
 
@@ -300,18 +290,16 @@ com_adapter_result_t COM_FrameTransfer(uint8_t *receiveBufferPtr,uint16_t *recei
                 uint8_t highByte = *workPtr;
                 frameCheckSequence = (uint16_t)((uint16_t)((uint16_t)highByte << 8) | lowByte);
 
-                // Check if calculated checksum and received checksum are equal
                 if (calcuatedFrameChecksum == frameCheckSequence)
                 {
                     result = COM_PASS;
                 }
                 else
                 {
-                    // Set the status to transport failure if checksum mismatch occurs
                     result = COM_TRANSPORT_FAILURE;
                 }
-            } 
-        } 
+            }
+        }
         else
         {
             result = comStatus;
@@ -337,7 +325,7 @@ com_adapter_result_t COM_FrameSet(uint8_t *responseBufferPtr, uint16_t responseL
     {
         sendingLengthChecksum = FrameChecksumCalculate((uint8_t *) & sendingLength, 2U);
         dataChecksum = FrameChecksumCalculate(&(responseBufferPtr[0]),responseLength);
-        
+
         // Copy the length prefix
         comResponseBuffer[0] = (uint8_t)'L';
 
@@ -355,26 +343,26 @@ com_adapter_result_t COM_FrameSet(uint8_t *responseBufferPtr, uint16_t responseL
 
         // Copy the response prefix
         comResponseBuffer[5] = (uint8_t)'R';
-        
+
         // Copy the response into the COM static buffer and set length
         uint16_t limit = (uint16_t)responseLength + (uint16_t)RESPONSE_OFFSET;
         for (uint16_t i = RESPONSE_OFFSET; i < limit; i++)
         {
             comResponseBuffer[i] = responseBufferPtr[i - RESPONSE_OFFSET];
         }
-        
+
         comResponseBuffer[responseLength + RESPONSE_OFFSET] = (uint8_t)dataChecksum & 0x00FFU;
-        
+
         uint16_t highByte = (uint16_t)((uint32_t)responseLength + (uint32_t)RESPONSE_OFFSET + 1U);
-        
+
         comResponseBuffer[highByte] = (uint8_t)(dataChecksum >> 8);
-        
+
         comResponseBufferIndex = 0U;
         result = COM_PASS;
     }
     // Set the state to sending length when the comResponseBuffer is ready
     comResponseTransferState = SENDING_LENGTH;
     isCommandReadyToProcess = false;
-    
+
     return result;
 }

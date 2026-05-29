@@ -5,4 +5,4 @@ REM -
 REM - @requirements:  python, pymdfu
 REM ----------------------------------------------------------------------------
 
-pymdfu update --tool mcp2210 --image PL10_App_SPI.img --clk-speed 500000 --chip-select 1 -v debug
+pymdfu update --tool mcp2210 --image PL10_App_SPI.img --clk-speed 500000 --chip-select <SS PIN NUMBER> -v debug

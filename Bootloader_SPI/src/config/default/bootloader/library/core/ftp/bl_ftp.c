@@ -653,13 +653,8 @@ static void ParserDataReset(void)
 static void DeviceResetCheck(void)
 {
     if (true == resetPending)
-    {   
-        // Device reset delay of 14 ms
-        SYSTICK_TimerStart();
-        SYSTICK_DelayMs(14U);
-        SYSTICK_TimerStop();
-
-    NVIC_SystemReset();
+    {
+        NVIC_SystemReset();
     }
 }
 
@@ -690,7 +685,7 @@ static uint8_t TLVAppend(uint8_t * dataBufferStart, ftp_tlv_t * tlvData)
 
 static void ClientInfoResponseSet(void)
 {
-    uint32_t minimumInterMessageDelayData = (uint32_t) 0x0016E360U; // 1,500,000 nanoseconds => 1.5 milliseconds
+    uint32_t minimumInterMessageDelayData = BL_MIN_INTER_MESSAGE_DELAY_MS * BL_MS_TO_NANOSECONDS;
     uint8_t numberOfTLVDataValues = 4U;
 
     struct ftp_discovery_data_t

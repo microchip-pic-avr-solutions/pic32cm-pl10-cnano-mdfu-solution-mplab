@@ -124,6 +124,18 @@
 #define BL_HASH_DATA_SIZE (4U)
 /**
  * @ingroup mdfu_client_32bit
+ * @def BL_MIN_INTER_MESSAGE_DELAY_MS
+ * @brief Minimum delay between firmware update messages in milliseconds.
+ */
+#define BL_MIN_INTER_MESSAGE_DELAY_MS (10U)
+/**
+ * @ingroup mdfu_client_32bit
+ * @def BL_MS_TO_NANOSECONDS
+ * @brief Milliseconds to nanoseconds conversion factor.
+ */
+#define BL_MS_TO_NANOSECONDS (1000000U)
+/**
+ * @ingroup mdfu_client_32bit
  * @def ASM_VECTOR
  * @brief Macro defined to jump the program to the application reset location.
  */

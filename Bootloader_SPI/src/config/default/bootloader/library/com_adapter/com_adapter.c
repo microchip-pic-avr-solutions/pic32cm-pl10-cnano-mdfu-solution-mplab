@@ -1,5 +1,5 @@
 /**
- * © 2026 Microchip Technology Inc. and its subsidiaries.
+ * ï¿½ 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip
  * software and any derivatives exclusively with Microchip products.
@@ -200,8 +200,8 @@ com_adapter_result_t COM_FrameTransfer(uint8_t *receiveBufferPtr, uint16_t * rec
                 (void) SERCOM0_ByteRead();
             }
 
-            // Sets the state to expect the length packet again
-            comState = SEND_LENGTH;
+            // Sets the state back to NO_ACTION to wait for next command
+            comState = NO_ACTION;
             bytesSent = 0U;
 
             // Sets the completed status to notify the FTP code.

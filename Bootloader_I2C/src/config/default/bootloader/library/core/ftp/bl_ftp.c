@@ -50,11 +50,16 @@
 * This rule will not be followed as the definition of the delay macro is out of the scope for this module.
 */
 
+/** @misradeviation{@advisory, 19.2}
+* Hardware register access through union type is required for SERCOM peripheral.
+*/
+
 #include "bl_ftp.h"
 #include "../bl_core.h"
 #include "../../com_adapter/com_adapter.h"
 #include "../bl_app_verify.h"
 #include "../../../../peripheral/systick/plib_systick.h"
+#include "device.h"
 
 /**
  * @ingroup mdfu_client_ftp
@@ -653,10 +658,16 @@ static void ParserDataReset(void)
 static void DeviceResetCheck(void)
 {
     if (true == resetPending)
-    {   
-        // Device reset delay of 2500 ms
+    {
+        // Wait for host to complete reading END_TRANSFER response before reset
+        /* cppcheck-suppress misra-c2012-19.2*/
+        while (SERCOM0_REGS->I2CS.SERCOM_SYNCBUSY != 0U)
+        {
+            // Wait for SERCOM synchronization to complete
+        }
+
         SYSTICK_TimerStart();
-        SYSTICK_DelayMs(1200U);
+        SYSTICK_DelayMs(1100U);
 
         NVIC_SystemReset();
     }
@@ -689,7 +700,7 @@ static uint8_t TLVAppend(uint8_t * dataBufferStart, ftp_tlv_t * tlvData)
 
 static void ClientInfoResponseSet(void)
 {
-    uint32_t minimumInterMessageDelayData = (uint32_t) 0x1DCD6500U; // 1,500,000 nanoseconds => 1.5 milliseconds
+    uint32_t minimumInterMessageDelayData = BL_MIN_INTER_MESSAGE_DELAY_MS * BL_MS_TO_NANOSECONDS;
     uint8_t numberOfTLVDataValues = 4U;
 
     struct ftp_discovery_data_t

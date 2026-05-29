@@ -22,7 +22,6 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#include <stddef.h>                     // Defines NULL
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
@@ -37,34 +36,37 @@
 // *****************************************************************************
 #define BL_INDICATOR_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 2U))
 #define BL_INDICATOR_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 2U))
+
+// Button definitions (SW0 on PB03)
+#define SW0_PIN_GROUP                    (1U)
+#define SW0_PIN_NUM                      (3U)
+#define SW0_Get()                        ((PORT_REGS->GROUP[SW0_PIN_GROUP].PORT_IN & (1U << SW0_PIN_NUM)) == 0U)
+
 int main(void)
 {
     /* Initialize all modules */
     SYS_Initialize(NULL);
 
-    /**
-     * Check to see if a bootload is requested.
-     * If not, then validate the image before running it.
-     */
-    if (BL_CheckForcedEntry() == false && BL_ImageVerify() == BL_PASS)
+    // Check for software entry request or button press at startup
+    bool forcedEntry = BL_CheckForcedEntry() || SW0_Get();
+
+    // If no forced entry and app is valid, start the application
+    if (!forcedEntry && BL_ImageVerify() == BL_PASS)
     {
         BL_INDICATOR_Set();
         BL_ApplicationStart();
     }
 
-    // When a bootload is needed; Initialize the FTP layer and run the FTP task to download the new data
+    // Stay in bootloader mode
     FTP_Initialize();
-
     BL_INDICATOR_Clear();
     while (true)
     {
         FTP_Task();
     }
 
-    /* Execution should not come here during normal operation */
-    return ( EXIT_FAILURE);
+    return (EXIT_FAILURE);
 }
-
 
 /*******************************************************************************
  End of File

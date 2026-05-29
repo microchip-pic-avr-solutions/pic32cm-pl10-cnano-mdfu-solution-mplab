@@ -56,9 +56,13 @@
 
 static APP_DATA appData;
 
-#define BTL_RAM_TRIGGER_START (0x20000000)
+#define BTL_RAM_TRIGGER_START     (0x20000000)
+#define BTL_TRIGGER_ARRAY_SIZE    (4U)
+#define BTL_TRIGGER_PATTERN       (0x5048434DU)
+#define LED_BLINK_INTERRUPT_COUNT (500U)
+#define APP_STARTUP_DELAY_MS      (3000U)
 
-static uint32_t __attribute((address(BTL_RAM_TRIGGER_START))) ramArray[4U];
+static uint32_t __attribute((address(BTL_RAM_TRIGGER_START))) ramArray[BTL_TRIGGER_ARRAY_SIZE];
 
 // *****************************************************************************
 // *****************************************************************************
@@ -70,8 +74,8 @@ static uint16_t intCounter = 0U;
 
 static void BlinkLED(TC_INTERRUPT callback)
 {
-    // Manually wait for 850 interrupt events to blink
-    if ((intCounter % 850U) == 0U)
+    // Wait for LED_BLINK_INTERRUPT_COUNT interrupt events to toggle LED (500ms period)
+    if ((intCounter % LED_BLINK_INTERRUPT_COUNT) == 0U)
     {
         LED0_Toggle();
         intCounter = 0U;
@@ -112,14 +116,8 @@ static void Trigger_Bootloader(uint32_t triggerPattern)
 
 void APP_Initialize(void)
 {
-    /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
 
-
-
-    /* TODO: Initialize your application's state machine and other
-     * parameters.
-     */
 }
 
 /******************************************************************************
@@ -132,24 +130,13 @@ void APP_Initialize(void)
 
 void APP_Tasks(void)
 {
-
-    /* Check the application's current state. */
     switch (appData.state)
     {
-        /* Application's initial state. */
     case APP_STATE_INIT:
     {
-        SYSTICK_TimerStart();
-        SYSTICK_DelayMs(3000U);
-
-        printf("\r\n############ Example Bootloader Application ############\r\n");
-
         TC0_CAPTURE_16BIT_SetCallbackHandler(&BlinkLED);
         TC0_CAPTURE_16BIT_Enable();
-
         appData.state = APP_STATE_SERVICE_TASKS;
-
-        printf("\r\nApplication is running and the LED is blinking.\r\n");
         break;
     }
 
@@ -158,7 +145,6 @@ void APP_Tasks(void)
         if (SW0_Get() == 0U)
         {
             appData.state = TRIGGER_BOOTLOADER;
-            printf("\r\n############ Switch was pressed, entering bootloader mode ############\r\n");
         }
 
         break;
@@ -166,25 +152,13 @@ void APP_Tasks(void)
 
     case TRIGGER_BOOTLOADER:
     {
-
-        /**
-         * Trigger the bootloader using pattern in RAM
-         */
-
-        printf("\r\n############ Disconnect from the device port and load a new application using pymdfu ###############\r\n");
-        while (!SERCOM1_USART_TxIsDone())
-        {
-        }
-
-        Trigger_Bootloader(0x5048434DU);
+        Trigger_Bootloader(BTL_TRIGGER_PATTERN);
         break;
     }
-
-
-        /* The default state should never be executed. */
     default:
     {
-        /* TODO: Handle error in application's state machine. */
+        /* Handle unexpected state */
+        appData.state = APP_STATE_INIT;
         break;
     }
     }

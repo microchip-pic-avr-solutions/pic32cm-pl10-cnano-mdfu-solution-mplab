@@ -32,6 +32,7 @@
 #define COM_ADAPTER_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 /**
  * @ingroup com_adapter_i2c
@@ -118,7 +119,7 @@ com_adapter_result_t COM_FrameSet(uint8_t *responseBufferPtr, uint16_t responseL
 
 /**
  @ingroup com_adapter_i2c
- @brief Performs initialization actions for the communication peripheral and adapter code. 
+ @brief Performs initialization actions for the communication peripheral and adapter code.
  @param [in] maximumBufferLength - Maximum length that the COM adapter is allowed to read
  @return @ref COM_PASS - Specified arguments were valid and initialization was successful \n
  @return @ref COM_INVALID_ARG - Specified arguments were invalid \n

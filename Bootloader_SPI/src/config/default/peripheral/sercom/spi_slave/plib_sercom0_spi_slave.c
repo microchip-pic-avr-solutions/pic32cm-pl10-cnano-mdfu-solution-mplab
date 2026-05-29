@@ -101,19 +101,19 @@ void SERCOM0_SPI_Initialize(void)
 
     /* Mode - SPI Slave
      * IBON - 1 (Set immediately upon buffer overflow)
-     * DOPO - MUX0
-     * DIPO - MUX3
+     * DOPO - MUX2 (MISO on PAD3/PA07)
+     * DIPO - MUX0 (MOSI on PAD0/PA04)
      * CPHA - LEADING_EDGE
      * COPL - IDLE_LOW
      * DORD - MSB
      * ENABLE - 1
      */
-    SERCOM0_REGS->SPI.SERCOM_CTRLA = SERCOM_SPI_CTRLA_MODE_SPI_SLAVE | 
-            SERCOM_SPI_CTRLA_IBON_Msk | 
-            SERCOM_SPI_CTRLA_DOPO_MUX0 | 
-            SERCOM_SPI_CTRLA_DIPO_MUX3 | 
-            SERCOM_SPI_CTRLA_CPOL_IDLE_LOW | 
-            SERCOM_SPI_CTRLA_CPHA_LEADING_EDGE | 
+    SERCOM0_REGS->SPI.SERCOM_CTRLA = SERCOM_SPI_CTRLA_MODE_SPI_SLAVE |
+            SERCOM_SPI_CTRLA_IBON_Msk |
+            SERCOM_SPI_CTRLA_DOPO_MUX2 |
+            SERCOM_SPI_CTRLA_DIPO_MUX0 |
+            SERCOM_SPI_CTRLA_CPOL_IDLE_LOW |
+            SERCOM_SPI_CTRLA_CPHA_LEADING_EDGE |
             SERCOM_SPI_CTRLA_DORD_MSB ;
             //| SERCOM_SPI_CTRLA_ENABLE_Msk ;
 

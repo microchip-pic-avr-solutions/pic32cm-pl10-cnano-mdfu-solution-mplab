@@ -143,8 +143,12 @@ void SYS_Initialize ( void* data )
     PORT_SetPeripheralMuxing(PORT_PIN_PB01, PORT_PERIPHERAL_FUNC_D);
     PORT_Setup(PORT_PIN_PB02);
     PORT_SetDirection(PORT_PIN_PB02, GPIO_OUTPUT);
-    PORT_SetDirection(SW0_PIN, GPIO_INPUT);
-    PORT_SetPullResistor(SW0_PIN, GPIO_PULL_UP);
+    
+    // Configure SW0 button (PB03) as input with pull-up
+    PORT_Setup(PORT_PIN_PB03);
+    PORT_SetDirection(PORT_PIN_PB03, GPIO_INPUT);
+    PORT_SetPullResistor(PORT_PIN_PB03, GPIO_PULL_UP);
+    
     PORT_SetDirection(LED0_PIN, GPIO_OUTPUT);
     PORT_SetOutputMode(LED0_PIN, GPIO_PUSH_PULL);
     
@@ -223,11 +227,13 @@ void SYS_Initialize ( void* data )
     //Register interrupt dispatcher and clear callback
     TC0_CAPTURE_16BIT_Initialize();
 
-    //Application Initialize
-    APP_Initialize();
+    
     
     //NVIC Initialize
     NVIC_Initialize();
+    
+    //Application Initialize
+    APP_Initialize();
 }
 
 /*******************************************************************************
