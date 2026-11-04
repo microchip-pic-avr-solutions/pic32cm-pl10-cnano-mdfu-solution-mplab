@@ -60,6 +60,8 @@ void Reset_Handler (void);
 void NonMaskableInt_Handler (void);
 void HardFault_Handler (void);
 void DMAC_InterruptHandler (void);
+void SERCOM0_SPI_InterruptHandler (void);
+
 
 
 #endif // INTERRUPTS_H

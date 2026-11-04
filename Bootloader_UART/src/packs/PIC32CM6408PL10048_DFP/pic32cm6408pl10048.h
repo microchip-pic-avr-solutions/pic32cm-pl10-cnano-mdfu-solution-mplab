@@ -1,7 +1,7 @@
 /*
  * Header file for PIC32CM6408PL10048
  *
- * Copyright (c) 2025 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -24,11 +24,11 @@
 #define _PIC32CM6408PL10048_H_
 
 /* Header version uses Semantic Versioning 2.0.0 (https://semver.org/) */
-#define HEADER_FORMAT_VERSION "2.1.1"
+#define HEADER_FORMAT_VERSION "3.0.0"
 
-#define HEADER_FORMAT_VERSION_MAJOR (2)
-#define HEADER_FORMAT_VERSION_MINOR (1)
-#define HEADER_FORMAT_VERSION_PATCH (1)
+#define HEADER_FORMAT_VERSION_MAJOR (3)
+#define HEADER_FORMAT_VERSION_MINOR (0)
+#define HEADER_FORMAT_VERSION_PATCH (0)
 
 /* PIC32CM6408PL10048 definitions
   This file defines all structures and symbols for PIC32CM6408PL10048:
@@ -59,9 +59,9 @@
 
 #else /* Assembler */
 
-#  define _UINT8_(x) x    /* Assembler: 8-bits unsigned integer constant value */
-#  define _UINT16_(x) x   /* Assembler: 16-bits unsigned integer constant value */
-#  define _UINT32_(x) x   /* Assembler: 32-bits unsigned integer constant value */
+#  define _UINT8_(x) (x)    /* Assembler: 8-bits unsigned integer constant value */
+#  define _UINT16_(x) (x)   /* Assembler: 16-bits unsigned integer constant value */
+#  define _UINT32_(x) (x)   /* Assembler: 32-bits unsigned integer constant value */
 #endif /* !(defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__)) */
 #endif /* SKIP_INTEGER_LITERALS */
 
@@ -112,7 +112,7 @@ typedef struct _DeviceVectors
   void* pvStack;
   /* CORTEX-M0PLUS handlers */
   void* pfnReset_Handler;                        /* -15 Reset Vector, invoked on Power up and warm reset */
-  void* pfnNonMaskableInt_Handler;               /* -14 Non maskable Interrupt, cannot be stopped or preempted */
+  void* pfnNMI_Handler;                          /* -14 Non maskable Interrupt, cannot be stopped or preempted */
   void* pfnHardFault_Handler;                    /* -13 Hard Fault, all classes of Fault */
   void* pvReservedC12;
   void* pvReservedC11;
@@ -121,7 +121,7 @@ typedef struct _DeviceVectors
   void* pvReservedC8;
   void* pvReservedC7;
   void* pvReservedC6;
-  void* pfnSVCall_Handler;                       /*  -5 System Service Call via SVC instruction */
+  void* pfnSVC_Handler;                          /*  -5 System Service Call via SVC instruction */
   void* pvReservedC4;
   void* pvReservedC3;
   void* pfnPendSV_Handler;                       /*  -2 Pendable request for system service */
@@ -151,9 +151,19 @@ typedef struct _DeviceVectors
 #if !defined DONT_USE_PREDEFINED_CORE_HANDLERS
 /* CORTEX-M0PLUS exception handlers */
 void Reset_Handler                 ( void );
-void NonMaskableInt_Handler        ( void );
+void NMI_Handler                   ( void );
+#ifndef __IAR_SYSTEMS_ICC__
+void NonMaskableInt_Handler        ( void ) __attribute__((deprecated("Use NMI_Handler instead"))); /* The legacy name - kept for backward compatibility */
+#else
+void NonMaskableInt_Handler        ( void ); /* The legacy name - kept for backward compatibility */
+#endif
 void HardFault_Handler             ( void );
-void SVCall_Handler                ( void );
+void SVC_Handler                   ( void );
+#ifndef __IAR_SYSTEMS_ICC__
+void SVCall_Handler                ( void ) __attribute__((deprecated("Use SVC_Handler instead"))); /* The legacy name - kept for backward compatibility */
+#else
+void SVCall_Handler                ( void ); /* The legacy name - kept for backward compatibility */
+#endif
 void PendSV_Handler                ( void );
 void SysTick_Handler               ( void );
 #endif /* DONT_USE_PREDEFINED_CORE_HANDLERS */
@@ -186,10 +196,12 @@ void AC_Handler                    ( void );
 #define __Vendor_SysTickConfig             0 /* Set to 1 if different SysTick Config is used                              */
 
 /* CMSIS includes */
+#if !defined(DISABLE_CMSIS)
 #include "core_cm0plus.h"
-#if defined USE_CMSIS_INIT
+#if !defined(DISABLE_CMSIS_INIT)
 #include "system_pic32cm6408pl10048.h"
-#endif /* USE_CMSIS_INIT */
+#endif /* DISABLE_CMSIS_INIT */
+#endif /* DISABLE_CMSIS */
 
 /* ************************************************************************** */
 /*         SOFTWARE PERIPHERAL API DEFINITIONS FOR PIC32CM6408PL10048         */
@@ -212,7 +224,6 @@ void AC_Handler                    ( void );
 #include "component/pac.h"
 #include "component/pm.h"
 #include "component/port.h"
-#include "component/ptc.h"
 #include "component/rstc.h"
 #include "component/rtc.h"
 #include "component/sercom.h"
@@ -303,6 +314,7 @@ void AC_Handler                    ( void );
 #define EIC_REGS                         ((eic_registers_t*)0x40002800)                /* EIC Registers Address        */
 #define EVSYS_REGS                       ((evsys_registers_t*)0x42000000)              /* EVSYS Registers Address      */
 #define FUSES_BOOTCFG_REGS               ((fuses_bootcfg_registers_t*)0x0d000400)      /* FUSES Registers Address      */
+#define FUSES_ROMCFG_REGS                ((fuses_romcfg_registers_t*)0x0d000000)       /* FUSES Registers Address      */
 #define FUSES_SIGNATURE_REGS             ((fuses_signature_registers_t*)0x0d000200)    /* FUSES Registers Address      */
 #define GCLK_REGS                        ((gclk_registers_t*)0x40001c00)               /* GCLK Registers Address       */
 #define HMATRIXHS_REGS                   ((hmatrixb_registers_t*)0x4100a000)           /* HMATRIXHS Registers Address  */
@@ -315,7 +327,6 @@ void AC_Handler                    ( void );
 #define PM_REGS                          ((pm_registers_t*)0x40000400)                 /* PM Registers Address         */
 #define PORT_REGS                        ((port_registers_t*)0x41000000)               /* PORT Registers Address       */
 #define PORT_IOBUS_REGS                  ((port_registers_t*)0x50000000)               /* PORT Registers Address       */
-#define PTC_REGS                         ((ptc_registers_t*)0x42002800)                /* PTC Registers Address        */
 #define RSTC_REGS                        ((rstc_registers_t*)0x40000c00)               /* RSTC Registers Address       */
 #define RTC_REGS                         ((rtc_registers_t*)0x40002400)                /* RTC Registers Address        */
 #define SERCOM0_REGS                     ((sercom_registers_t*)0x42000400)             /* SERCOM0 Registers Address    */
@@ -340,6 +351,7 @@ void AC_Handler                    ( void );
 #define EIC_BASE_ADDRESS                 _UINT32_(0x40002800)                          /* EIC Base Address */
 #define EVSYS_BASE_ADDRESS               _UINT32_(0x42000000)                          /* EVSYS Base Address */
 #define FUSES_BOOTCFG_BASE_ADDRESS       _UINT32_(0x0d000400)                          /* FUSES Base Address */
+#define FUSES_ROMCFG_BASE_ADDRESS        _UINT32_(0x0d000000)                          /* FUSES Base Address */
 #define FUSES_SIGNATURE_BASE_ADDRESS     _UINT32_(0x0d000200)                          /* FUSES Base Address */
 #define GCLK_BASE_ADDRESS                _UINT32_(0x40001c00)                          /* GCLK Base Address */
 #define HMATRIXHS_BASE_ADDRESS           _UINT32_(0x4100a000)                          /* HMATRIXHS Base Address */
@@ -352,7 +364,6 @@ void AC_Handler                    ( void );
 #define PM_BASE_ADDRESS                  _UINT32_(0x40000400)                          /* PM Base Address */
 #define PORT_BASE_ADDRESS                _UINT32_(0x41000000)                          /* PORT Base Address */
 #define PORT_IOBUS_BASE_ADDRESS          _UINT32_(0x50000000)                          /* PORT Base Address */
-#define PTC_BASE_ADDRESS                 _UINT32_(0x42002800)                          /* PTC Base Address */
 #define RSTC_BASE_ADDRESS                _UINT32_(0x40000c00)                          /* RSTC Base Address */
 #define RTC_BASE_ADDRESS                 _UINT32_(0x40002400)                          /* RTC Base Address */
 #define SERCOM0_BASE_ADDRESS             _UINT32_(0x42000400)                          /* SERCOM0 Base Address */
@@ -379,6 +390,7 @@ void AC_Handler                    ( void );
 #define FLASH_NB_OF_PAGES              _UINT32_(       128)
 
 #define BOOTCFG_SIZE                   _UINT32_(0x00000100)    /*    0kB Memory segment type: fuses */
+#define ROMCFG_SIZE                    _UINT32_(0x00000100)    /*    0kB Memory segment type: fuses */
 #define SIGNATURE_SIZE                 _UINT32_(0x00000100)    /*    0kB Memory segment type: fuses */
 #define HSRAM_SIZE                     _UINT32_(0x00002000)    /*    8kB Memory segment type: ram */
 #define APBA_SIZE                      _UINT32_(0x00004000)    /*   16kB Memory segment type: io */
@@ -390,6 +402,7 @@ void AC_Handler                    ( void );
 #define BROM_ADDR                      _UINT32_(0x00000000)    /* BROM base address (type: rom)*/
 #define FLASH_ADDR                     _UINT32_(0x0c000000)    /* FLASH base address (type: flash)*/
 #define BOOTCFG_ADDR                   _UINT32_(0x0d000400)    /* BOOTCFG base address (type: fuses)*/
+#define ROMCFG_ADDR                    _UINT32_(0x0d000000)    /* ROMCFG base address (type: fuses)*/
 #define SIGNATURE_ADDR                 _UINT32_(0x0d000200)    /* SIGNATURE base address (type: fuses)*/
 #define HSRAM_ADDR                     _UINT32_(0x20000000)    /* HSRAM base address (type: ram)*/
 #define APBA_ADDR                      _UINT32_(0x40000000)    /* APBA base address (type: io)*/

@@ -49,13 +49,10 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "peripheral/nvmctrl/plib_nvmctrl.h"
-#include "peripheral/sercom/spi_slave/plib_sercom0_spi_slave.h"
 #include "peripheral/evsys/plib_evsys.h"
+#include "peripheral/sercom/spi_slave/plib_sercom0_spi_slave.h"
 #include "peripheral/port/plib_port.h"
-#include "peripheral/clock/plib_gclk.h"
-#include "peripheral/clock/plib_mclk.h"
-#include "peripheral/clock/plib_osc32kctrl.h"
-#include "peripheral/clock/plib_oscctrl.h"
+#include "peripheral/clock/plib_clock.h"
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/systick/plib_systick.h"
 #include "peripheral/dmac/plib_dmac.h"
@@ -76,9 +73,7 @@ extern "C" {
 
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 24000000U
-/*** Macros for CHIP_SELECT pin ***/
-#define CHIP_SELECT_Get()               (((PORT_REGS->GROUP[0].PORT_IN >> 6U)) & 0x01U)
-#define CHIP_SELECT_PIN                  PORT_PIN_PA06
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: System Functions

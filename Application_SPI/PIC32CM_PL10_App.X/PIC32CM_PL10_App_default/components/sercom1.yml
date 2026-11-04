@@ -1,0 +1,900 @@
+configVersion: 1.0.0
+componentName: sercom1
+coreVersion: 5.9.0
+device: PIC32CM6408PL10048
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: sercom1
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.26.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments:
+    children:
+    - children:
+      - attributes:
+          id: SERCOM1_I2C
+        children:
+        - children:
+          - attributes:
+              id: enabled
+            children:
+            - type: Value
+              value: 'false'
+            type: Boolean
+          type: Attributes
+        type: DirectCapability
+      - attributes:
+          id: SERCOM1_SPI
+        children:
+        - children:
+          - attributes:
+              id: enabled
+            children:
+            - type: Value
+              value: 'false'
+            type: Boolean
+          type: Attributes
+        type: DirectCapability
+      - attributes:
+          id: SERCOM1_UART
+        children:
+        - children:
+          - attributes:
+              id: targetComponentID
+            children:
+            - type: Value
+              value: stdio
+            type: String
+          - attributes:
+              id: targetAttachmentID
+            children:
+            - type: Value
+              value: UART
+            type: String
+          type: Attributes
+        type: DirectCapability
+      type: Attachments
+    type: sercom1
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: sercom1
+          x: '51'
+          y: '140'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    I2CM_ADDR_SIZE:
+      attributes:
+        id: I2CM_ADDR_SIZE
+        label: I2CM_ADDR_SIZE
+      type: Integer
+    I2CM_BAUD:
+      attributes:
+        id: I2CM_BAUD
+        label: I2C BAUD
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: '114'
+          type: Dynamic
+        type: Values
+      type: Hex
+    I2CM_BAUD_SIZE:
+      attributes:
+        id: I2CM_BAUD_SIZE
+        label: I2CM_BAUD_SIZE
+      type: Integer
+    I2CM_MODE:
+      attributes:
+        id: I2CM_MODE
+        label: Transfer Speed Mode
+      type: KeyValueSet
+    I2CM_TRISE:
+      attributes:
+        id: I2CM_TRISE
+        label: I2C Trise in nano seconds
+      type: Integer
+    I2CS_ADDR_MODE_PREFIX:
+      attributes:
+        id: I2CS_ADDR_MODE_PREFIX
+        label: I2CS_ADDR_MODE_PREFIX
+      type: Boolean
+    I2CS_INTENSET_ERROR:
+      attributes:
+        id: I2CS_INTENSET_ERROR
+        label: I2CS_INTENSET_ERROR
+      type: Boolean
+    I2CS_INTERRUPT_MODE:
+      attributes:
+        id: I2CS_INTERRUPT_MODE
+        label: Enable Interrupts ?
+      type: Boolean
+    I2CS_LOWTOUT_ERROR_SUPPORT:
+      attributes:
+        id: I2CS_LOWTOUT_ERROR_SUPPORT
+        label: I2CS_LOWTOUT_ERROR_SUPPORT
+      type: Boolean
+    I2CS_LOWTOUT_SUPPORT:
+      attributes:
+        id: I2CS_LOWTOUT_SUPPORT
+        label: Enable SCL Low Time-Out
+      type: Boolean
+    I2CS_MODE:
+      attributes:
+        id: I2CS_MODE
+        label: Transfer Speed Mode
+      type: KeyValueSet
+    I2CS_PLIB_API_PREFIX:
+      attributes:
+        id: I2CS_PLIB_API_PREFIX
+        label: I2CS_PLIB_API_PREFIX
+      type: String
+    I2CS_RUNSTDBY:
+      attributes:
+        id: I2CS_RUNSTDBY
+        label: Enable operation in Standby mode
+      type: Boolean
+    I2CS_SCLSM:
+      attributes:
+        id: I2CS_SCLSM
+        label: Clock Stretch Mode
+      type: Integer
+    I2CS_SDAHOLD_TIME:
+      attributes:
+        id: I2CS_SDAHOLD_TIME
+        label: SDA Hold Time
+      type: KeyValueSet
+    I2CS_SEXTTOEN_SUPPORT:
+      attributes:
+        id: I2CS_SEXTTOEN_SUPPORT
+        label: Enable SCL Low Extend Time-Out
+      type: Boolean
+    I2CS_SEXTTOOUT_ERROR_SUPPORT:
+      attributes:
+        id: I2CS_SEXTTOOUT_ERROR_SUPPORT
+        label: I2CS_SEXTTOOUT_ERROR_SUPPORT
+      type: Boolean
+    I2CS_SLAVE_ADDDRESS:
+      attributes:
+        id: I2CS_SLAVE_ADDDRESS
+        label: I2C Slave Address (7-bit)
+      type: Hex
+    I2CS_SMEN:
+      attributes:
+        id: I2CS_SMEN
+        label: Enable Smart Mode
+      type: Boolean
+    I2CS_TENBITEN_SUPPORT:
+      attributes:
+        id: I2CS_TENBITEN_SUPPORT
+        label: Enable 10-bit Addressing
+      type: Boolean
+    I2C_ADDR_TENBITEN:
+      attributes:
+        id: I2C_ADDR_TENBITEN
+        label: Enable 10-bit Addressing
+      type: Boolean
+    I2C_CLOCK_SPEED:
+      attributes:
+        id: I2C_CLOCK_SPEED
+        label: I2C Speed in KHz
+      type: Integer
+    I2C_CLOCK_SPEED_HZ:
+      attributes:
+        id: I2C_CLOCK_SPEED_HZ
+        label: I2C Speed in Hz
+      type: Integer
+    I2C_INTERRUPT_MODE:
+      attributes:
+        id: I2C_INTERRUPT_MODE
+        label: Enable Interrupts ?
+      type: Boolean
+    I2C_MASTER_CODE:
+      attributes:
+        id: I2C_MASTER_CODE
+        label: Master Code (0-7)
+      type: Integer
+    I2C_MASTER_MODE:
+      attributes:
+        id: I2C_MASTER_MODE
+        label: I2C_MASTER_MODE
+      type: String
+    I2C_PLIB_API_PREFIX:
+      attributes:
+        id: I2C_PLIB_API_PREFIX
+        label: I2C_PLIB_API_PREFIX
+      type: String
+    I2C_RUNSTDBY:
+      attributes:
+        id: I2C_RUNSTDBY
+        label: Enable operation in Standby mode
+      type: Boolean
+    I2C_SCLSM:
+      attributes:
+        id: I2C_SCLSM
+        label: Clock Stretch Mode
+      type: Integer
+    I2C_SDAHOLD_TIME:
+      attributes:
+        id: I2C_SDAHOLD_TIME
+        label: SDA Hold Time
+      type: KeyValueSet
+    I2C_SLAVE_MODE:
+      attributes:
+        id: I2C_SLAVE_MODE
+        label: I2C_SLAVE_MODE
+      type: String
+    RECEIVE_DATA_REGISTER:
+      attributes:
+        id: RECEIVE_DATA_REGISTER
+        label: RECEIVE_DATA_REGISTER
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: '&(SERCOM1_REGS->USART.SERCOM_DATA)'
+          type: Dynamic
+        type: Values
+      type: String
+    SERCOM_INSTANCE_NAME:
+      attributes:
+        id: SERCOM_INSTANCE_NAME
+        label: SERCOM_INSTANCE_NAME
+      type: String
+    SERCOM_MODE:
+      attributes:
+        id: SERCOM_MODE
+        label: Select SERCOM Operation Mode
+      children:
+      - children:
+        - attributes:
+            id: readOnly
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: sercom1
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    SERCOM_SPI_REG_NAME:
+      attributes:
+        id: SERCOM_SPI_REG_NAME
+        label: SERCOM_SPI_REG_NAME
+      type: String
+    SERCOM_SPI_SLAVE_REG_NAME:
+      attributes:
+        id: SERCOM_SPI_SLAVE_REG_NAME
+        label: SERCOM_SPI_SLAVE_REG_NAME
+      type: String
+    SERCOM_SYNCBUSY:
+      attributes:
+        id: SERCOM_SYNCBUSY
+        label: SERCOM_SYNCBUSY
+      type: Boolean
+    SERCOM_USART_BAUD_NAME:
+      attributes:
+        id: SERCOM_USART_BAUD_NAME
+        label: SERCOM_USART_BAUD_NAME
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: USART_BAUD_ARITH_BAUD
+          type: Dynamic
+        type: Values
+      type: String
+    SERCOM_USART_COMMON_HEADER:
+      attributes:
+        id: SERCOM_USART_COMMON_HEADER
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    SERCOM_USART_HEADER:
+      attributes:
+        id: SERCOM_USART_HEADER
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    SERCOM_USART_REG_NAME:
+      attributes:
+        id: SERCOM_USART_REG_NAME
+        label: SERCOM_USART_REG_NAME
+      type: String
+    SERCOM_USART_SOURCE:
+      attributes:
+        id: SERCOM_USART_SOURCE
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    SPIM_MODE:
+      attributes:
+        id: SPIM_MODE
+        label: SPIM_MODE
+      type: String
+    SPIS_BUSY_PIN:
+      attributes:
+        id: SPIS_BUSY_PIN
+        label: Slave Busy Pin
+      type: KeyValueSet
+    SPIS_BUSY_PIN_LOGIC_LEVEL:
+      attributes:
+        id: SPIS_BUSY_PIN_LOGIC_LEVEL
+        label: Slave Busy Pin Logic Level
+      type: KeyValueSet
+    SPIS_CHARSIZE_BITS:
+      attributes:
+        id: SPIS_CHARSIZE_BITS
+        label: SPI Data Character Size
+      type: KeyValueSet
+    SPIS_CLOCK_PHASE:
+      attributes:
+        id: SPIS_CLOCK_PHASE
+        label: SPI Clock Phase
+      type: KeyValueSet
+    SPIS_CLOCK_POLARITY:
+      attributes:
+        id: SPIS_CLOCK_POLARITY
+        label: SPI Clock Polarity
+      type: KeyValueSet
+    SPIS_DATA_ORDER:
+      attributes:
+        id: SPIS_DATA_ORDER
+        label: SPI Data Order
+      type: KeyValueSet
+    SPIS_DATA_SIZE:
+      attributes:
+        id: SPIS_DATA_SIZE
+        label: SPIS_DATA_SIZE
+      type: Integer
+    SPIS_DIPO:
+      attributes:
+        id: SPIS_DIPO
+        label: SPI Data In Pad Selection
+      type: KeyValueSet
+    SPIS_DOPO:
+      attributes:
+        id: SPIS_DOPO
+        label: SPI Data Out Pad
+      type: KeyValueSet
+    SPIS_INTENSET_ERROR:
+      attributes:
+        id: SPIS_INTENSET_ERROR
+        label: SPIS_INTENSET_ERROR
+      type: Boolean
+    SPIS_INTERRUPT_MODE:
+      attributes:
+        id: SPIS_INTERRUPT_MODE
+        label: Enable Interrupts ?
+      type: Boolean
+    SPIS_MODE:
+      attributes:
+        id: SPIS_MODE
+        label: SPIS_MODE
+      type: String
+    SPIS_RUNSTDBY:
+      attributes:
+        id: SPIS_RUNSTDBY
+        label: Enable operation in Standby mode
+      type: Boolean
+    SPIS_RX_BUFFER_SIZE:
+      attributes:
+        id: SPIS_RX_BUFFER_SIZE
+        label: RX Buffer Size (in bytes)
+      type: Integer
+    SPIS_SSDE:
+      attributes:
+        id: SPIS_SSDE
+        label: Slave Select Low Detect Enable
+      type: Boolean
+    SPIS_TX_BUFFER_SIZE:
+      attributes:
+        id: SPIS_TX_BUFFER_SIZE
+        label: TX Buffer Size (in bytes)
+      type: Integer
+    SPIS_USE_BUSY_PIN:
+      attributes:
+        id: SPIS_USE_BUSY_PIN
+        label: Use GPIO pin as Busy signal?
+      type: Boolean
+    SPI_BAUD_RATE:
+      attributes:
+        id: SPI_BAUD_RATE
+        label: SPI Speed in Hz
+      type: Integer
+    SPI_BAUD_REG_VALUE:
+      attributes:
+        id: SPI_BAUD_REG_VALUE
+        label: SPI Baud
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: '11'
+          type: Dynamic
+        type: Values
+      type: Integer
+    SPI_CHARSIZE_BITS:
+      attributes:
+        id: SPI_CHARSIZE_BITS
+        label: SPI Data Character Size
+      type: KeyValueSet
+    SPI_CHARSIZE_BITS_8_BIT_MASK:
+      attributes:
+        id: SPI_CHARSIZE_BITS_8_BIT_MASK
+        label: SPI_CHARSIZE_BITS_8_BIT_MASK
+      type: String
+    SPI_CHARSIZE_BITS_9_BIT_MASK:
+      attributes:
+        id: SPI_CHARSIZE_BITS_9_BIT_MASK
+        label: SPI_CHARSIZE_BITS_9_BIT_MASK
+      type: String
+    SPI_CLOCK_PHASE:
+      attributes:
+        id: SPI_CLOCK_PHASE
+        label: SPI Clock Phase
+      type: KeyValueSet
+    SPI_CLOCK_PHASE_LEADING_MASK:
+      attributes:
+        id: SPI_CLOCK_PHASE_LEADING_MASK
+        label: SPI_CLOCK_PHASE_LEADING_MASK
+      type: String
+    SPI_CLOCK_PHASE_TRAILING_MASK:
+      attributes:
+        id: SPI_CLOCK_PHASE_TRAILING_MASK
+        label: SPI_CLOCK_PHASE_TRAILING_MASK
+      type: String
+    SPI_CLOCK_POLARITY:
+      attributes:
+        id: SPI_CLOCK_POLARITY
+        label: SPI Clock Polarity
+      type: KeyValueSet
+    SPI_CLOCK_POLARITY_HIGH_MASK:
+      attributes:
+        id: SPI_CLOCK_POLARITY_HIGH_MASK
+        label: SPI_CLOCK_POLARITY_HIGH_MASK
+      type: String
+    SPI_CLOCK_POLARITY_LOW_MASK:
+      attributes:
+        id: SPI_CLOCK_POLARITY_LOW_MASK
+        label: SPI_CLOCK_POLARITY_LOW_MASK
+      type: String
+    SPI_DATA_ORDER:
+      attributes:
+        id: SPI_DATA_ORDER
+        label: SPI Data Order
+      type: KeyValueSet
+    SPI_DIPO:
+      attributes:
+        id: SPI_DIPO
+        label: SPI Data In Pad Selection
+      type: KeyValueSet
+    SPI_DOPO:
+      attributes:
+        id: SPI_DOPO
+        label: SPI Data Out Pad
+      type: KeyValueSet
+    SPI_INTENSET_ERROR:
+      attributes:
+        id: SPI_INTENSET_ERROR
+        label: SPI_INTENSET_ERROR
+      type: Boolean
+    SPI_INTERRUPT_MODE:
+      attributes:
+        id: SPI_INTERRUPT_MODE
+        label: Enable Interrupts ?
+      type: Boolean
+    SPI_MSSEN:
+      attributes:
+        id: SPI_MSSEN
+        label: Enable SPI Master Hardware Slave Select
+      type: Boolean
+    SPI_PLIB_API_PREFIX:
+      attributes:
+        id: SPI_PLIB_API_PREFIX
+        label: SPI_PLIB_API_PREFIX
+      type: String
+    SPI_RECIEVER_ENABLE:
+      attributes:
+        id: SPI_RECIEVER_ENABLE
+        label: SPI Receiver Enable
+      type: Boolean
+    SPI_RUNSTDBY:
+      attributes:
+        id: SPI_RUNSTDBY
+        label: Enable operation in Standby mode
+      type: Boolean
+    SPI_STATUS_OVERRUN_MASK:
+      attributes:
+        id: SPI_STATUS_OVERRUN_MASK
+        label: SPI_STATUS_OVERRUN_MASK
+      type: String
+    TRANSMIT_DATA_REGISTER:
+      attributes:
+        id: TRANSMIT_DATA_REGISTER
+        label: TRANSMIT_DATA_REGISTER
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: '&(SERCOM1_REGS->USART.SERCOM_DATA)'
+          type: Dynamic
+        type: Values
+      type: String
+    USART_7816_BAUD_VALUE:
+      attributes:
+        id: USART_7816_BAUD_VALUE
+        label: ISO7816 Baud Rate Value
+      type: Integer
+    USART_7816_CARD_DETECT:
+      attributes:
+        id: USART_7816_CARD_DETECT
+        label: Card Detect Pin
+      type: KeyValueSet
+    USART_7816_CLOCK_OUTPUT:
+      attributes:
+        id: USART_7816_CLOCK_OUTPUT
+        label: Output clock in Hz
+      type: Integer
+    USART_7816_DSNACK:
+      attributes:
+        id: USART_7816_DSNACK
+        label: Disable Successive Not Acknowledge
+      type: Boolean
+    USART_7816_GTIME:
+      attributes:
+        id: USART_7816_GTIME
+        label: Guard Time
+      type: Integer
+    USART_7816_INACK:
+      attributes:
+        id: USART_7816_INACK
+        label: Disable NACK when parity error received
+      type: Boolean
+    USART_7816_MAXITER:
+      attributes:
+        id: USART_7816_MAXITER
+        label: Maximum Iterations
+      type: Integer
+    USART_7816_RESET:
+      attributes:
+        id: USART_7816_RESET
+        label: RESET Pin
+      type: KeyValueSet
+    USART_7816_VCC_ENABLE:
+      attributes:
+        id: USART_7816_VCC_ENABLE
+        label: VCC Enable Pin
+      type: KeyValueSet
+    USART_BAUD_RATE:
+      attributes:
+        id: USART_BAUD_RATE
+        label: Baud Rate in Hz
+      type: Integer
+    USART_BAUD_VALUE:
+      attributes:
+        id: USART_BAUD_VALUE
+        label: Baud Rate Value
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: '60502'
+          type: Dynamic
+        type: Values
+      type: Integer
+    USART_CHARSIZE_BITS:
+      attributes:
+        id: USART_CHARSIZE_BITS
+        label: Character Size
+      type: KeyValueSet
+    USART_COMM_MODE:
+      attributes:
+        id: USART_COMM_MODE
+        label: USART Communication Mode
+      type: Integer
+    USART_CTRLC_GTIME:
+      attributes:
+        id: USART_CTRLC_GTIME
+        label: RS485 Guard Time
+      type: Integer
+    USART_DATA_5_BIT_MASK:
+      attributes:
+        id: USART_DATA_5_BIT_MASK
+        label: USART_DATA_5_BIT_MASK
+      type: String
+    USART_DATA_6_BIT_MASK:
+      attributes:
+        id: USART_DATA_6_BIT_MASK
+        label: USART_DATA_6_BIT_MASK
+      type: String
+    USART_DATA_7_BIT_MASK:
+      attributes:
+        id: USART_DATA_7_BIT_MASK
+        label: USART_DATA_7_BIT_MASK
+      type: String
+    USART_DATA_8_BIT_MASK:
+      attributes:
+        id: USART_DATA_8_BIT_MASK
+        label: USART_DATA_8_BIT_MASK
+      type: String
+    USART_DATA_9_BIT_MASK:
+      attributes:
+        id: USART_DATA_9_BIT_MASK
+        label: USART_DATA_9_BIT_MASK
+      type: String
+    USART_DATA_BITS:
+      attributes:
+        id: USART_DATA_BITS
+        label: USART_DATA_BITS
+      type: String
+    USART_FLOW_CONTROL:
+      attributes:
+        id: USART_FLOW_CONTROL
+        label: USART_FLOW_CONTROL
+      type: Boolean
+    USART_FORM:
+      attributes:
+        id: USART_FORM
+        label: Frame Format
+      type: KeyValueSet
+    USART_FRAMING_ERROR_VALUE:
+      attributes:
+        id: USART_FRAMING_ERROR_VALUE
+        label: USART_FRAMING_ERROR_VALUE
+      type: String
+    USART_INTENSET_ERROR:
+      attributes:
+        id: USART_INTENSET_ERROR
+        label: USART_INTENSET_ERROR
+      type: Boolean
+    USART_INTERRUPT_MODE:
+      attributes:
+        id: USART_INTERRUPT_MODE
+        label: Enable Interrupts ?
+      type: Boolean
+    USART_INTERRUPT_MODE_ENABLE:
+      attributes:
+        id: USART_INTERRUPT_MODE_ENABLE
+        label: Enable Interrupts ?
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USART_LIN_MASTER_BREAK_LEN:
+      attributes:
+        id: USART_LIN_MASTER_BREAK_LEN
+        label: LIN Master Break Length
+      type: KeyValueSet
+    USART_LIN_MASTER_HDRDLY:
+      attributes:
+        id: USART_LIN_MASTER_HDRDLY
+        label: LIN Master Hardware Delay
+      type: KeyValueSet
+    USART_LIN_MASTER_SUPPORTED:
+      attributes:
+        id: USART_LIN_MASTER_SUPPORTED
+        label: USART_LIN_MASTER_SUPPORTED
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USART_MODE:
+      attributes:
+        id: USART_MODE
+        label: USART_MODE
+      type: String
+    USART_OPERATING_MODE:
+      attributes:
+        id: USART_OPERATING_MODE
+        label: Operating Mode
+      children:
+      - children:
+        - attributes:
+            id: readOnly
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: sercom1
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: KeyValueSet
+    USART_OVERRUN_ERROR_VALUE:
+      attributes:
+        id: USART_OVERRUN_ERROR_VALUE
+        label: USART_OVERRUN_ERROR_VALUE
+      type: String
+    USART_PARITY_ERROR_VALUE:
+      attributes:
+        id: USART_PARITY_ERROR_VALUE
+        label: USART_PARITY_ERROR_VALUE
+      type: String
+    USART_PARITY_EVEN_MASK:
+      attributes:
+        id: USART_PARITY_EVEN_MASK
+        label: USART_PARITY_EVEN_MASK
+      type: String
+    USART_PARITY_MODE:
+      attributes:
+        id: USART_PARITY_MODE
+        label: Parity Mode
+      type: KeyValueSet
+    USART_PARITY_NONE_MASK:
+      attributes:
+        id: USART_PARITY_NONE_MASK
+        label: USART_PARITY_NONE_MASK
+      type: String
+    USART_PARITY_ODD_MASK:
+      attributes:
+        id: USART_PARITY_ODD_MASK
+        label: USART_PARITY_ODD_MASK
+      type: String
+    USART_PLIB_API_PREFIX:
+      attributes:
+        id: USART_PLIB_API_PREFIX
+        label: USART_PLIB_API_PREFIX
+      type: String
+    USART_RING_BUFFER_ENABLE:
+      attributes:
+        id: USART_RING_BUFFER_ENABLE
+        label: Enable Ring Buffer ?
+      type: Boolean
+    USART_RING_BUFFER_MODE_ENABLE:
+      attributes:
+        id: USART_RING_BUFFER_MODE_ENABLE
+        label: Enable Ring Buffer ?
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    USART_RS485:
+      attributes:
+        id: USART_RS485
+        label: USART_RS485
+      type: Boolean
+    USART_RUNSTDBY:
+      attributes:
+        id: USART_RUNSTDBY
+        label: Enable Run in Standby
+      type: Boolean
+    USART_RXPO:
+      attributes:
+        id: USART_RXPO
+        label: Receive Pinout
+      type: KeyValueSet
+    USART_RX_ENABLE:
+      attributes:
+        id: USART_RX_ENABLE
+        label: Receive Enable
+      type: Boolean
+    USART_RX_RING_BUFFER_SIZE:
+      attributes:
+        id: USART_RX_RING_BUFFER_SIZE
+        label: RX Ring Buffer Size
+      type: Integer
+    USART_SAMPLE_COUNT:
+      attributes:
+        id: USART_SAMPLE_COUNT
+        label: No Of Samples
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: '16'
+          type: Dynamic
+        type: Values
+      type: Integer
+    USART_SAMPLE_RATE:
+      attributes:
+        id: USART_SAMPLE_RATE
+        label: Sample Rate
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: '0'
+          type: Dynamic
+        type: Values
+      type: Integer
+    USART_SFDE:
+      attributes:
+        id: USART_SFDE
+        label: Start-of-Frame Detection Enable
+      type: Boolean
+    USART_STOP_1_BIT_MASK:
+      attributes:
+        id: USART_STOP_1_BIT_MASK
+        label: USART_STOP_1_BIT_MASK
+      type: String
+    USART_STOP_2_BIT_MASK:
+      attributes:
+        id: USART_STOP_2_BIT_MASK
+        label: USART_STOP_2_BIT_MASK
+      type: String
+    USART_STOP_BIT:
+      attributes:
+        id: USART_STOP_BIT
+        label: Stop Bit Mode
+      type: KeyValueSet
+    USART_TXPO:
+      attributes:
+        id: USART_TXPO
+        label: Transmit Pinout
+      type: KeyValueSet
+    USART_TX_ENABLE:
+      attributes:
+        id: USART_TX_ENABLE
+        label: Transmit Enable
+      type: Boolean
+    USART_TX_RING_BUFFER_SIZE:
+      attributes:
+        id: USART_TX_RING_BUFFER_SIZE
+        label: TX Ring Buffer Size
+      type: Integer
+    USART_USE_FRACTIONAL_BAUD:
+      attributes:
+        id: USART_USE_FRACTIONAL_BAUD
+        label: Use fractional baud?
+      children:
+      - children:
+        - attributes:
+            id: sercom1
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+  userData: {}

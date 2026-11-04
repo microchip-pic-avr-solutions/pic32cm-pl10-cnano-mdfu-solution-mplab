@@ -1,0 +1,1845 @@
+configVersion: 1.0.0
+componentName: cryptoauthlib
+coreVersion: 5.9.0
+device: PIC32CM6408PL10048
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: cryptoauthlib
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: cryptoauthlib
+  type: package
+  version: v3.7.9
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: cryptoauthlib
+          x: '426'
+          y: '259'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    CAL_ENABLE_CHECK_PARAMS:
+      attributes:
+        id: CAL_ENABLE_CHECK_PARAMS
+        label: Enable Check Params?
+      type: Boolean
+    CAL_ENABLE_DEBUG_PRINT:
+      attributes:
+        id: CAL_ENABLE_DEBUG_PRINT
+        label: Enable Debug Print?
+      type: Boolean
+    CAL_ENABLE_HEAP:
+      attributes:
+        id: CAL_ENABLE_HEAP
+        label: Enable Heap?
+      type: Boolean
+    CAL_ENABLE_JWT:
+      attributes:
+        id: CAL_ENABLE_JWT
+        label: Enable jwt functionality?
+      type: Boolean
+    CAL_ENABLE_MULTIPART_BUF:
+      attributes:
+        id: CAL_ENABLE_MULTIPART_BUF
+        label: Enable MultiPart Buffer
+      type: Boolean
+    CAL_ENABLE_POLLING:
+      attributes:
+        id: CAL_ENABLE_POLLING
+        label: Enable Polling for Response?
+      type: Boolean
+    CAL_ENABLE_PREPROCESSOR_WARNING:
+      attributes:
+        id: CAL_ENABLE_PREPROCESSOR_WARNING
+        label: Enable Preprocessor Warning?
+      type: Boolean
+    CAL_ENABLE_RTOS:
+      attributes:
+        id: CAL_ENABLE_RTOS
+        label: CAL_ENABLE_RTOS
+      children:
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CAL_ENABLE_TA10x_AES_AUTH:
+      attributes:
+        id: CAL_ENABLE_TA10x_AES_AUTH
+        label: CAL_ENABLE_TA10x_AES_AUTH
+      children:
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CAL_ENABLE_TA10x_FCE:
+      attributes:
+        id: CAL_ENABLE_TA10x_FCE
+        label: CAL_ENABLE_TA10x_FCE
+      children:
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CAL_ENABLE_WOLFCRYPTO:
+      attributes:
+        id: CAL_ENABLE_WOLFCRYPTO
+        label: CAL_ENABLE_WOLFCRYPTO
+      children:
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'false'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    CAL_FILE_SRC_100:
+      attributes:
+        id: CAL_FILE_SRC_100
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_101:
+      attributes:
+        id: CAL_FILE_SRC_101
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_56:
+      attributes:
+        id: CAL_FILE_SRC_56
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'false'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_62:
+      attributes:
+        id: CAL_FILE_SRC_62
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_63:
+      attributes:
+        id: CAL_FILE_SRC_63
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_64:
+      attributes:
+        id: CAL_FILE_SRC_64
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_65:
+      attributes:
+        id: CAL_FILE_SRC_65
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_66:
+      attributes:
+        id: CAL_FILE_SRC_66
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_67:
+      attributes:
+        id: CAL_FILE_SRC_67
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_68:
+      attributes:
+        id: CAL_FILE_SRC_68
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_69:
+      attributes:
+        id: CAL_FILE_SRC_69
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_70:
+      attributes:
+        id: CAL_FILE_SRC_70
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_71:
+      attributes:
+        id: CAL_FILE_SRC_71
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_72:
+      attributes:
+        id: CAL_FILE_SRC_72
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_73:
+      attributes:
+        id: CAL_FILE_SRC_73
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_74:
+      attributes:
+        id: CAL_FILE_SRC_74
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_75:
+      attributes:
+        id: CAL_FILE_SRC_75
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_76:
+      attributes:
+        id: CAL_FILE_SRC_76
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_77:
+      attributes:
+        id: CAL_FILE_SRC_77
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_78:
+      attributes:
+        id: CAL_FILE_SRC_78
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_79:
+      attributes:
+        id: CAL_FILE_SRC_79
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_80:
+      attributes:
+        id: CAL_FILE_SRC_80
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_81:
+      attributes:
+        id: CAL_FILE_SRC_81
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_82:
+      attributes:
+        id: CAL_FILE_SRC_82
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_83:
+      attributes:
+        id: CAL_FILE_SRC_83
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_84:
+      attributes:
+        id: CAL_FILE_SRC_84
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_85:
+      attributes:
+        id: CAL_FILE_SRC_85
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_86:
+      attributes:
+        id: CAL_FILE_SRC_86
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_87:
+      attributes:
+        id: CAL_FILE_SRC_87
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_88:
+      attributes:
+        id: CAL_FILE_SRC_88
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_89:
+      attributes:
+        id: CAL_FILE_SRC_89
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_90:
+      attributes:
+        id: CAL_FILE_SRC_90
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_91:
+      attributes:
+        id: CAL_FILE_SRC_91
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_92:
+      attributes:
+        id: CAL_FILE_SRC_92
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_93:
+      attributes:
+        id: CAL_FILE_SRC_93
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_94:
+      attributes:
+        id: CAL_FILE_SRC_94
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_95:
+      attributes:
+        id: CAL_FILE_SRC_95
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_96:
+      attributes:
+        id: CAL_FILE_SRC_96
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_97:
+      attributes:
+        id: CAL_FILE_SRC_97
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_98:
+      attributes:
+        id: CAL_FILE_SRC_98
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_99:
+      attributes:
+        id: CAL_FILE_SRC_99
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_FILE_SRC_HAL_I2C:
+      attributes:
+        id: CAL_FILE_SRC_HAL_I2C
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    CAL_MAX_PACKET_SIZE:
+      attributes:
+        id: CAL_MAX_PACKET_SIZE
+        label: Maximum packet size (bytes)
+      type: Integer
+    CAL_POLL_INIT_TIME:
+      attributes:
+        id: CAL_POLL_INIT_TIME
+        label: Polling Init Time (ms)
+      type: Integer
+    CAL_POLL_PERIOD:
+      attributes:
+        id: CAL_POLL_PERIOD
+        label: Polling Period (ms)
+      type: Integer
+    CAL_POLL_TIMEOUT:
+      attributes:
+        id: CAL_POLL_TIMEOUT
+        label: Polling Timeout (ms)
+      type: Integer
+    cal_aes:
+      attributes:
+        id: cal_aes
+        label: Support AES?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_aes_ecb:
+      attributes:
+        id: cal_aes_ecb
+        label: Support ECB Mode?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_aes_gcm:
+      attributes:
+        id: cal_aes_gcm
+        label: Support GCM Mode?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_aes_gfm:
+      attributes:
+        id: cal_aes_gfm
+        label: Support GFM Mode?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_atcacert_compressed:
+      attributes:
+        id: cal_atcacert_compressed
+        label: Support Compressed Certificate?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_atcacert_full_stored:
+      attributes:
+        id: cal_atcacert_full_stored
+        label: Support Full Stored Certificate?
+      type: Boolean
+    cal_checkmac:
+      attributes:
+        id: cal_checkmac
+        label: Support Checkmac?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_counter:
+      attributes:
+        id: cal_counter
+        label: Support Counter?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_crypto_aes_cbc:
+      attributes:
+        id: cal_crypto_aes_cbc
+        label: Support Crypto Hw AES-CBC?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_crypto_aes_cbc_decrypt:
+      attributes:
+        id: cal_crypto_aes_cbc_decrypt
+        label: Support Crypto Hw AES-CBC Decrypt?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_crypto_aes_cbc_encrypt:
+      attributes:
+        id: cal_crypto_aes_cbc_encrypt
+        label: Support Crypto Hw AES-CBC Encrypt?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_crypto_aes_cbcmac:
+      attributes:
+        id: cal_crypto_aes_cbcmac
+        label: Support Crypto Hw AES-CBCMAC?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_crypto_aes_ccm:
+      attributes:
+        id: cal_crypto_aes_ccm
+        label: Support Crypto Hw AES-CCM?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_crypto_aes_ccm_rand_iv:
+      attributes:
+        id: cal_crypto_aes_ccm_rand_iv
+        label: Support Crypto Hw AES-CCM Random Nonce?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_crypto_aes_cmac:
+      attributes:
+        id: cal_crypto_aes_cmac
+        label: Support Crypto Hw AES-CMAC?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_crypto_aes_ctr:
+      attributes:
+        id: cal_crypto_aes_ctr
+        label: Support Crypto Hw AES-CTR?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_crypto_aes_ctr_rand_iv:
+      attributes:
+        id: cal_crypto_aes_ctr_rand_iv
+        label: Support Crypto Hw AES-CTR Random Nonce?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_delete:
+      attributes:
+        id: cal_delete
+        label: Support Delete?
+      type: Boolean
+    cal_derivekey:
+      attributes:
+        id: cal_derivekey
+        label: Support Derivekey?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_ecdh:
+      attributes:
+        id: cal_ecdh
+        label: Support ECDH?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_ecdh_enc:
+      attributes:
+        id: cal_ecdh_enc
+        label: Support ECDH Encryption?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_gendig:
+      attributes:
+        id: cal_gendig
+        label: Support Gendig?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_genkey:
+      attributes:
+        id: cal_genkey
+        label: Support Genkey?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_genkey_mac:
+      attributes:
+        id: cal_genkey_mac
+        label: Support Genkey MAC?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_hmac:
+      attributes:
+        id: cal_hmac
+        label: Support HMAC?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_hw_aes:
+      attributes:
+        id: cal_hw_aes
+        label: Support Crypto Hw AES?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_info:
+      attributes:
+        id: cal_info
+        label: Support Info?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_kdf:
+      attributes:
+        id: cal_kdf
+        label: Support KDF?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_lock:
+      attributes:
+        id: cal_lock
+        label: Support Lock?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_mac:
+      attributes:
+        id: cal_mac
+        label: Support MAC?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_nonce:
+      attributes:
+        id: cal_nonce
+        label: Support Nonce?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_privwrite:
+      attributes:
+        id: cal_privwrite
+        label: Support PrivWrite?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_random:
+      attributes:
+        id: cal_random
+        label: Support Random?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_read:
+      attributes:
+        id: cal_read
+        label: Support Read?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_read_enc:
+      attributes:
+        id: cal_read_enc
+        label: Support Encrypted Read?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_secureboot:
+      attributes:
+        id: cal_secureboot
+        label: Support Secureboot?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_secureboot_mac:
+      attributes:
+        id: cal_secureboot_mac
+        label: Support Secureboot MAC?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_selftest:
+      attributes:
+        id: cal_selftest
+        label: Support Selftest?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sha:
+      attributes:
+        id: cal_sha
+        label: Support SHA?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sha_context:
+      attributes:
+        id: cal_sha_context
+        label: Support SHA Context?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sha_hmac:
+      attributes:
+        id: cal_sha_hmac
+        label: Support SHA HMAC?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sign:
+      attributes:
+        id: cal_sign
+        label: Support Sign?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sign_internal:
+      attributes:
+        id: cal_sign_internal
+        label: Support Sign Internal?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sw_pbkdf2_sha2:
+      attributes:
+        id: cal_sw_pbkdf2_sha2
+        label: Support Crypto Sw PBKDF2 SHA256?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sw_rand:
+      attributes:
+        id: cal_sw_rand
+        label: Enable SW crypto implementation to get random num
+      type: Boolean
+    cal_sw_sha:
+      attributes:
+        id: cal_sw_sha
+        label: Support Crypto Sw SHA?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sw_sha1:
+      attributes:
+        id: cal_sw_sha1
+        label: Support Crypto Sw SHA1?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sw_sha256:
+      attributes:
+        id: cal_sw_sha256
+        label: Support Crypto Sw SHA256?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sw_sha2_hmac:
+      attributes:
+        id: cal_sw_sha2_hmac
+        label: Support Crypto Sw SHA256 Hmac?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sw_sha2_hmac_ctr:
+      attributes:
+        id: cal_sw_sha2_hmac_ctr
+        label: Support Crypto Sw SHA256 Hmac Counter?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sw_sha384:
+      attributes:
+        id: cal_sw_sha384
+        label: Support Crypto Sw SHA384?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sw_sha512:
+      attributes:
+        id: cal_sw_sha512
+        label: Support Crypto Sw SHA512?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_sw_sign:
+      attributes:
+        id: cal_sw_sign
+        label: Enable SW crypto implementation to perform sign?
+      type: Boolean
+    cal_sw_verify:
+      attributes:
+        id: cal_sw_verify
+        label: Enable SW crypto implementation to perform verify?
+      type: Boolean
+    cal_updateextra:
+      attributes:
+        id: cal_updateextra
+        label: Support UpdateExtra?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_verify:
+      attributes:
+        id: cal_verify
+        label: Support Verify?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_verify_extern:
+      attributes:
+        id: cal_verify_extern
+        label: Support Verify Extern?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_verify_mac:
+      attributes:
+        id: cal_verify_mac
+        label: Support Verify Mac?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_verify_stored:
+      attributes:
+        id: cal_verify_stored
+        label: Support Verify Stored?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_verify_validate:
+      attributes:
+        id: cal_verify_validate
+        label: Support Verify Validate?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_write:
+      attributes:
+        id: cal_write
+        label: Support Write?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+    cal_write_enc:
+      attributes:
+        id: cal_write_enc
+        label: Support Encrypted Write?
+      children:
+      - children:
+        - attributes:
+            id: visible
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      - children:
+        - attributes:
+            id: cryptoauthlib
+            value: 'true'
+          type: Dynamic
+        type: Values
+      type: Boolean
+  userData: {}

@@ -101,73 +101,32 @@ void SERCOM0_SPI_Initialize(void)
 
     /* Mode - SPI Slave
      * IBON - 1 (Set immediately upon buffer overflow)
-     * DOPO - MUX2 (MISO on PAD3/PA07)
-     * DIPO - MUX0 (MOSI on PAD0/PA04)
+     * DOPO - MUX2
+     * DIPO - MUX0
      * CPHA - LEADING_EDGE
      * COPL - IDLE_LOW
      * DORD - MSB
      * ENABLE - 1
      */
-    SERCOM0_REGS->SPI.SERCOM_CTRLA = SERCOM_SPI_CTRLA_MODE_SPI_SLAVE |
-            SERCOM_SPI_CTRLA_IBON_Msk |
-            SERCOM_SPI_CTRLA_DOPO_MUX2 |
-            SERCOM_SPI_CTRLA_DIPO_MUX0 |
-            SERCOM_SPI_CTRLA_CPOL_IDLE_LOW |
-            SERCOM_SPI_CTRLA_CPHA_LEADING_EDGE |
-            SERCOM_SPI_CTRLA_DORD_MSB ;
-            //| SERCOM_SPI_CTRLA_ENABLE_Msk ;
+    SERCOM0_REGS->SPI.SERCOM_CTRLA = SERCOM_SPI_CTRLA_MODE_SPI_SLAVE | SERCOM_SPI_CTRLA_IBON_Msk | SERCOM_SPI_CTRLA_DOPO_MUX2 | SERCOM_SPI_CTRLA_DIPO_MUX0 | SERCOM_SPI_CTRLA_CPOL_IDLE_LOW | SERCOM_SPI_CTRLA_CPHA_LEADING_EDGE | SERCOM_SPI_CTRLA_DORD_MSB | SERCOM_SPI_CTRLA_ENABLE_Msk ;
 
     /* Wait for synchronization */
     while(SERCOM0_REGS->SPI.SERCOM_SYNCBUSY != 0U)
     {
         /* Do nothing */
     }
-}
 
-bool SERCOM0_Open(void)
-{
-    bool enabled = false;
-    SERCOM0_REGS->SPI.SERCOM_CTRLA |= SERCOM_SPI_CTRLA_ENABLE_Msk;
-     // Wait for synchronization
-    while (SERCOM0_REGS->SPI.SERCOM_SYNCBUSY != 0U)
-    {
-        // Do nothing
-    }
-    enabled = true;
-    
-    return enabled;
-}
+    sercom0SPISObj.rdInIndex = 0U;
+    sercom0SPISObj.wrOutIndex = 0U;
+    sercom0SPISObj.nWrBytes = 0U;
+    sercom0SPISObj.errorStatus = SPI_SLAVE_ERROR_NONE;
+    sercom0SPISObj.callback = NULL ;
+    sercom0SPISObj.transferIsBusy = false ;
 
-// Read a byte from SPI (blocking until RX is ready)
-uint8_t SERCOM0_ByteRead(void)
-{
-    while ((SERCOM0_REGS->SPI.SERCOM_INTFLAG & SERCOM_SPI_INTFLAG_RXC_Msk) == 0U)
-    {
-        // Wait for RX ready
-    }
-    return SERCOM0_REGS->SPI.SERCOM_DATA;
-}
+//    SERCOM0_REGS->SPI.SERCOM_INTENSET = (uint8_t)(SERCOM_SPI_INTENSET_SSL_Msk | SERCOM_SPI_INTENCLR_RXC_Msk);
 
-// Write a byte to SPI (blocking until TX data register is empty)
-void SERCOM0_ByteWrite(uint8_t data)
-{
-    while ((SERCOM0_REGS->SPI.SERCOM_INTFLAG & SERCOM_SPI_INTFLAG_DRE_Msk) == 0U)
-    {
-        // Wait for TX register empty
-    }
-    SERCOM0_REGS->SPI.SERCOM_DATA = data;
-}
-
-// Returns 1 if TX is busy (data register not empty), 0 if ready
-uint8_t SERCOM0_IsTxReady(void)
-{
-    return ((SERCOM0_REGS->SPI.SERCOM_INTFLAG & SERCOM_SPI_INTFLAG_DRE_Msk) == 0U) ? 1 : 0;
-}
-
-// Returns 1 if RX has data available, 0 if not
-uint8_t SERCOM0_IsRxReady(void)
-{
-    return ((SERCOM0_REGS->SPI.SERCOM_INTFLAG & SERCOM_SPI_INTFLAG_RXC_Msk) != 0U) ? 1 : 0;
+    /* Set the Busy Pin to ready state */
+//    PORT_PinWrite(PORT_PIN_PA00, false);
 }
 
 /* For 9-bit mode, the "size" must be specified in terms of 16-bit words */
@@ -263,5 +222,106 @@ bool SERCOM0_SPI_IsBusy(void)
 /* Drive the GPIO pin to indicate to SPI Master that the slave is ready now */
 void SERCOM0_SPI_Ready(void)
 {
-    PORT_SetOutput(PORT_PIN_PA00, 0U);
+    PORT_PinWrite(PORT_PIN_PA00, false);
+}
+
+SPI_SLAVE_ERROR SERCOM0_SPI_ErrorGet(void)
+{
+    SPI_SLAVE_ERROR errorStatus = sercom0SPISObj.errorStatus;
+
+    sercom0SPISObj.errorStatus = SPI_SLAVE_ERROR_NONE;
+
+    return errorStatus;
+}
+
+void __attribute__((used)) SERCOM0_SPI_InterruptHandler(void)
+{
+    uint8_t txRxData;
+    uint8_t intFlag = SERCOM0_REGS->SPI.SERCOM_INTFLAG;
+
+    if((SERCOM0_REGS->SPI.SERCOM_INTFLAG & SERCOM_SPI_INTFLAG_SSL_Msk) == SERCOM_SPI_INTFLAG_SSL_Msk)
+    {
+        /* Clear the SSL flag and enable TXC interrupt */
+        SERCOM0_REGS->SPI.SERCOM_INTFLAG = (uint8_t)SERCOM_SPI_INTFLAG_SSL_Msk;
+        SERCOM0_REGS->SPI.SERCOM_INTENSET = (uint8_t)SERCOM_SPI_INTENSET_TXC_Msk;
+        sercom0SPISObj.rdInIndex = 0U;
+        sercom0SPISObj.transferIsBusy = true;
+        PORT_PinWrite(PORT_PIN_PA00, true);
+    }
+
+    if ((SERCOM0_REGS->SPI.SERCOM_STATUS & SERCOM_SPI_STATUS_BUFOVF_Msk) == SERCOM_SPI_STATUS_BUFOVF_Msk)
+    {
+        /* Save the error to report it to application later, when the transfer is complete (TXC = 1) */
+        sercom0SPISObj.errorStatus = SERCOM_SPI_STATUS_BUFOVF_Msk;
+
+        /* Clear the status register */
+        SERCOM0_REGS->SPI.SERCOM_STATUS = SERCOM_SPI_STATUS_BUFOVF_Msk;
+
+        /* Flush out the received data until RXC flag is set */
+        while((SERCOM0_REGS->SPI.SERCOM_INTFLAG & SERCOM_SPI_INTFLAG_RXC_Msk) == SERCOM_SPI_INTFLAG_RXC_Msk)
+        {
+            /* Reading DATA register will also clear the RXC flag */
+            txRxData = (uint8_t)SERCOM0_REGS->SPI.SERCOM_DATA;
+        }
+
+        /* Clear the Error Interrupt Flag */
+        SERCOM0_REGS->SPI.SERCOM_INTFLAG = (uint8_t)SERCOM_SPI_INTFLAG_ERROR_Msk;
+    }
+
+    if((SERCOM0_REGS->SPI.SERCOM_INTFLAG & SERCOM_SPI_INTFLAG_RXC_Msk) == SERCOM_SPI_INTFLAG_RXC_Msk)
+    {
+        /* Reading DATA register will also clear the RXC flag */
+        txRxData = (uint8_t)SERCOM0_REGS->SPI.SERCOM_DATA;
+
+        if (sercom0SPISObj.rdInIndex < SERCOM0_SPI_READ_BUFFER_SIZE)
+        {
+            uint32_t rdInIndex = sercom0SPISObj.rdInIndex;
+
+            SERCOM0_SPI_ReadBuffer[rdInIndex] = txRxData;
+            sercom0SPISObj.rdInIndex++;
+        }
+    }
+
+    if((SERCOM0_REGS->SPI.SERCOM_INTFLAG & SERCOM_SPI_INTFLAG_DRE_Msk) == SERCOM_SPI_INTFLAG_DRE_Msk)
+    {
+        uint32_t wrOutIndex = sercom0SPISObj.wrOutIndex;
+
+        if (wrOutIndex < sercom0SPISObj.nWrBytes)
+        {
+            txRxData = SERCOM0_SPI_WriteBuffer[wrOutIndex];
+            wrOutIndex++;
+
+            /* Before writing to DATA register (which clears TXC flag), check if TXC flag is set */
+            if((SERCOM0_REGS->SPI.SERCOM_INTFLAG & SERCOM_SPI_INTFLAG_TXC_Msk) == SERCOM_SPI_INTFLAG_TXC_Msk)
+            {
+                intFlag = (uint8_t)SERCOM_SPI_INTFLAG_TXC_Msk;
+            }
+            SERCOM0_REGS->SPI.SERCOM_DATA = (uint16_t)txRxData;
+        }
+        else
+        {
+            /* Disable DRE interrupt. The last byte sent by the master will be shifted out automatically */
+            SERCOM0_REGS->SPI.SERCOM_INTENCLR = (uint8_t)SERCOM_SPI_INTENCLR_DRE_Msk;
+        }
+
+        sercom0SPISObj.wrOutIndex = wrOutIndex;
+    }
+
+    if((intFlag & SERCOM_SPI_INTFLAG_TXC_Msk) == SERCOM_SPI_INTFLAG_TXC_Msk)
+    {
+        /* Clear TXC flag */
+        SERCOM0_REGS->SPI.SERCOM_INTFLAG = (uint8_t)SERCOM_SPI_INTFLAG_TXC_Msk;
+
+        sercom0SPISObj.transferIsBusy = false;
+
+        sercom0SPISObj.wrOutIndex = 0U;
+        sercom0SPISObj.nWrBytes = 0U;
+
+        if(sercom0SPISObj.callback != NULL)
+        {
+            uintptr_t context = sercom0SPISObj.context;
+
+            sercom0SPISObj.callback(context);
+        }
+    }
 }

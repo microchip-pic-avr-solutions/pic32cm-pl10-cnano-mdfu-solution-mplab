@@ -100,8 +100,8 @@ static bl_result_t CRC32_Validate(uint32_t startAddress, uint32_t length, uint32
 
 bl_result_t BL_ImageVerify(void)
 {
-    // Verify the app area
+    
     bl_result_t verificationStatus = CRC32_Validate(BL_APPLICATION_START_ADDRESS, (uint32_t)(BL_IMAGE_PARTITION_SIZE - BL_HASH_DATA_SIZE), 0xC00FFFCU);
-
+    
     return verificationStatus;
 }

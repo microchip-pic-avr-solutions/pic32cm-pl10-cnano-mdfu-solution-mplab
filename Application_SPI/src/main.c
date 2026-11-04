@@ -26,7 +26,6 @@
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
-#include "../src/config/default/bootloader/app.h"
 
 
 // *****************************************************************************
@@ -43,7 +42,7 @@ int main ( void )
     while ( true )
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */
-        APP_Tasks();
+        SYS_Tasks ( );
     }
 
     /* Execution should not come here during normal operation */

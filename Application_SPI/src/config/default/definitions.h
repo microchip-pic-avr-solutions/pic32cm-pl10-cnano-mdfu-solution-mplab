@@ -48,18 +48,16 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-#include "peripheral/nvmctrl/plib_nvmctrl.h"
+#include <stdio.h>
 #include "peripheral/sercom/usart/plib_sercom1_usart.h"
 #include "peripheral/evsys/plib_evsys.h"
 #include "peripheral/port/plib_port.h"
-#include "peripheral/clock/plib_gclk.h"
-#include "peripheral/clock/plib_mclk.h"
-#include "peripheral/clock/plib_osc32kctrl.h"
-#include "peripheral/clock/plib_oscctrl.h"
+#include "peripheral/clock/plib_clock.h"
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/systick/plib_systick.h"
-#include "peripheral/tc/plib_tc0_capture16bit.h"
-#include "peripheral/tc/plib_tc0_interrupt.h"
+#include "app.h"
+
+
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -77,24 +75,7 @@ extern "C" {
 
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 24000000U
-    
-/*** Macros for LED0 pin ***/
-#define LED0_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 2U))
-#define LED0_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 2U))
-#define LED0_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 2U))
-#define LED0_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 2U))
-#define LED0_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 2U))
-#define LED0_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 2U)) & 0x01U)
-#define LED0_PIN                  PORT_PIN_PB02
 
-/*** Macros for SW0 pin ***/
-#define SW0_Set()               (PORT_REGS->GROUP[1].PORT_OUTSET = ((uint32_t)1U << 3U))
-#define SW0_Clear()             (PORT_REGS->GROUP[1].PORT_OUTCLR = ((uint32_t)1U << 3U))
-#define SW0_Toggle()            (PORT_REGS->GROUP[1].PORT_OUTTGL = ((uint32_t)1U << 3U))
-#define SW0_OutputEnable()      (PORT_REGS->GROUP[1].PORT_DIRSET = ((uint32_t)1U << 3U))
-#define SW0_InputEnable()       (PORT_REGS->GROUP[1].PORT_DIRCLR = ((uint32_t)1U << 3U))
-#define SW0_Get()               (((PORT_REGS->GROUP[1].PORT_IN >> 3U)) & 0x01U)
-#define SW0_PIN                  PORT_PIN_PB03
 // *****************************************************************************
 // *****************************************************************************
 // Section: System Functions
@@ -142,8 +123,46 @@ extern "C" {
 
 void SYS_Initialize( void *data );
 
-/* Nullify SYS_Tasks() if only PLIBs are used. */
-#define     SYS_Tasks()
+// *****************************************************************************
+/* System Tasks Function
+
+Function:
+    void SYS_Tasks ( void );
+
+Summary:
+    Function that performs all polled system tasks.
+
+Description:
+    This function performs all polled system tasks by calling the state machine
+    "tasks" functions for all polled modules in the system, including drivers,
+    services, middleware and applications.
+
+Precondition:
+    The SYS_Initialize function must have been called and completed.
+
+Parameters:
+    None.
+
+Returns:
+    None.
+
+Example:
+    <code>
+    SYS_Initialize ( NULL );
+
+    while ( true )
+    {
+        SYS_Tasks ( );
+    }
+    </code>
+
+Remarks:
+    If the module is interrupt driven, the system will call this routine from
+    an interrupt context.
+*/
+
+void SYS_Tasks ( void );
+
 
 // *****************************************************************************
 // *****************************************************************************

@@ -1,0 +1,91 @@
+configVersion: 1.0.0
+componentName: rstc
+coreVersion: 5.9.0
+device: PIC32CM6408PL10048
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: rstc
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.26.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: rstc
+          x: '405'
+          y: '92'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    RSTC_CTRLA__RSTPINDIS:
+      attributes:
+        id: RSTC_CTRLA__RSTPINDIS
+        label: Disable Reset Pin
+      type: Boolean
+    RSTC_ENABLE:
+      attributes:
+        id: RSTC_ENABLE
+        label: Use Reset Controller ?
+      type: Boolean
+    RSTC_INSTANCE_NAME:
+      attributes:
+        id: RSTC_INSTANCE_NAME
+        label: RSTC_INSTANCE_NAME
+      type: String
+    RSTC_RCAUSE0:
+      attributes:
+        id: RSTC_RCAUSE0
+        label: Power-On Reset Flag
+      type: KeyValueSet
+    RSTC_RCAUSE1:
+      attributes:
+        id: RSTC_RCAUSE1
+        label: VDD Brownout Reset Flag
+      type: KeyValueSet
+    RSTC_RCAUSE2:
+      attributes:
+        id: RSTC_RCAUSE2
+        label: External Reset Flag
+      type: KeyValueSet
+    RSTC_RCAUSE3:
+      attributes:
+        id: RSTC_RCAUSE3
+        label: Watchdog Reset Flag
+      type: KeyValueSet
+    RSTC_RCAUSE4:
+      attributes:
+        id: RSTC_RCAUSE4
+        label: System Reset Flag
+      type: KeyValueSet
+    RSTC_RCAUSE5:
+      attributes:
+        id: RSTC_RCAUSE5
+        label: Software Reset Flag
+      type: KeyValueSet
+    RSTC_RCAUSE_LENGTH:
+      attributes:
+        id: RSTC_RCAUSE_LENGTH
+        label: RSTC_RCAUSE_LENGTH
+      type: Integer
+    RSTC_WPCTRL__WPEN:
+      attributes:
+        id: RSTC_WPCTRL__WPEN
+        label: Enable WriteProtect
+      type: Boolean
+    RSTC_WPCTRL__WPLCK:
+      attributes:
+        id: RSTC_WPCTRL__WPLCK
+        label: Enable WriteProtect LOCK
+      type: Boolean
+  userData: {}

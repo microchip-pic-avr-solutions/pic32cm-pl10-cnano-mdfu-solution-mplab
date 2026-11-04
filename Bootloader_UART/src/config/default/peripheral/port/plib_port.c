@@ -1,226 +1,345 @@
 /*******************************************************************************
- * Copyright © 2025 Microchip Technology Inc. and its subsidiaries.
- *
- * Subject to your compliance with these terms, you may use Microchip software
- * and any derivatives exclusively with Microchip products. It is your
- * responsibility to comply with third party license terms applicable to your
- * use of third party software (including open source software) that may
- * accompany Microchip software.
- *
- * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
- * EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
- * WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
- * PARTICULAR PURPOSE.
- *
- * IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
- * INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
- * WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
- * BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
- * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
- * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
- * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
- ******************************************************************************/
+  PORT PLIB
+
+  Company:
+    Microchip Technology Inc.
+
+  File Name:
+    plib_port.c
+
+  Summary:
+    Interface definition of PORT PLIB
+
+  Description:
+    This file provides an interface to control and interact with PORT-I/O
+    Pin controller module.
+
+*******************************************************************************/
+
+/*******************************************************************************
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
+*
+* Subject to your compliance with these terms, you may use Microchip software
+* and any derivatives exclusively with Microchip products. It is your
+* responsibility to comply with third party license terms applicable to your
+* use of third party software (including open source software) that may
+* accompany Microchip software.
+*
+* THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+* EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+* WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+* PARTICULAR PURPOSE.
+*
+* IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+* INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+* WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+* BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+* FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+* ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+* THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+*******************************************************************************/
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Included Files
+// *****************************************************************************
+// *****************************************************************************
 
 #include "plib_port.h"
 
-#define GPIO_PINS_PER_GROUP    (32U)
-#define GPIO_MAX_PINS          (GPIO_PINS_PER_GROUP * PORT_GROUP_NUMBER)
+// *****************************************************************************
+// *****************************************************************************
+// Section: PORT Implementation
+// *****************************************************************************
+// *****************************************************************************
+// *****************************************************************************
+/* Function:
 
-#define PIN_IS_AVAILABLE(pin)  ((uint32_t)(pin) < GPIO_MAX_PINS)
-#define PIN_MASK(pin)          (1UL << ((uint32_t)(pin) % GPIO_PINS_PER_GROUP))
-#define PIN_GROUP(pin)         ((uint32_t)(pin) / GPIO_PINS_PER_GROUP)
-#define PIN_INDEX(pin)         ((uint32_t)(pin) % GPIO_PINS_PER_GROUP)
+    void PORT_Initialize(void)
 
+  Summary:
+    Initializes the PORT Library.
 
-int32_t PORT_Setup(PORT_PIN pin)
+  Description:
+    This function initializes all ports and pins as configured in the
+    MHC Pin Manager.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+
+void PORT_Initialize(void)
 {
-    int32_t result = PORT_PLIB_OK;   
+   /************************** GROUP 0 Initialization *************************/
+   PORT_REGS->GROUP[0].PORT_PINCFG[0] = 0x1U;
+   PORT_REGS->GROUP[0].PORT_PINCFG[1] = 0x1U;
 
-    if (PIN_IS_AVAILABLE(pin))
-    {
-        PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PINCFG[PIN_INDEX(pin)] = 0x6U;
-        PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_OUT |= PIN_MASK(pin);
-    }
-    else
-    {
-        result = PORT_PLIB_ERROR;
-    }
+   PORT_REGS->GROUP[0].PORT_PMUX[0] = 0x22U;
 
-    return result;
+   /************************** GROUP 1 Initialization *************************/
+   PORT_REGS->GROUP[1].PORT_DIR = 0x4U;
+   PORT_REGS->GROUP[1].PORT_OUT = 0x4U;
+   PORT_REGS->GROUP[1].PORT_PINCFG[0] = 0x1U;
+   PORT_REGS->GROUP[1].PORT_PINCFG[1] = 0x1U;
+   PORT_REGS->GROUP[1].PORT_PINCFG[2] = 0x0U;
+   PORT_REGS->GROUP[1].PORT_PINCFG[3] = 0x2U;
+
+   PORT_REGS->GROUP[1].PORT_PMUX[0] = 0x33U;
+   PORT_REGS->GROUP[1].PORT_PMUX[1] = 0x0U;
+
+
+}
+// *****************************************************************************
+/* Function:
+    uint32_t PORT_GroupRead(PORT_GROUP group)
+
+  Summary:
+    Read all the I/O pins in the specified port group.
+
+  Description:
+    The function reads the hardware pin state of all pins in the specified group
+    and returns this as a 32 bit value. Each bit in the 32 bit value represent a
+    pin. For example, bit 0 in group 0 will represent pin PA0. Bit 1 will
+    represent PA1 and so on. The application should only consider the value of
+    the port group pins which are implemented on the device.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+
+uint32_t PORT_GroupRead(PORT_GROUP group)
+{
+    return (((port_group_registers_t*)group)->PORT_IN);
 }
 
+// *****************************************************************************
+/* Function:
+    void PORT_GroupWrite(PORT_GROUP group, uint32_t mask, uint32_t value);
 
-int32_t PORT_SetDirection(PORT_PIN pin, PORT_DIRECTION direction)
+  Summary:
+    Write value on the masked pins of the selected port group.
+
+  Description:
+    This function writes the value contained in the value parameter to the
+    port group. Port group pins which are configured for output will be updated.
+    The mask parameter provides additional control on the bits in the group to
+    be affected. Setting a bit to 1 in the mask will cause the corresponding
+    bit in the port group to be updated. Clearing a bit in the mask will cause
+    that corresponding bit in the group to stay unaffected. For example,
+    setting a mask value 0xFFFFFFFF will cause all bits in the port group
+    to be updated. Setting a value 0x3 will only cause port group bit 0 and
+    bit 1 to be updated.
+
+    For port pins which are not configured for output and have the pull feature
+    enabled, this function will affect pull value (pull up or pull down). A bit
+    value of 1 will enable the pull up. A bit value of 0 will enable the pull
+    down.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+
+void PORT_GroupWrite(PORT_GROUP group, uint32_t mask, uint32_t value)
 {
-    int32_t result = PORT_PLIB_OK;
-
-    if (PIN_IS_AVAILABLE(pin))
-    {
-        switch (direction)
-        {
-            case GPIO_INPUT:
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_DIRCLR = PIN_MASK(pin);
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PINCFG[PIN_INDEX(pin)] |= 0x6U;
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_OUTSET = PIN_MASK(pin);
-                break;
-            case GPIO_OUTPUT:
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_DIRSET = PIN_MASK(pin);
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_OUTCLR = PIN_MASK(pin);
-                break;
-            default:
-                result = PORT_PLIB_ERROR_PARAMETER;
-                break;
-        }
-    }
-    else
-    {
-        result = PORT_PLIB_ERROR;
-    }
-
-    return result;
+    /* Write the desired value */
+    ((port_group_registers_t*)group)->PORT_OUT = (((port_group_registers_t*)group)->PORT_OUT & (~mask)) | (mask & value);
 }
 
+// *****************************************************************************
+/* Function:
+    uint32_t PORT_GroupLatchRead(PORT_GROUP group)
 
-int32_t PORT_SetOutputMode(PORT_PIN pin, GPIO_OUTPUT_MODE mode)
+  Summary:
+    Read the data driven on all the I/O pins of the selected port group.
+
+  Description:
+    The function will return a 32-bit value representing the logic levels being
+    driven on the output pins within the group. The function will not sample the
+    actual hardware state of the output pin. Each bit in the 32-bit return value
+    will represent one of the 32 port pins within the group. The application
+    should only consider the value of the pins which are available on the
+    device.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+
+uint32_t PORT_GroupLatchRead(PORT_GROUP group)
 {
-    int32_t result = PORT_PLIB_OK;
-
-    if (PIN_IS_AVAILABLE(pin))
-    {
-        switch (mode)
-        {
-            case GPIO_PUSH_PULL:
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_DIRSET = PIN_MASK(pin); // Output
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PINCFG[PIN_INDEX(pin)] &= ~(1U << 2);
-                break;
-            case GPIO_OPEN_DRAIN:
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_DIRCLR = PIN_MASK(pin);               // Input (high-Z)
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PINCFG[PIN_INDEX(pin)] &= ~(1U << 2); // PULLEN = 0
-                break;
-            default:
-                result = PORT_PLIB_ERROR_PARAMETER;
-                break;
-        }
-    }
-    else
-    {
-        result = PORT_PLIB_ERROR;
-    }
-
-    return result;
+    return (((port_group_registers_t*)group)->PORT_OUT);
 }
 
+// *****************************************************************************
+/* Function:
+    void PORT_GroupSet(PORT_GROUP group, uint32_t mask)
 
-int32_t PORT_SetPullResistor(PORT_PIN pin, GPIO_PULL_RESISTOR resistor)
+  Summary:
+    Set the selected IO pins of a group.
+
+  Description:
+    This function sets (drives a logic high) on the selected output pins of a
+    group. The mask parameter control the pins to be updated. A mask bit
+    position with a value 1 will cause that corresponding port pin to be set. A
+    mask bit position with a value 0 will cause the corresponding port pin to
+    stay un-affected.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+
+void PORT_GroupSet(PORT_GROUP group, uint32_t mask)
 {
-    int32_t result = PORT_PLIB_OK;
-
-    if (PIN_IS_AVAILABLE(pin))
-    {
-        switch (resistor)
-        {
-            case GPIO_PULL_NONE:
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PINCFG[PIN_INDEX(pin)] &= ~(1U << 2);
-                break;
-            case GPIO_PULL_UP:
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PINCFG[PIN_INDEX(pin)] |= (1U << 2); // PULLEN
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_OUTSET = PIN_MASK(pin);
-                break;
-            case GPIO_PULL_DOWN:
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PINCFG[PIN_INDEX(pin)] |= (1U << 2); // PULLEN
-                PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_OUTCLR = PIN_MASK(pin);
-                break;
-            default:
-                result = PORT_PLIB_ERROR_PARAMETER;
-                break;
-        }
-    }
-    else
-    {
-        result = PORT_PLIB_ERROR;
-    }
-
-    return result;
+    ((port_group_registers_t*)group)->PORT_OUTSET = mask;
 }
 
+// *****************************************************************************
+/* Function:
+    void PORT_GroupClear(PORT_GROUP group, uint32_t mask)
 
-void PORT_SetOutput(PORT_PIN pin, uint32_t value)
+  Summary:
+    Clears the selected IO pins of a group.
+
+  Description:
+    This function clears (drives a logic 0) on the selected output pins of a
+    group. The mask parameter control the pins to be updated. A mask bit
+    position with a value 1 will cause that corresponding port pin to be clear.
+    A mask bit position with a value 0 will cause the corresponding port pin to
+    stay un-affected.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+
+void PORT_GroupClear(PORT_GROUP group, uint32_t mask)
 {
-    if (PIN_IS_AVAILABLE(pin))
-    {
-        if (value != 0U)
-        {
-            PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_OUTSET = PIN_MASK(pin);
-        }
-        else
-        {
-            PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_OUTCLR = PIN_MASK(pin);
-        }
-    }
+    ((port_group_registers_t*)group)->PORT_OUTCLR = mask;
 }
 
-uint32_t PORT_GetInput(PORT_PIN pin)
+// *****************************************************************************
+/* Function:
+    void PORT_GroupToggle(PORT_GROUP group, uint32_t mask)
+
+  Summary:
+    Toggles the selected IO pins of a group.
+
+  Description:
+    This function toggles the selected output pins of a group. The mask
+    parameter control the pins to be updated. A mask bit position with a value 1
+    will cause that corresponding port pin to be toggled.  A mask bit position
+    with a value 0 will cause the corresponding port pin to stay un-affected.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+
+void PORT_GroupToggle(PORT_GROUP group, uint32_t mask)
 {
-    uint32_t value = 0U;
-    if (PIN_IS_AVAILABLE(pin))
-    {
-        value = (PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_IN >> PIN_INDEX(pin)) & 0x1;
-    }
-    return value;
+    ((port_group_registers_t*)group)->PORT_OUTTGL = mask;
 }
 
+// *****************************************************************************
+/* Function:
+    void PORT_GroupInputEnable(PORT_GROUP group, uint32_t mask)
 
-void PORT_Toggle(PORT_PIN pin)
+  Summary:
+    Configures the selected IO pins of a group as input.
+
+  Description:
+    This function configures the selected IO pins of a group as input. The pins
+    to be configured as input are selected by setting the corresponding bits in
+    the mask parameter to 1.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+
+void PORT_GroupInputEnable(PORT_GROUP group, uint32_t mask)
 {
-    if (PIN_IS_AVAILABLE(pin))
-    {
-        PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_OUTTGL = PIN_MASK(pin);
-    }
-}
-
-void PORT_ConfigureInputEvent(PORT_EVENT_INPUT_CHANNEL event_channel, PORT_EVENT_ACTION event_action, PORT_PIN pin)
-{
-    if (PIN_IS_AVAILABLE(pin))
-    {
-        uint32_t port_event_mask = ((uint32_t)0xFF << (event_channel-7U));
-        uint32_t port_event_ctrl_reg =  ((uint32_t)event_action << (event_channel-2U)) |
-                                        (PIN_INDEX(pin) << (event_channel-7U));
-
-        PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_EVCTRL = (PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_EVCTRL & ~port_event_mask) 
-                                                        | port_event_ctrl_reg;
-    }
-}
-
-void PORT_EnableInputEvent(PORT_EVENT_INPUT_CHANNEL event_channel, PORT_PIN pin)
-{
-    uint32_t port_event_enable_mask = ((uint32_t)1U << event_channel);
-    PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_EVCTRL |= port_event_enable_mask; 
-}
-
-void PORT_DisableInputEvent(PORT_EVENT_INPUT_CHANNEL event_channel, PORT_PIN pin)
-{
-    uint32_t port_event_enable_mask = ((uint32_t)1U << event_channel);
-    PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_EVCTRL &= ~port_event_enable_mask;
-}
-
-void PORT_SetPeripheralMuxing(PORT_PIN pin, PORT_PERIPHERAL_FUNCTION peripheral_function)
-{
+    ((port_group_registers_t*)group)->PORT_DIRCLR = mask;
     
-    if(PIN_IS_AVAILABLE(pin))
+    for(uint32_t i = 0U; i < 32U; i++)
     {
-        uint32_t mux_reg_n = PIN_INDEX(pin) >> 1;
-
-        PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PINCFG[PIN_INDEX(pin)] |= PORT_PINCFG_PMUXEN_Msk;
-
-        if(((PIN_INDEX(pin)) & 0x1) == 0U)
+        if((mask & ((uint32_t)1U << i)) != 0U)
         {
-            PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PMUX[mux_reg_n] = (PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PMUX[mux_reg_n] & ~PORT_PMUX_PMUXE_Msk) 
-                                                                    | PORT_PMUX_PMUXE(peripheral_function);
-        }
-        else
-        {
-            PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PMUX[mux_reg_n] = (PORT_REGS->GROUP[PIN_GROUP(pin)].PORT_PMUX[mux_reg_n] & ~PORT_PMUX_PMUXO_Msk) 
-                                                                    | PORT_PMUX_PMUXO(peripheral_function);
+            ((port_group_registers_t*)group)->PORT_PINCFG[i] |= PORT_PINCFG_INEN_Msk;
         }
     }
+}
+
+// *****************************************************************************
+/* Function:
+    void PORT_GroupOutputEnable(PORT_GROUP group, uint32_t mask)
+
+  Summary:
+    Configures the selected IO pins of a group as output.
+
+  Description:
+    This function configures the selected IO pins of a group as output. The pins
+    to be configured as output are selected by setting the corresponding bits in
+    the mask parameter to 1.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+
+void PORT_GroupOutputEnable(PORT_GROUP group, uint32_t mask)
+{
+   ((port_group_registers_t*)group)->PORT_DIRSET = mask;
+}
+
+// *****************************************************************************
+/* Function:
+    void PORT_PinPeripheralFunctionConfig(PORT_PIN pin, PERIPHERAL_FUNCTION function)
+
+  Summary:
+    Configures the peripheral function on the selected port pin
+
+  Description:
+    This function configures the selected peripheral function on the given port pin.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+void PORT_PinPeripheralFunctionConfig(PORT_PIN pin, PERIPHERAL_FUNCTION function)
+{
+    uint32_t periph_func = (uint32_t) function;
+    PORT_GROUP group = GET_PORT_GROUP(pin);
+    uint32_t pin_num = ((uint32_t)pin) & 0x1FU;
+    uint32_t pinmux_val = (uint32_t)((port_group_registers_t*)group)->PORT_PMUX[(pin_num >> 1)];
+
+    /* For odd pins */
+    if (0U != (pin_num & 0x01U))
+    {
+        pinmux_val = (pinmux_val & ~0xF0U) | (periph_func << 4);
+    }
+    else
+    {
+        pinmux_val = (pinmux_val & ~0x0FU) | periph_func;
+    }
+    ((port_group_registers_t*)group)->PORT_PMUX[(pin_num >> 1)] = (uint8_t)pinmux_val;
+
+    /* Enable peripheral control of the pin */
+    ((port_group_registers_t*)group)->PORT_PINCFG[pin_num] |= (uint8_t)PORT_PINCFG_PMUXEN_Msk;
+}
+
+// *****************************************************************************
+/* Function:
+    void PORT_PinGPIOConfig(PORT_PIN pin)
+
+  Summary:
+    Configures the selected pin as GPIO
+
+  Description:
+    This function configures the given pin as GPIO.
+
+  Remarks:
+    Refer plib_port.h file for more information.
+*/
+void PORT_PinGPIOConfig(PORT_PIN pin)
+{
+    PORT_GROUP group = GET_PORT_GROUP(pin);
+    uint32_t pin_num = ((uint32_t)pin) & 0x1FU;
+
+    /* Disable peripheral control of the pin */
+    ((port_group_registers_t*)group)->PORT_PINCFG[pin_num] &= ((uint8_t)(~PORT_PINCFG_PMUXEN_Msk));
 }

@@ -1,5 +1,5 @@
 /**
- * © 2025 Microchip Technology Inc. and its subsidiaries.
+ * © 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip
  * software and any derivatives exclusively with Microchip products.
@@ -25,7 +25,7 @@
  * @brief       Contains API prototypes to perform bootloader operations.
  *
  * @defgroup    mdfu_client_32bit 32-bit Microchip Device Firmware Update (MDFU) Client Library
- * @brief       Core firmware updated APIs for supporting device firmware updates
+ * @brief       Core firmware update APIs for supporting device firmware updates
  *              using an MDFU ecosystem and MDFU protocol.
  */
 
@@ -120,7 +120,7 @@ typedef struct
  * 
  * @param None.
  * @return @ref BL_PASS - Bootloader initialization was successful
- * @return @ref BL_ERROR_COMMAND_PROCESSING - Bootloader initialization failed
+ * @return @ref BL_ERROR_COMMAND_PROCESSING - Bootloader initialization has failed
  */
 bl_result_t BL_Initialize(void);
 

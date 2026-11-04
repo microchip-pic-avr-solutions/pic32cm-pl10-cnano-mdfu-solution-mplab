@@ -1,7 +1,7 @@
 /*
  * Component description for FUSES
  *
- * Copyright (c) 2025 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -23,7 +23,9 @@
 #ifndef _PIC32CMPL10_FUSES_COMPONENT_H_
 #define _PIC32CMPL10_FUSES_COMPONENT_H_
 
+#if !defined(DISABLE_CMSIS)
 #include "core_cm0plus.h"
+#endif /* !defined(DISABLE_CMSIS) */
 
 /* ************************************************************************** */
 /*                     SOFTWARE API DEFINITION FOR FUSES                      */
@@ -312,6 +314,60 @@
 #define FUSES_BOOT_GPIOSEL_Msk                _UINT32_(0x001A0F9F)                                 /* (FUSES_BOOT_GPIOSEL) Register Mask  */
 
 
+/* -------- FUSES_DAL2 : (FUSES Offset: 0x00) ( R/ 32) Debug Access Level 2 -------- */
+#define FUSES_DAL2_RESETVALUE                 _UINT32_(0xFFFFFF55)                                 /*  (FUSES_DAL2) Debug Access Level 2  Reset Value */
+
+#define FUSES_DAL2_DAL2_Pos                   _UINT32_(0)                                          /* (FUSES_DAL2) Debug Access Level 2 Position */
+#define FUSES_DAL2_DAL2_Msk                   (_UINT32_(0xFFFFFFFF) << FUSES_DAL2_DAL2_Pos)        /* (FUSES_DAL2) Debug Access Level 2 Mask */
+#define FUSES_DAL2_DAL2(value)                (FUSES_DAL2_DAL2_Msk & (_UINT32_(value) << FUSES_DAL2_DAL2_Pos)) /* Assignment of value for DAL2 in the FUSES_DAL2 register */
+#define FUSES_DAL2_Msk                        _UINT32_(0xFFFFFFFF)                                 /* (FUSES_DAL2) Register Mask  */
+
+
+/* -------- FUSES_DAL0 : (FUSES Offset: 0x10) ( R/ 32) Debug Access Level 0 -------- */
+#define FUSES_DAL0_RESETVALUE                 _UINT32_(0xFFFFFFFF)                                 /*  (FUSES_DAL0) Debug Access Level 0  Reset Value */
+
+#define FUSES_DAL0_DAL0_Pos                   _UINT32_(0)                                          /* (FUSES_DAL0) Debug Access Level 0 Position */
+#define FUSES_DAL0_DAL0_Msk                   (_UINT32_(0xFFFFFFFF) << FUSES_DAL0_DAL0_Pos)        /* (FUSES_DAL0) Debug Access Level 0 Mask */
+#define FUSES_DAL0_DAL0(value)                (FUSES_DAL0_DAL0_Msk & (_UINT32_(value) << FUSES_DAL0_DAL0_Pos)) /* Assignment of value for DAL0 in the FUSES_DAL0 register */
+#define FUSES_DAL0_Msk                        _UINT32_(0xFFFFFFFF)                                 /* (FUSES_DAL0) Register Mask  */
+
+
+/* -------- FUSES_KEYVAL_CRC : (FUSES Offset: 0x18) ( R/ 32) Key Value for CMD_CRC -------- */
+#define FUSES_KEYVAL_CRC_RESETVALUE           _UINT32_(0xFFFFFFFF)                                 /*  (FUSES_KEYVAL_CRC) Key Value for CMD_CRC  Reset Value */
+
+#define FUSES_KEYVAL_CRC_KEYVAL_Pos           _UINT32_(0)                                          /* (FUSES_KEYVAL_CRC) Key Value for CMD_CRC Position */
+#define FUSES_KEYVAL_CRC_KEYVAL_Msk           (_UINT32_(0xFFFFFFFF) << FUSES_KEYVAL_CRC_KEYVAL_Pos) /* (FUSES_KEYVAL_CRC) Key Value for CMD_CRC Mask */
+#define FUSES_KEYVAL_CRC_KEYVAL(value)        (FUSES_KEYVAL_CRC_KEYVAL_Msk & (_UINT32_(value) << FUSES_KEYVAL_CRC_KEYVAL_Pos)) /* Assignment of value for KEYVAL in the FUSES_KEYVAL_CRC register */
+#define FUSES_KEYVAL_CRC_Msk                  _UINT32_(0xFFFFFFFF)                                 /* (FUSES_KEYVAL_CRC) Register Mask  */
+
+
+/* -------- FUSES_KEYVAL_CE_ALL : (FUSES Offset: 0x20) ( R/ 32) Key Value for CMD_CE_ALL -------- */
+#define FUSES_KEYVAL_CE_ALL_RESETVALUE        _UINT32_(0xFFFFFFFF)                                 /*  (FUSES_KEYVAL_CE_ALL) Key Value for CMD_CE_ALL  Reset Value */
+
+#define FUSES_KEYVAL_CE_ALL_KEYVAL_Pos        _UINT32_(0)                                          /* (FUSES_KEYVAL_CE_ALL) Key Value for CMD_CE_ALL Position */
+#define FUSES_KEYVAL_CE_ALL_KEYVAL_Msk        (_UINT32_(0xFFFFFFFF) << FUSES_KEYVAL_CE_ALL_KEYVAL_Pos) /* (FUSES_KEYVAL_CE_ALL) Key Value for CMD_CE_ALL Mask */
+#define FUSES_KEYVAL_CE_ALL_KEYVAL(value)     (FUSES_KEYVAL_CE_ALL_KEYVAL_Msk & (_UINT32_(value) << FUSES_KEYVAL_CE_ALL_KEYVAL_Pos)) /* Assignment of value for KEYVAL in the FUSES_KEYVAL_CE_ALL register */
+#define FUSES_KEYVAL_CE_ALL_Msk               _UINT32_(0xFFFFFFFF)                                 /* (FUSES_KEYVAL_CE_ALL) Register Mask  */
+
+
+/* -------- FUSES_KEYVAL_SDAL0 : (FUSES Offset: 0x28) ( R/ 32) Key Value for CMD_SDAL0 -------- */
+#define FUSES_KEYVAL_SDAL0_RESETVALUE         _UINT32_(0xFFFFFFFF)                                 /*  (FUSES_KEYVAL_SDAL0) Key Value for CMD_SDAL0  Reset Value */
+
+#define FUSES_KEYVAL_SDAL0_KEYVAL_Pos         _UINT32_(0)                                          /* (FUSES_KEYVAL_SDAL0) Key Value for CMD_SDAL0 Position */
+#define FUSES_KEYVAL_SDAL0_KEYVAL_Msk         (_UINT32_(0xFFFFFFFF) << FUSES_KEYVAL_SDAL0_KEYVAL_Pos) /* (FUSES_KEYVAL_SDAL0) Key Value for CMD_SDAL0 Mask */
+#define FUSES_KEYVAL_SDAL0_KEYVAL(value)      (FUSES_KEYVAL_SDAL0_KEYVAL_Msk & (_UINT32_(value) << FUSES_KEYVAL_SDAL0_KEYVAL_Pos)) /* Assignment of value for KEYVAL in the FUSES_KEYVAL_SDAL0 register */
+#define FUSES_KEYVAL_SDAL0_Msk                _UINT32_(0xFFFFFFFF)                                 /* (FUSES_KEYVAL_SDAL0) Register Mask  */
+
+
+/* -------- FUSES_NVMLOCKREGION : (FUSES Offset: 0x80) ( R/ 32) NVM Region Lock -------- */
+#define FUSES_NVMLOCKREGION_RESETVALUE        _UINT32_(0xFFFFFFFF)                                 /*  (FUSES_NVMLOCKREGION) NVM Region Lock  Reset Value */
+
+#define FUSES_NVMLOCKREGION_LOCK_Pos          _UINT32_(0)                                          /* (FUSES_NVMLOCKREGION) NVM Region Lock Bits Position */
+#define FUSES_NVMLOCKREGION_LOCK_Msk          (_UINT32_(0xFFFF) << FUSES_NVMLOCKREGION_LOCK_Pos)   /* (FUSES_NVMLOCKREGION) NVM Region Lock Bits Mask */
+#define FUSES_NVMLOCKREGION_LOCK(value)       (FUSES_NVMLOCKREGION_LOCK_Msk & (_UINT32_(value) << FUSES_NVMLOCKREGION_LOCK_Pos)) /* Assignment of value for LOCK in the FUSES_NVMLOCKREGION register */
+#define FUSES_NVMLOCKREGION_Msk               _UINT32_(0x0000FFFF)                                 /* (FUSES_NVMLOCKREGION) Register Mask  */
+
+
 /* -------- FUSES_SERNUM0 : (FUSES Offset: 0x20) ( R/ 32) Serial Number 0 -------- */
 #define FUSES_SERNUM0_RESETVALUE              _UINT32_(0xFFFFFFFF)                                 /*  (FUSES_SERNUM0) Serial Number 0  Reset Value */
 
@@ -355,6 +411,12 @@
 #define FUSES_BODCFG_REG_OFST          _UINT32_(0x18)      /* (FUSES_BODCFG) BOD Configuration Fuse Offset */
 #define FUSES_USERCFG_REG_OFST         _UINT32_(0x20)      /* (FUSES_USERCFG) User Configuration Fuse Offset */
 #define FUSES_BOOT_GPIOSEL_REG_OFST    _UINT32_(0x28)      /* (FUSES_BOOT_GPIOSEL) Boot External Notification I/O Pin Fuse Offset */
+#define FUSES_DAL2_REG_OFST            _UINT32_(0x00)      /* (FUSES_DAL2) Debug Access Level 2 Offset */
+#define FUSES_DAL0_REG_OFST            _UINT32_(0x10)      /* (FUSES_DAL0) Debug Access Level 0 Offset */
+#define FUSES_KEYVAL_CRC_REG_OFST      _UINT32_(0x18)      /* (FUSES_KEYVAL_CRC) Key Value for CMD_CRC Offset */
+#define FUSES_KEYVAL_CE_ALL_REG_OFST   _UINT32_(0x20)      /* (FUSES_KEYVAL_CE_ALL) Key Value for CMD_CE_ALL Offset */
+#define FUSES_KEYVAL_SDAL0_REG_OFST    _UINT32_(0x28)      /* (FUSES_KEYVAL_SDAL0) Key Value for CMD_SDAL0 Offset */
+#define FUSES_NVMLOCKREGION_REG_OFST   _UINT32_(0x80)      /* (FUSES_NVMLOCKREGION) NVM Region Lock Offset */
 #define FUSES_SERNUM0_REG_OFST         _UINT32_(0x20)      /* (FUSES_SERNUM0) Serial Number 0 Offset */
 #define FUSES_SERNUM1_REG_OFST         _UINT32_(0x28)      /* (FUSES_SERNUM1) Serial Number 1 Offset */
 #define FUSES_SERNUM2_REG_OFST         _UINT32_(0x30)      /* (FUSES_SERNUM2) Serial Number 2 Offset */
@@ -363,7 +425,7 @@
 #if !(defined(__ASSEMBLER__) || defined(__IAR_SYSTEMS_ASM__))
 /* FUSES_BOOTCFG register API structure */
 typedef struct
-{  /* Non-Volatile Fuses */
+{  /* Nonvolatile Fuses */
   __IO  uint32_t                       FUSES_SEQNUM;       /* Offset: 0x00 (R/W  32) Sequence Number Fuse */
   __I   uint8_t                        Reserved1[0x04];
   __IO  uint32_t                       FUSES_BOOTPROT;     /* Offset: 0x08 (R/W  32) Boot Protection Fuse */
@@ -377,9 +439,25 @@ typedef struct
   __IO  uint32_t                       FUSES_BOOT_GPIOSEL; /* Offset: 0x28 (R/W  32) Boot External Notification I/O Pin Fuse */
 } fuses_bootcfg_registers_t;
 
+/* FUSES_ROMCFG register API structure */
+typedef struct
+{  /* Nonvolatile Fuses */
+  __I   uint32_t                       FUSES_DAL2;         /* Offset: 0x00 (R/   32) Debug Access Level 2 */
+  __I   uint8_t                        Reserved1[0x0C];
+  __I   uint32_t                       FUSES_DAL0;         /* Offset: 0x10 (R/   32) Debug Access Level 0 */
+  __I   uint8_t                        Reserved2[0x04];
+  __I   uint32_t                       FUSES_KEYVAL_CRC;   /* Offset: 0x18 (R/   32) Key Value for CMD_CRC */
+  __I   uint8_t                        Reserved3[0x04];
+  __I   uint32_t                       FUSES_KEYVAL_CE_ALL; /* Offset: 0x20 (R/   32) Key Value for CMD_CE_ALL */
+  __I   uint8_t                        Reserved4[0x04];
+  __I   uint32_t                       FUSES_KEYVAL_SDAL0; /* Offset: 0x28 (R/   32) Key Value for CMD_SDAL0 */
+  __I   uint8_t                        Reserved5[0x54];
+  __I   uint32_t                       FUSES_NVMLOCKREGION; /* Offset: 0x80 (R/   32) NVM Region Lock */
+} fuses_romcfg_registers_t;
+
 /* FUSES_SIGNATURE register API structure */
 typedef struct
-{  /* Non-Volatile Fuses */
+{  /* Nonvolatile Fuses */
   __I   uint8_t                        Reserved1[0x20];
   __I   uint32_t                       FUSES_SERNUM0;      /* Offset: 0x20 (R/   32) Serial Number 0 */
   __I   uint8_t                        Reserved2[0x04];

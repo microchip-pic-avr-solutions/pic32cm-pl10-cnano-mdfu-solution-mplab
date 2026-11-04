@@ -59,8 +59,6 @@
 void Reset_Handler (void);
 void NonMaskableInt_Handler (void);
 void HardFault_Handler (void);
-void OSCCTRL_Handler (void);
-void OSC32KCTRL_Handler (void);
 void DMAC_InterruptHandler (void);
 
 

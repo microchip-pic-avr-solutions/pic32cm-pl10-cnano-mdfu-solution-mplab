@@ -61,7 +61,7 @@
  * @def BL_APPLICATION_START_ADDRESS
  * @brief Start of the application memory space.
  */
-#define BL_APPLICATION_START_ADDRESS (0xC002000U)
+#define BL_APPLICATION_START_ADDRESS (0xC004000U)
 /**
  * @ingroup mdfu_client_32bit
  * @def BL_DEVICE_ID_START_ADDRESS_U
@@ -79,7 +79,7 @@
  * @def BL_IMAGE_PARTITION_SIZE
  * @brief Defined size of the application memory space.
  */
-#define BL_IMAGE_PARTITION_SIZE (0xE000U)
+#define BL_IMAGE_PARTITION_SIZE (0xC000U)
 /**
  * @ingroup mdfu_client_32bit
  * @def BL_STAGING_IMAGE_START

@@ -36,6 +36,7 @@
 #define COM_ADAPTER_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 /* cppcheck-suppress misra-c2012-2.5 */
 /**
@@ -135,5 +136,47 @@ com_adapter_result_t COM_FrameSet(const uint8_t *responseBufferPtr, uint16_t res
  @return @ref COM_FAIL - Error occurred in the SERCOM initialization \n
  */
 com_adapter_result_t COM_Initialize(uint16_t maximumBufferLength);
+
+/**
+ @ingroup com_adapter_spi
+ @brief Enables the SERCOM0 SPI peripheral and waits for register synchronization to complete.
+ @param None.
+ @return true - SERCOM0 SPI peripheral is enabled \n
+ */
+bool SERCOM0_Open(void);
+
+/**
+ @ingroup com_adapter_spi
+ @brief Reads one byte from the SERCOM0 SPI data register. Blocks until a byte has been received.
+ @param None.
+ @return Byte read from the SERCOM0 SPI data register \n
+ */
+uint8_t SERCOM0_ByteRead(void);
+
+/**
+ @ingroup com_adapter_spi
+ @brief Writes one byte to the SERCOM0 SPI data register. Blocks until the data register is empty.
+ @param [in] data - Byte to be loaded into the SERCOM0 SPI data register
+ @return None.
+ */
+void SERCOM0_ByteWrite(uint8_t data);
+
+/**
+ @ingroup com_adapter_spi
+ @brief Checks the SERCOM0 SPI Data Register Empty (DRE) flag.
+ @param None.
+ @return 1 - Data register is not empty (DRE flag clear) \n
+ @return 0 - Data register is empty (DRE flag set) \n
+ */
+uint8_t SERCOM0_IsTxReady(void);
+
+/**
+ @ingroup com_adapter_spi
+ @brief Checks the SERCOM0 SPI Receive Complete (RXC) flag.
+ @param None.
+ @return 1 - Received data is available to be read \n
+ @return 0 - No received data is available \n
+ */
+uint8_t SERCOM0_IsRxReady(void);
 
 #endif //COM_ADAPTER_H

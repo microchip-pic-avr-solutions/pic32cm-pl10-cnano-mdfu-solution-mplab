@@ -48,18 +48,16 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-#include "peripheral/nvmctrl/plib_nvmctrl.h"
+#include <stdio.h>
 #include "peripheral/sercom/usart/plib_sercom1_usart.h"
 #include "peripheral/evsys/plib_evsys.h"
 #include "peripheral/port/plib_port.h"
-#include "peripheral/clock/plib_gclk.h"
-#include "peripheral/clock/plib_mclk.h"
-#include "peripheral/clock/plib_osc32kctrl.h"
-#include "peripheral/clock/plib_oscctrl.h"
+#include "peripheral/clock/plib_clock.h"
 #include "peripheral/nvic/plib_nvic.h"
 #include "peripheral/systick/plib_systick.h"
-#include "peripheral/tc/plib_tc0_capture16bit.h"
-#include "peripheral/tc/plib_tc0_interrupt.h"
+#include "app.h"
+
+
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -78,11 +76,6 @@ extern "C" {
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 24000000U
 
-// LED and Switch pins
-#define SW0_PIN    (PORT_PIN)(32U + 3U)   /* Group 1 offset = 32, pin 3 */
-#define LED0_PIN    (PORT_PIN)(32U + 2U)   /* PB02 */
-#define LED0_Toggle() PORT_Toggle(LED0_PIN)
-#define SW0_Get() PORT_GetInput(SW0_PIN)    
 // *****************************************************************************
 // *****************************************************************************
 // Section: System Functions
@@ -130,8 +123,46 @@ extern "C" {
 
 void SYS_Initialize( void *data );
 
-/* Nullify SYS_Tasks() if only PLIBs are used. */
-#define     SYS_Tasks()
+// *****************************************************************************
+/* System Tasks Function
+
+Function:
+    void SYS_Tasks ( void );
+
+Summary:
+    Function that performs all polled system tasks.
+
+Description:
+    This function performs all polled system tasks by calling the state machine
+    "tasks" functions for all polled modules in the system, including drivers,
+    services, middleware and applications.
+
+Precondition:
+    The SYS_Initialize function must have been called and completed.
+
+Parameters:
+    None.
+
+Returns:
+    None.
+
+Example:
+    <code>
+    SYS_Initialize ( NULL );
+
+    while ( true )
+    {
+        SYS_Tasks ( );
+    }
+    </code>
+
+Remarks:
+    If the module is interrupt driven, the system will call this routine from
+    an interrupt context.
+*/
+
+void SYS_Tasks ( void );
+
 
 // *****************************************************************************
 // *****************************************************************************

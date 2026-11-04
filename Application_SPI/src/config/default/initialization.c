@@ -43,6 +43,7 @@
 // Section: Included Files
 // *****************************************************************************
 // *****************************************************************************
+#include "configuration.h"
 #include "definitions.h"
 #include "device.h"
 
@@ -52,33 +53,6 @@
 // Section: Configuration Bits
 // ****************************************************************************
 // ****************************************************************************
-#pragma config SEQNUM_SEQNUM = 0x0U
-#pragma config BOOTPROT_BOOTPROT = 0x7
-#pragma config WDTCFG_ENABLE = CLEAR
-#pragma config WDTCFG_WEN = CLEAR
-#pragma config WDTCFG_ALWAYSON = CLEAR
-#pragma config WDTCFG_PER = 0x0
-#pragma config WDTCFG_WINDOW = 0x0
-#pragma config WDTCFG_EWOFFSET = 0x0
-#pragma config BODCFG_ENABLE = CLEAR
-#pragma config BODCFG_STDBYCFG = CLEAR
-#pragma config BODCFG_RUNSTDBY = CLEAR
-#pragma config BODCFG_ACTCFG = 0x0
-#pragma config BODCFG_SAMPFREQ = 0x0
-#pragma config BODCFG_LEVEL = 0x0
-#pragma config BODCFG_VLMLVL = 0x0
-#pragma config BODCFG_VLMCFG = 0x0
-#pragma config BODCFG_WRTLOCK = CLEAR
-#pragma config USERCFG_MVIOMODE = 0x0
-#pragma config USERCFG_CRCSEL = 0x1
-#pragma config USERCFG_CRCBOOT = CLEAR
-#pragma config USERCFG_SUT = 0x0
-#pragma config BOOT_GPIOSEL_GPIOPINSEL = 0x00
-#pragma config BOOT_GPIOSEL_ENABLE = CLEAR
-#pragma config BOOT_GPIOSEL_GPIOPORTSEL = 0x0
-#pragma config BOOT_GPIOSEL_POL = 0x0
-#pragma config BOOT_GPIOSEL_ODRAIN = 0x0
-#pragma config BOOT_GPIOSEL_SLEWLIM = 0x0
 
 
 
@@ -123,6 +97,29 @@
 // *****************************************************************************
 // *****************************************************************************
 
+/*******************************************************************************
+  Function:
+    void STDIO_BufferModeSet ( void )
+
+  Summary:
+    Sets the buffering mode for stdin and stdout
+
+  Remarks:
+ ********************************************************************************/
+static void STDIO_BufferModeSet(void)
+{
+    /* MISRAC 2023 deviation block start */
+    /* MISRA C-2023 Rule 21.6 deviated 2 times in this file.  Deviation record ID -  H3_MISRAC_2023_R_21_6_DR_3 */
+
+    /* Make stdin unbuffered */
+    setbuf(stdin, NULL);
+
+    /* Make stdout unbuffered */
+    setbuf(stdout, NULL);
+    /* MISRAC 2023 deviation block end */
+}
+
+
 /* MISRAC 2023 deviation block end */
 
 /*******************************************************************************
@@ -137,94 +134,34 @@
 
 void SYS_Initialize ( void* data )
 {
-    //PORT Initialize
-    PORT_SetPeripheralMuxing(PORT_PIN_PB00, PORT_PERIPHERAL_FUNC_D);
-    PORT_SetPeripheralMuxing(PORT_PIN_PB01, PORT_PERIPHERAL_FUNC_D);
-    PORT_Setup(PORT_PIN_PB02);
-    PORT_SetDirection(PORT_PIN_PB02, GPIO_OUTPUT);
 
-    // Configure SW0 button (PB03) as input with pull-up
-    PORT_Setup(PORT_PIN_PB03);
-    PORT_SetDirection(PORT_PIN_PB03, GPIO_INPUT);
-    PORT_SetPullResistor(PORT_PIN_PB03, GPIO_PULL_UP);
+    /* MISRAC 2023 deviation block start */
+    /* MISRA C-2023 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2023_R_2_2_DR_1 */
 
-    PORT_SetDirection(LED0_PIN, GPIO_OUTPUT);
-    PORT_SetOutputMode(LED0_PIN, GPIO_PUSH_PULL);
+    STDIO_BufferModeSet();
 
-    //CLOCK Initialize
-    //OSC32KCTRL Initialize
-    OSC32KCTRL_OSC32K_EnableOnDemand();
-    OSC32KCTRL_RTC_SelectClockSource(OSC32KCTRL_RTCSEL_OSC1K);
-    
-    //OSCCTRL Initialize
-    OSCCTRL_OSCHF_SetFrequency(OSCCTRL_OSCHF_FREQ_24M);
-    while (!OSCCTRL_OSCHF_IsReady());
-    
-    //GCLK Initialize
-    GCLK_SetGeneratorSource(GCLK_GENERATOR_0, GCLK_SRC_OSCHF);
-    GCLK_SetDivisionParameters(GCLK_GENERATOR_0, 1U, GCLK_DIVISION_INTEGER, false);
-    GCLK_GeneratorEnable(GCLK_GENERATOR_0);
-    GCLK_SetPeripheralChannelGenSrc(GCLK_PCHCCTRL_8, GCLK_GENERATOR_0);
-    GCLK_EnablePeripheralChannel(GCLK_PCHCCTRL_8);
-    GCLK_SetPeripheralChannelGenSrc(GCLK_PCHCCTRL_9, GCLK_GENERATOR_0);
-    GCLK_EnablePeripheralChannel(GCLK_PCHCCTRL_9);
 
-    //MCLK Initialize
-    MCLK_REGS->MCLK_APBCMASK = 0x80cU;
+  
+    PORT_Initialize();
 
-    // SERCOM1 USART Initialize
-    //Reset the peripheral to a clean state
-    SERCOM1_USART_ResetSoftware();
+    CLOCK_Initialize();
 
-    //Configure CTRLA: Operating Mode, Pinouts, Data Order, and Frame Format
-    SERCOM1_USART_SetOperatingMode(USART_INT);
-    SERCOM1_USART_SetCommunicationMode(USART_ASYNC_MODE);
-    SERCOM1_USART_SetRxDataPinout(USART_RX_PAD1); // Matches RXPO(0x1UL)
-    SERCOM1_USART_SetTxDataPinout(USART_TX_PAD0); // Matches TXPO(0x0UL)
-    SERCOM1_USART_SetDataOrder(USART_LSB_FIRST); // Matches DORD_Msk
-    SERCOM1_USART_SetFrameFormat(USART_FRAME);   // Matches FORM(0x0UL)
 
-    // Configure Baud Rate and Sampling Rate
-    SERCOM1_USART_SetBaudrate(115200, CPU_CLOCK_FREQUENCY);
 
-    // Configure CTRLB: Character Size, Stop Bits, and Enable TX/RX
-    SERCOM1_USART_SetDataSize(USART_DATA_8_BIT);
-    SERCOM1_USART_SetStopBits(USART_STOP_1_BIT);
-    SERCOM1_USART_EnableReceiver();
-    SERCOM1_USART_EnableTransmitter();
 
-    //Enable the USART Peripheral
-    SERCOM1_USART_Enable();
-    
-    //SYSTICK Timer Initialize
+    SERCOM1_USART_Initialize();
+
+    EVSYS_Initialize();
+
 	SYSTICK_TimerInitialize();
-    
-    //TC0 Initialize
-    TC0_CAPTURE_16BIT_ResetSoftware();
-    TC0_REGS->COUNT16.TC_CTRLA = TC_CTRLA_MODE_COUNT16;
-    TC0_CAPTURE_16BIT_SetClockPrescaler(TC_GCLK_PRESCALER_DIV_1, TC_PRESCSYNC_PRESC);
-    TC0_REGS->COUNT16.TC_WAVE = (uint8_t)TC_WAVE_GEN_MPWM;
-    TC0_REGS->COUNT16.TC_CC[0U] = 23999U;
 
-    //Clear all interrupt flags
-    TC0_CAPTURE_16BIT_ClearInterruptFlag(
-        TC_INTERRUPT_OVERFLOW        |
-        TC_INTERRUPT_ERROR           |
-        TC_INTERRUPT_MATCH_CAPTURE_0 |
-        TC_INTERRUPT_MATCH_CAPTURE_1
-    );
-
-    //Enable overflow interrupt
-    TC0_CAPTURE_16BIT_EnableInterrupt(TC_INTERRUPT_OVERFLOW);
-
-    //Register interrupt dispatcher and clear callback
-    TC0_CAPTURE_16BIT_Initialize();
-    
-    //Application Initialize
     APP_Initialize();
 
-    //NVIC Initialize
+
     NVIC_Initialize();
+
+
+    /* MISRAC 2023 deviation block end */
 }
 
 /*******************************************************************************

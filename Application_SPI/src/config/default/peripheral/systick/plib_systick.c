@@ -42,13 +42,17 @@
 #include "interrupts.h"
 #include "plib_systick.h"
 
+static volatile SYSTICK_OBJECT systick;
 
 void SYSTICK_TimerInitialize ( void )
 {
     SysTick->CTRL = 0U;
     SysTick->VAL = 0U;
     SysTick->LOAD = 0x5dc0U - 1U;
-    SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk;
+    SysTick->CTRL = SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_CLKSOURCE_Msk;
+
+    systick.tickCounter = 0U;
+    systick.callback = NULL;
 }
 
 void SYSTICK_TimerRestart ( void )
@@ -150,8 +154,51 @@ void SYSTICK_DelayUs ( uint32_t delay_us)
 }
 
 
-bool SYSTICK_TimerPeriodHasExpired(void)
+
+uint32_t SYSTICK_GetTickCounter(void)
 {
-   return ((SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) > 0U);
+    return systick.tickCounter;
 }
 
+void SYSTICK_StartTimeOut (SYSTICK_TIMEOUT* timeout, uint32_t delay_ms)
+{
+    timeout->start = SYSTICK_GetTickCounter();
+    timeout->count = (delay_ms*1000U)/SYSTICK_INTERRUPT_PERIOD_IN_US;
+}
+
+void SYSTICK_ResetTimeOut (SYSTICK_TIMEOUT* timeout)
+{
+    timeout->start = SYSTICK_GetTickCounter();
+}
+
+bool SYSTICK_IsTimeoutReached (SYSTICK_TIMEOUT* timeout)
+{
+    bool valTimeout  = true;
+    if ((SYSTICK_GetTickCounter() - timeout->start) < timeout->count)
+    {
+        valTimeout = false;
+    }
+
+    return valTimeout;
+
+}
+void SYSTICK_TimerCallbackSet ( SYSTICK_CALLBACK callback, uintptr_t context )
+{
+   systick.callback = callback;
+   systick.context = context;
+}
+
+void __attribute__((used)) SysTick_Handler(void)
+{
+   /* Additional temporary variable used to prevent MISRA violations (Rule 13.x) */
+   uintptr_t context = systick.context;
+
+   /* Reading control register clears the count flag */
+   (void)SysTick->CTRL;
+
+   systick.tickCounter++;
+   if(systick.callback != NULL)
+   {
+       systick.callback(context);
+   }
+}

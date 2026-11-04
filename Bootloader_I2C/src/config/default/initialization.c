@@ -70,7 +70,7 @@
 #pragma config BODCFG_VLMCFG = 0x0
 #pragma config BODCFG_WRTLOCK = CLEAR
 #pragma config USERCFG_MVIOMODE = 0x0
-#pragma config USERCFG_CRCSEL = 0x1
+#pragma config USERCFG_CRCSEL = 0x0
 #pragma config USERCFG_CRCBOOT = CLEAR
 #pragma config USERCFG_SUT = 0x0
 #pragma config BOOT_GPIOSEL_GPIOPINSEL = 0x00
@@ -123,6 +123,29 @@
 // *****************************************************************************
 // *****************************************************************************
 
+/*******************************************************************************
+  Function:
+    void STDIO_BufferModeSet ( void )
+
+  Summary:
+    Sets the buffering mode for stdin and stdout
+
+  Remarks:
+ ********************************************************************************/
+static void STDIO_BufferModeSet(void)
+{
+    /* MISRAC 2023 deviation block start */
+    /* MISRA C-2023 Rule 21.6 deviated 2 times in this file.  Deviation record ID -  H3_MISRAC_2023_R_21_6_DR_3 */
+
+    /* Make stdin unbuffered */
+    setbuf(stdin, NULL);
+
+    /* Make stdout unbuffered */
+    setbuf(stdout, NULL);
+    /* MISRAC 2023 deviation block end */
+}
+
+
 /* MISRAC 2023 deviation block end */
 
 /*******************************************************************************
@@ -137,65 +160,36 @@
 
 void SYS_Initialize ( void* data )
 {
-    //PORT Initialize
-    PORT_SetPeripheralMuxing(PORT_PIN_PA00, PORT_PERIPHERAL_FUNC_C);
-    PORT_SetPullResistor(PORT_PIN_PA00, GPIO_PULL_UP);
-    PORT_SetPeripheralMuxing(PORT_PIN_PA01, PORT_PERIPHERAL_FUNC_C);
-    PORT_SetPullResistor(PORT_PIN_PA01, GPIO_PULL_UP);
-    PORT_Setup(PORT_PIN_PB02);
-    PORT_SetDirection(PORT_PIN_PB02, GPIO_OUTPUT);
 
-    // Configure SW0 button (PB03) as input with pull-up
-    PORT_Setup(PORT_PIN_PB03);
-    PORT_SetDirection(PORT_PIN_PB03, GPIO_INPUT);
-    PORT_SetPullResistor(PORT_PIN_PB03, GPIO_PULL_UP);
+    /* MISRAC 2023 deviation block start */
+    /* MISRA C-2023 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2023_R_2_2_DR_1 */
 
-    //CLOCK Initialize
-    //OSC32KCTRL Initialize
-    OSC32KCTRL_Initialize();
-    OSC32KCTRL_OSC32K_EnableOnDemand();
-    OSC32KCTRL_RTC_SelectClockSource(OSC32KCTRL_RTCSEL_OSC1K);
+    STDIO_BufferModeSet();
 
-    //OSCCTRL Initialize
-    OSCCTRL_OSCHF_Initialize();
-    OSCCTRL_OSCHF_SetFrequency(OSCCTRL_OSCHF_FREQ_24M);
-    while (!OSCCTRL_OSCHF_IsReady());
 
-    //GCLK Initialize
-    GCLK_SetGeneratorSource(GCLK_GENERATOR_0, GCLK_SRC_OSCHF);
-    GCLK_SetDivisionParameters(GCLK_GENERATOR_0, 1U, GCLK_DIVISION_INTEGER, false);
-    GCLK_GeneratorEnable(GCLK_GENERATOR_0);
-    GCLK_SetPeripheralChannelGenSrc(GCLK_PCHCCTRL_6, GCLK_GENERATOR_0);
-    GCLK_EnablePeripheralChannel(GCLK_PCHCCTRL_6);
+  
+    PORT_Initialize();
 
-    //MCLK Initialize
-    MCLK_Initialize();
-    MCLK_EnableAPBBClock(0x2FU);
-    MCLK_EnableAPBCClock(0x802U);
+    CLOCK_Initialize();
 
-//    SERCOM0_I2C_Initialize();
-     /* Reset the module */
-    SERCOM0_I2CS_ResetSoftware();
 
-    /* Configure CTRLA with clock stretching and no timeouts */
-    SERCOM0_REGS->I2CS.SERCOM_CTRLA =
-        SERCOM_I2CS_CTRLA_MODE(4U);                     /* I2C Client mode only */
-    while (SERCOM0_REGS->I2CS.SERCOM_SYNCBUSY != 0U) {}
 
-    /* Set the client address: 0x20 */
-    SERCOM0_I2CS_Set7bitAddress(0x20U);
 
-    /* Enable all I2C client interrupts */
-    SERCOM0_I2CS_EnableInterrupts(I2C_CLIENT_INT_ALL);
+    SERCOM1_USART_Initialize();
 
-    /* Register the interrupt handler */
-    SERCOM0_I2CS_SetInterruptHandler();
+    EVSYS_Initialize();
 
-    /* Enable peripheral */
-    SERCOM0_I2CS_Enable();
+    SERCOM0_I2C_Initialize();
+
 	SYSTICK_TimerInitialize();
     DMAC_Initialize();
+
+	RSTC_Initialize();
+
     NVIC_Initialize();
+
+
+    /* MISRAC 2023 deviation block end */
 }
 
 /*******************************************************************************

@@ -61,7 +61,7 @@
  * @def BL_APPLICATION_START_ADDRESS
  * @brief Start of the application memory space.
  */
-#define BL_APPLICATION_START_ADDRESS (0xC002000U)
+#define BL_APPLICATION_START_ADDRESS (0xC004000U)
 /**
  * @ingroup mdfu_client_32bit
  * @def BL_DEVICE_ID_START_ADDRESS_U
@@ -73,13 +73,13 @@
  * @def BL_APPLICATION_END_ADDRESS
  * @brief End of the application memory space.
  */
-#define BL_APPLICATION_END_ADDRESS (0xC00FFFFU)
+#define BL_APPLICATION_END_ADDRESS (0xC010000U)
 /**
  * @ingroup mdfu_client_32bit
  * @def BL_IMAGE_PARTITION_SIZE
  * @brief Defined size of the application memory space.
  */
-#define BL_IMAGE_PARTITION_SIZE (0xE000U)
+#define BL_IMAGE_PARTITION_SIZE (0xC000U)
 /**
  * @ingroup mdfu_client_32bit
  * @def BL_STAGING_IMAGE_START
@@ -109,7 +109,7 @@
  * @def BL_SOFTWARE_ENTRY_PATTERN_START_ADDRESS
  * @brief Start address of the software entry pattern array.
  */
-#define BL_SOFTWARE_ENTRY_PATTERN_START_ADDRESS (0x20000000)
+#define BL_SOFTWARE_ENTRY_PATTERN_START_ADDRESS (0x20000000U + (0x0002000U - 16U))
 /**
  * @ingroup mdfu_client_32bit
  * @def BL_SOFTWARE_ENTRY_PATTERN
@@ -123,22 +123,40 @@
  */
 #define BL_HASH_DATA_SIZE (4U)
 /**
- * @ingroup mdfu_client_32bit
- * @def BL_MIN_INTER_MESSAGE_DELAY_MS
- * @brief Minimum delay between firmware update messages in milliseconds.
+ * @ingroup mdfu_client_8bit_core
+ * @def SIGNATURE_LENGTH
+ * The size of the ECDSA signature.
  */
-#define BL_MIN_INTER_MESSAGE_DELAY_MS (100U)
+#define SIGNATURE_LENGTH      (64U)
 /**
  * @ingroup mdfu_client_32bit
- * @def BL_MS_TO_NANOSECONDS
- * @brief Milliseconds to nanoseconds conversion factor.
+ * @struct bl_footer_data_t
+ * @brief Contains metadata for the bootloader footer.
+ * @var bl_footer_data_t::applicationId
+ * Contains the identifier for the application. The high byte identifies where the image can be executed from (0x00 in most cases). The low byte identifies the image space where it will be stored.
+ * @var bl_footer_data_t::applicationVersion
+ * Contains the version of the application.
+ * @var bl_footer_data_t::verificationEndAddress
+ * Contains the end address for verification.
+ * @var bl_footer_data_t::verificationStartAddress
+ * Contains the start address for verification.
+ * @var bl_footer_data_t::verificationData
+ * Contains the verification hash value for verification.
  */
-#define BL_MS_TO_NANOSECONDS (1000000U)
+typedef struct
+{    
+    uint32_t applicationId;
+    uint32_t applicationVersion;
+    uint32_t verificationEndAddress;
+    uint32_t verificationStartAddress;
+    uint8_t signature[SIGNATURE_LENGTH];
+    uint32_t verificationData;
+} bl_footer_data_t;
 /**
  * @ingroup mdfu_client_32bit
  * @def ASM_VECTOR
  * @brief Macro defined to jump the program to the application reset location.
  */
-#define ASM_VECTOR asm("bx %0"::"r" (reset_vector))
+#define ASM_VECTOR  asm("bx %0"::"r" (reset_vector))
 
 #endif // BL_CONFIG_H

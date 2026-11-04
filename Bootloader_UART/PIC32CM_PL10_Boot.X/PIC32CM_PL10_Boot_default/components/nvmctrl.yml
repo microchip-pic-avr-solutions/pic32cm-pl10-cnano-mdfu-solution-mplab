@@ -1,0 +1,100 @@
+configVersion: 1.0.0
+componentName: nvmctrl
+coreVersion: 5.9.0
+device: PIC32CM6408PL10048
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: nvmctrl
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: csp
+  type: package
+  version: v3.26.0
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition: {}
+  symbols:
+    DRV_MEMORY_CONNECTED:
+      attributes:
+        id: DRV_MEMORY_CONNECTED
+        label: Memory Driver Connected
+      type: Boolean
+    ERASE_API_NAME:
+      attributes:
+        id: ERASE_API_NAME
+        label: ERASE_API_NAME
+      type: String
+    ERASE_BUFFER_SIZE:
+      attributes:
+        id: ERASE_BUFFER_SIZE
+        label: NVM Erase Buffer Size
+      type: Integer
+    ERASE_ENABLE:
+      attributes:
+        id: ERASE_ENABLE
+        label: NVM Erase Enable
+      type: Boolean
+    FLASH_ERASE_SIZE:
+      attributes:
+        id: FLASH_ERASE_SIZE
+        label: FLASH_ERASE_SIZE
+      type: String
+    FLASH_PROGRAM_SIZE:
+      attributes:
+        id: FLASH_PROGRAM_SIZE
+        label: FLASH_PROGRAM_SIZE
+      type: String
+    FLASH_SIZE:
+      attributes:
+        id: FLASH_SIZE
+        label: FLASH_SIZE
+      type: String
+    FLASH_START_ADDRESS:
+      attributes:
+        id: FLASH_START_ADDRESS
+        label: FLASH_START_ADDRESS
+      type: String
+    INTERRUPT_ENABLE:
+      attributes:
+        id: INTERRUPT_ENABLE
+        label: Enable Interrupt?
+      type: Boolean
+    MEMORY_MEDIA_SIZE:
+      attributes:
+        id: MEMORY_MEDIA_SIZE
+        label: NVM Media Size (KB)
+      type: Integer
+    NVMCTRL_INSTANCE_NAME:
+      attributes:
+        id: NVMCTRL_INSTANCE_NAME
+        label: NVMCTRL_INSTANCE_NAME
+      type: String
+    START_ADDRESS:
+      attributes:
+        id: START_ADDRESS
+        label: NVM Media Start Address
+      type: String
+    UNLOCK_API_NAME:
+      attributes:
+        id: UNLOCK_API_NAME
+        label: UNLOCK_API_NAME
+      type: String
+    USER_PAGE_ERASE_API_NAME:
+      attributes:
+        id: USER_PAGE_ERASE_API_NAME
+        label: USER_PAGE_ERASE_API_NAME
+      type: String
+    USER_PAGE_WRITE_API_NAME:
+      attributes:
+        id: USER_PAGE_WRITE_API_NAME
+        label: USER_PAGE_WRITE_API_NAME
+      type: String
+    WRITE_API_NAME:
+      attributes:
+        id: WRITE_API_NAME
+        label: WRITE_API_NAME
+      type: String
+  userData: {}

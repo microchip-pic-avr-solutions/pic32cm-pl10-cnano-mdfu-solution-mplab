@@ -140,18 +140,18 @@ static com_adapter_result_t DataSend(uint8_t data)
 {
     com_adapter_result_t status = COM_PASS;
 
-    while (!SERCOM1_USART_TxIsReady())
+    while (!SERCOM1_USART_TransmitterIsReady())
     {
         // Wait for TX to be ready
     };
     // Call to send the next byte
-    SERCOM1_USART_Send9Bit((uint16_t)data);
+    SERCOM1_USART_WriteByte((int)data);
     if (0U != SERCOM1_USART_ErrorGet())
     {
         status = COM_FAIL;
     }
 
-    while (!SERCOM1_USART_TxIsDone())
+    while (!SERCOM1_USART_TransmitComplete())
     {
         // Block until last byte shifts out
     }
@@ -170,9 +170,9 @@ com_adapter_result_t COM_FrameTransfer(uint8_t *receiveBufferPtr, uint16_t *rece
     }
     else
     {
-        if (true == SERCOM1_USART_RxIsReady())
+        if (true == SERCOM1_USART_ReceiverIsReady())
         {
-            nextByte = (uint8_t)SERCOM1_USART_Receive9Bit();
+            nextByte = (uint8_t)SERCOM1_USART_ReadByte();
 
             processResult = (0U == SERCOM1_USART_ErrorGet()) ? COM_PASS : COM_FAIL;
         }
@@ -340,20 +340,6 @@ com_adapter_result_t COM_Initialize(uint16_t maximumBufferLength)
         MaxBufferLength = maximumBufferLength;
         isReceiveWindowOpen = false;
         isEscapedByte = false;
-        //SERCOM1 USART Initialize
-        SERCOM1_USART_ResetSoftware();
-        SERCOM1_USART_SetOperatingMode(USART_INT);
-        SERCOM1_USART_SetCommunicationMode(USART_ASYNC_MODE);
-        SERCOM1_USART_SetRxDataPinout(USART_RX_PAD1);
-        SERCOM1_USART_SetTxDataPinout(USART_TX_PAD0);
-        SERCOM1_USART_SetDataOrder(USART_LSB_FIRST);
-        SERCOM1_USART_SetFrameFormat(USART_FRAME);
-        (void)SERCOM1_USART_SetBaudrate(115200U, CPU_CLOCK_FREQUENCY);
-        SERCOM1_USART_SetDataSize(USART_DATA_8_BIT);
-        SERCOM1_USART_SetStopBits(USART_STOP_1_BIT);
-        SERCOM1_USART_EnableReceiver();
-        SERCOM1_USART_EnableTransmitter();
-        SERCOM1_USART_Enable();
         
         result = COM_PASS;
     }

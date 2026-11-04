@@ -1,7 +1,8 @@
+
 /*--------------------------------------------------------------------------
  * MPLAB XC32 Compiler -  PIC32CM6408PL10048 linker script
  * 
- * Copyright (c) 2025 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,20 +43,21 @@ ENTRY(__XC32_RESET_HANDLER_NAME)
  * macros in the MPLAB X project properties or on the command line when
  * calling the linker via the xc32-gcc shell.
  *************************************************************************/
-
+#ifndef ROM_ORIGIN
 #  define ROM_ORIGIN 0xc000000
-
-#  define ROM_LENGTH 0x2000
-#if (ROM_LENGTH > 0x10000)
+#endif
+#ifndef ROM_LENGTH
+#  define ROM_LENGTH 0x10000
+#elif (ROM_LENGTH > 0x10000)
 #  error ROM_LENGTH is greater than the max size of 0x10000
 #endif
 
-
-#  define RAM_ORIGIN (0x20000000+16)
-
-
-#  define RAM_LENGTH (0x2000-16)
-#if (RAM_LENGTH > 0x2000)
+#ifndef RAM_ORIGIN
+#  define RAM_ORIGIN 0x20000000
+#endif
+#ifndef RAM_LENGTH
+#  define RAM_LENGTH 0x2000
+#elif (RAM_LENGTH > 0x2000)
 #  error RAM_LENGTH is greater than the max size of 0x2000
 #endif
 
@@ -70,6 +72,36 @@ MEMORY
   ram (WX!R) : ORIGIN = RAM_ORIGIN, LENGTH = RAM_LENGTH
 
 }
+/*************************************************************************
+ * Output region definitions.
+ * CODE_REGION defines the output region for .text/.rodata.
+ * DATA_REGION defines the output region for .data/.bss
+ * VECTOR_REGION defines the output region for .vectors.
+ * 
+ * CODE_REGION defaults to 'rom', if rom is present (non-zero length),
+ * and 'ram' otherwise.
+ * N.B. The BFA will still allocate code to any MEMORY named 'rom' regardless
+ * of CODE_REGION's value. If you wish to use rom for something else please
+ * rename the MEMORY entry.
+ * DATA_REGION defaults to 'ram', which must be present.
+ * VECTOR_REGION defaults to CODE_REGION, unless 'boot_rom' is present.
+ */
+#ifndef CODE_REGION
+# if ROM_LENGTH > 0
+#   define CODE_REGION rom
+# else
+#   define CODE_REGION ram
+# endif
+#endif
+#ifndef DATA_REGION
+# define DATA_REGION ram
+#endif 
+#ifndef VECTOR_REGION
+# define VECTOR_REGION CODE_REGION
+#endif
+
+__rom_end = ORIGIN(rom) + LENGTH(rom);
+__ram_end = ORIGIN(ram) + LENGTH(ram);
 
 /*************************************************************************
  * Section Definitions - Map input sections to output sections
@@ -85,10 +117,19 @@ SECTIONS
     .vectors :
     {
         . = ALIGN(4);
-        KEEP(*(.vectors .vectors.*))
         _sfixed = .;
-    } > ram AT > rom
-
+        KEEP(*(.vectors .vectors.* .vectors_default .vectors_default.*))
+        KEEP(*(.isr_vector))
+        KEEP(*(.reset*))
+        KEEP(*(.after_vectors))
+    } > VECTOR_REGION
+    /*
+     * Code Sections - Note that standard input sections such as
+     * *(.text), *(.text.*), *(.rodata), & *(.rodata.*)
+     * are not mapped here. The best-fit allocator locates them,
+     * so that input sections may flow around absolute sections
+     * as needed.
+     */
     .text :
     {
         . = ALIGN(4);
@@ -96,43 +137,56 @@ SECTIONS
         *(.gnu.linkonce.r.*)
         *(.ARM.extab* .gnu.linkonce.armextab.*)
 
+        /* Support C constructors, and C destructors in both user code
+           and the C library. This also provides support for C++ code. */
         . = ALIGN(4);
+        KEEP(*(.init))
+        . = ALIGN(4);
+        __preinit_array_start = .;
+        KEEP (*(.preinit_array))
+        __preinit_array_end = .;
 
-        /* allow for .romfunc section to keep individual functions in flash */
-        *(.romfunc)
-        *(.romfunc.*)
+        . = ALIGN(4);
+        __init_array_start = .;
+        KEEP (*(SORT(.init_array.*)))
+        KEEP (*(.init_array))
+        __init_array_end = .;
+
+        . = ALIGN(0x4);
+        KEEP (*crtbegin.o(.ctors))
+        KEEP (*(EXCLUDE_FILE (*crtend.o) .ctors))
+        KEEP (*(SORT(.ctors.*)))
+        KEEP (*crtend.o(.ctors))
+
+        . = ALIGN(4);
+        KEEP(*(.fini))
+
+        . = ALIGN(4);
+        __fini_array_start = .;
+        KEEP (*(.fini_array))
+        KEEP (*(SORT(.fini_array.*)))
+        __fini_array_end = .;
+
+        KEEP (*crtbegin.o(.dtors))
+        KEEP (*(EXCLUDE_FILE (*crtend.o) .dtors))
+        KEEP (*(SORT(.dtors.*)))
+        KEEP (*crtend.o(.dtors))
 
         . = ALIGN(4);
         _efixed = .;            /* End of text section */
-    } > rom
+    } > CODE_REGION
 
     /* .ARM.exidx is sorted, so has to go in its own output section.  */
     PROVIDE_HIDDEN (__exidx_start = .);
     .ARM.exidx :
     {
       *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-    } > rom
+    } > CODE_REGION
     PROVIDE_HIDDEN (__exidx_end = .);
 
     . = ALIGN(4);
     _etext = .;
 
-    /* Locate text/rodata in special data section to be copied
-       in startup sequence. */
-    .data :
-    {
-        . = ALIGN(4);
-        __data_start__ = .;
-        _sdata = .;
-        *(.dinit)
-        *(.text)
-        *(.text.*)
-        *(.rodata)
-        *(.rodata.*)
-        . = ALIGN(4);
-        __data_end__ = .;
-        _edata = .;
-    } > ram AT > rom
 
     /*
      *  Align here to ensure that the .bss section occupies space up to
@@ -150,13 +204,18 @@ SECTIONS
         _sbss = . ;
         _szero = .;
         *(COMMON)
-        *(.bss)
-        *(.bss.*)
         . = ALIGN(4);
         __bss_end__ = .;
         _ebss = . ;
         _ezero = .;
-    } > ram AT > ram
+    } > DATA_REGION
+
+    .noinit (NOLOAD) :
+    {
+        . = ALIGN(4);
+        *(.noinit*)
+        . = ALIGN(4);
+    } > DATA_REGION
 
     . = ALIGN(4);
     _end = . ;

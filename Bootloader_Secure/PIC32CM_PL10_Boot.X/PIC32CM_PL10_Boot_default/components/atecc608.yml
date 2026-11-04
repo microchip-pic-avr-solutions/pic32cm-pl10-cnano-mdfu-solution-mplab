@@ -1,0 +1,31 @@
+configVersion: 1.0.0
+componentName: atecc608
+coreVersion: 5.9.0
+device: PIC32CM6408PL10048
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: atecc608
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: cryptoauthlib
+  type: package
+  version: v3.7.9
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: atecc608
+          x: '239'
+          y: '226'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols: {}
+  userData: {}

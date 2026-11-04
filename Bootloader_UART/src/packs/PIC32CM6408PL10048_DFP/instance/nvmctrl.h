@@ -1,7 +1,7 @@
 /*
  * Instance header file for PIC32CM6408PL10064
  *
- * Copyright (c) 2025 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -28,9 +28,6 @@
 #define NVMCTRL_FACTORY_WORD_IMPLEMENTED_MASK    (0xC0000007FFFFFFFF)
 #define NVMCTRL_FLASH_SIZE                       (65536)
 #define NVMCTRL_INSTANCE_ID                      (34)       /* Instance index for NVMCTRL */
-#define NVMCTRL_PAGES                            (128)
-#define NVMCTRL_PAGES_PR_REGION                  (8)
-#define NVMCTRL_PAGE_SIZE                        (512)
 #define NVMCTRL_PMSB                             (3)
 #define NVMCTRL_PSZ_BITS                         (9)
 #define NVMCTRL_REGION_LOCK_NUM                  (16)       /* Number of regions that can be individually protected or unprotected */

@@ -25,7 +25,7 @@
  * @ingroup     mdfu_client_32bit
  *
  * @brief       Contains APIs to support file transfer-based
- *              bootloader operations, including a File Transfer Protocol (FTP) module and all bootloader
+ *              bootloader operations, including a File Transfer Protocol(FTP) module and all bootloader
  *              core firmware.
  *
  * @see @ref    mdfu_client_ftp
@@ -87,9 +87,6 @@ static uint32_t writeBuffer[BL_WRITE_BYTE_LENGTH / 4U];
  * @brief Flag for indicating if the meta data has been validated in the update process.
  */
 static bool bootloaderCoreUnlocked = false;
-
-#define MAX_PAGES ((uint32_t)(((BL_STAGING_IMAGE_END - BL_STAGING_IMAGE_START) + NVMCTRL_FLASH_PAGESIZE - 1U) / NVMCTRL_FLASH_PAGESIZE))
-static uint8_t erasedPages[MAX_PAGES] = {0};
 /**
  * @ingroup mdfu_client_32bit
  * @brief Unlocks the bootloader processor using the provided buffer.
@@ -135,41 +132,34 @@ bl_result_t BL_BootCommandProcess(uint8_t * commandBuffer, uint16_t commandLengt
             // Copy out the data buffer into a defined packet structure
             bl_command_header_t commandHeader;
             (void) memcpy((void *)&commandHeader.startAddress, (const void *) & commandBuffer[BL_BLOCK_HEADER_SIZE], (size_t)4U);
-
+            /*
+            Calculate the offset needed for the download location. *Valuable when multiple image locations are defined*
+            This mathematical corelation is consistent as long as the execution image is located at the lower addresses
+            and all image spaces are the same size.
+             */
             uint32_t stagingAreaOffset = (uint32_t) (BL_STAGING_IMAGE_START - BL_APPLICATION_START_ADDRESS);
-            uint32_t targetAddress = commandHeader.startAddress + stagingAreaOffset;
 
-            if ((targetAddress >= BL_STAGING_IMAGE_START) && (targetAddress < BL_STAGING_IMAGE_END))
+            if ((uint32_t) (commandHeader.startAddress + stagingAreaOffset) >= (uint32_t) BL_STAGING_IMAGE_START)
             {
-                uint16_t dataLength = commandLength - BL_COMMAND_HEADER_SIZE - BL_BLOCK_HEADER_SIZE;
-                (void) memcpy((void *)&writeBuffer[0], (const void *)&commandBuffer[BL_COMMAND_HEADER_SIZE + BL_BLOCK_HEADER_SIZE], (size_t)dataLength);
+                (void) memcpy((void *)&writeBuffer[0], (const void *)&commandBuffer[BL_COMMAND_HEADER_SIZE + BL_BLOCK_HEADER_SIZE], (size_t)((size_t)commandLength - (size_t)BL_COMMAND_HEADER_SIZE - (size_t)BL_BLOCK_HEADER_SIZE));
 
-                uint32_t pageNumber = (targetAddress - BL_STAGING_IMAGE_START) / NVMCTRL_FLASH_PAGESIZE;
-
-                NVMCTRL_RegionUnlock(targetAddress);
+                NVMCTRL_RegionUnlock(commandHeader.startAddress + stagingAreaOffset);
                 while (NVMCTRL_IsBusy() == true)
                 {
                 }
 
-                if (erasedPages[pageNumber] == 0U)
-                {
-                    (void)NVMCTRL_PageErase(targetAddress);
-                    while (NVMCTRL_IsBusy() == true)
-                    {
-                    }
-                    erasedPages[pageNumber] = 1U;
-                }
-
-                bool writeStatus = NVMCTRL_FlashWrite(&writeBuffer[0], targetAddress, (uint32_t)dataLength);
+                // Write all pages of the row size
+                bool writeStatus = NVMCTRL_FlashWrite(&writeBuffer[0], commandHeader.startAddress + stagingAreaOffset, NVMCTRL_FLASH_PAGESIZE);
 
                 while (NVMCTRL_IsBusy() == true)
                 {
                 }
 
-                NVMCTRL_RegionLock(targetAddress);
-                while (NVMCTRL_IsBusy() == true)
+                NVMCTRL_RegionLock(commandHeader.startAddress + stagingAreaOffset);
+                while (NVMCTRL_IsBusy())
                 {
                 }
+
                 bootCommandStatus = (writeStatus == true) ? BL_PASS : BL_ERROR_COMMAND_PROCESSING;
             }
             else
@@ -177,7 +167,6 @@ bl_result_t BL_BootCommandProcess(uint8_t * commandBuffer, uint16_t commandLengt
                 bootCommandStatus = BL_ERROR_ADDRESS_OUT_OF_RANGE;
             }
         }
-
         break;
     default:
         bootCommandStatus = BL_ERROR_UNKNOWN_COMMAND;
@@ -196,8 +185,8 @@ void BL_ApplicationStart(void)
     {
         return;
     }
-    __DSB();
-    __ISB();
+
+    /* Do custom deinitialize sequence to free any resources acquired by Bootloader */
 
     __set_MSP(msp);
     ASM_VECTOR;
@@ -209,11 +198,6 @@ bl_result_t BL_Initialize(void)
 
     // Prevent the core memory functions from executing until the meta-data has been validated
     bootloaderCoreUnlocked = false;
-
-    for (uint32_t i = 0U; i < MAX_PAGES; i++)
-    {
-        erasedPages[i] = 0U;
-    }
 
     return initResult;
 }
@@ -266,11 +250,11 @@ static bl_result_t BootloaderProcessorUnlock(uint8_t * bufferPtr)
     }
 
     // Read device information from memory
-    uint32_t deviceId = 0x0U;
+    uint32_t deviceId = 0x00000000U;
     (void)NVMCTRL_Read(&deviceId, 4U, BL_DEVICE_ID_START_ADDRESS_U);
 
     // Mask the revision number to obtain the device id
-    deviceId &= ~(0xF00U);
+    deviceId &= (uint32_t)~(0xF00U);
 
     // Compare the device id of the current hardware and the expected id from the file data
     if (deviceId != (uint32_t) metadataPacket.deviceId)
@@ -290,8 +274,9 @@ static bl_result_t BootloaderProcessorUnlock(uint8_t * bufferPtr)
 
     if (commandStatus != BL_ERROR_VERIFICATION_FAIL)
     {
-        commandStatus = BL_PASS;
         bootloaderCoreUnlocked = true;
+        commandStatus = BL_PASS;
+        DownloadAreaErase(BL_STAGING_IMAGE_START);
     }
 
     return commandStatus;
@@ -299,30 +284,24 @@ static bl_result_t BootloaderProcessorUnlock(uint8_t * bufferPtr)
 
 static void DownloadAreaErase(uint32_t startAddress)
 {
-    uint32_t address = startAddress;
+    uint32_t address;
+    address = (uint32_t) startAddress;
 
     while (address < BL_STAGING_IMAGE_END)
     {
-        uint32_t pageNumber = (address - BL_STAGING_IMAGE_START) / NVMCTRL_FLASH_PAGESIZE;
-
-        if (erasedPages[pageNumber] == 0U)
+        NVMCTRL_RegionUnlock(address);
+        while (NVMCTRL_IsBusy() == true)
         {
-            NVMCTRL_RegionUnlock(address);
-            while (NVMCTRL_IsBusy() == true)
-            {
-            }
+        }
 
-            (void)NVMCTRL_PageErase(address);
-            while (NVMCTRL_IsBusy() == true)
-            {
-            }
+        (void)NVMCTRL_PageErase(address);
+        while (NVMCTRL_IsBusy() == true)
+        {
+        }
 
-            NVMCTRL_RegionLock(address);
-            while (NVMCTRL_IsBusy() == true)
-            {
-            }
-
-            erasedPages[pageNumber] = 1U;
+        NVMCTRL_RegionLock(address);
+        while (NVMCTRL_IsBusy() == true)
+        {
         }
 
         address += NVMCTRL_FLASH_PAGESIZE;
@@ -332,6 +311,7 @@ static void DownloadAreaErase(uint32_t startAddress)
 bool BL_CheckForcedEntry(void)
 {
     uint32_t * entryFlagArray = (uint32_t *) (BL_SOFTWARE_ENTRY_PATTERN_START_ADDRESS);
+
     if (
             (entryFlagArray[0] == BL_SOFTWARE_ENTRY_PATTERN)
             && (entryFlagArray[1] == BL_SOFTWARE_ENTRY_PATTERN)
@@ -340,6 +320,11 @@ bool BL_CheckForcedEntry(void)
         )
     {
         entryFlagArray[0] = 0U;
+        return true;
+    }
+    
+    if(BL_ENTRY_Get() == 0U)
+    {
         return true;
     }
 

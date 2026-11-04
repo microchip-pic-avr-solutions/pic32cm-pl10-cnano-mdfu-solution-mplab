@@ -321,6 +321,11 @@ bool BL_CheckForcedEntry(void)
         entryFlagArray[0] = 0U;
         return true;
     }
+    
+    if(BL_ENTRY_Get() == 0U)
+    {
+        return true;
+    }
 
     return false;
 }

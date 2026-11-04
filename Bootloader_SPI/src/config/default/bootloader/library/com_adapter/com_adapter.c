@@ -111,6 +111,52 @@ static uint16_t FrameCheckCalculate(const uint8_t * ftpData, uint16_t bufferLeng
     return (uint16_t)(~checksum);
 }
 
+bool SERCOM0_Open(void)
+{
+    bool enabled = false;
+    SERCOM0_REGS->SPI.SERCOM_CTRLA |= SERCOM_SPI_CTRLA_ENABLE_Msk;
+     // Wait for synchronization
+    while (SERCOM0_REGS->SPI.SERCOM_SYNCBUSY != 0U)
+    {
+        // Do nothing
+    }
+    enabled = true;
+
+    return enabled;
+}
+
+// Read a byte from SPI (blocking until RX is ready)
+uint8_t SERCOM0_ByteRead(void)
+{
+    while (((uint32_t)SERCOM0_REGS->SPI.SERCOM_INTFLAG & (uint32_t)SERCOM_SPI_INTFLAG_RXC_Msk) == 0U)
+    {
+        // Wait for RX ready
+    }
+    return (uint8_t)SERCOM0_REGS->SPI.SERCOM_DATA;
+}
+
+// Write a byte to SPI (blocking until TX data register is empty)
+void SERCOM0_ByteWrite(uint8_t data)
+{
+    while (((uint32_t)SERCOM0_REGS->SPI.SERCOM_INTFLAG & (uint32_t)SERCOM_SPI_INTFLAG_DRE_Msk) == 0U)
+    {
+        // Wait for TX register empty
+    }
+    SERCOM0_REGS->SPI.SERCOM_DATA = data;
+}
+
+// Returns 1 if TX is busy (data register not empty), 0 if ready
+uint8_t SERCOM0_IsTxReady(void)
+{
+    return (((uint32_t)SERCOM0_REGS->SPI.SERCOM_INTFLAG & (uint32_t)SERCOM_SPI_INTFLAG_DRE_Msk) == 0U) ? 1U : 0U;
+}
+
+// Returns 1 if RX has data available, 0 if not
+uint8_t SERCOM0_IsRxReady(void)
+{
+    return (((uint32_t)SERCOM0_REGS->SPI.SERCOM_INTFLAG & (uint32_t)SERCOM_SPI_INTFLAG_RXC_Msk) != 0U) ? 1U : 0U;
+}
+
 com_adapter_result_t COM_FrameTransfer(uint8_t *receiveBufferPtr, uint16_t * receiveIndexPtr)
 {
     uint8_t nextByte;
@@ -391,4 +437,4 @@ com_adapter_result_t COM_Initialize(uint16_t maximumBufferLength)
     }
 
     return result;
-}
+}

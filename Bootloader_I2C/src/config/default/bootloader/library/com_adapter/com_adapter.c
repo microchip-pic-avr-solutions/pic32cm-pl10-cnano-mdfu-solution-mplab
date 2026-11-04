@@ -1,5 +1,5 @@
 /**
- * � 2026 Microchip Technology Inc. and its subsidiaries.
+ * © 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip
  * software and any derivatives exclusively with Microchip products.
@@ -30,8 +30,9 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include "../../../peripheral/sercom/i2c_slave/plib_sercom_i2c_common.h"
-#include "../../../peripheral/sercom/i2c_slave/plib_sercom0_i2c_client.h"
+#include "../../../peripheral/sercom/i2c_slave/plib_sercom_i2c_slave_common.h"
+#include "../../../peripheral/sercom/i2c_slave/plib_sercom0_i2c_slave.h"
+
 /**
  * @ingroup com_adapter_i2c
  * @def LENGTH_PREFIX_SIZE
@@ -88,14 +89,14 @@ static volatile com_transfer_state_t comResponseTransferState = NOTHING_TO_SEND;
 static volatile bool isCommandReadyToProcess = false;
 static volatile bool areTooManyBytesInCommand = false;
 
-static volatile uint16_t maxBufferLength = 0;
+static volatile uint16_t maxBufferLength = 0; 
 static volatile uint16_t comResponseBufferIndex = 0U;
 static uint8_t comResponseBuffer[MAX_RESPONSE_DATA_FIELD + RESPONSE_OFFSET];
 static uint8_t *comReceiveBuffer = NULL;
-static uint16_t *comReceiveBufferIndex = NULL;
+static uint16_t *comReceiveBufferIndex = NULL;  
 static volatile com_adapter_result_t comStatus;
 
-static void SERCOM_EventHandler(void);
+static bool SERCOM_EventHandler(SERCOM_I2C_SLAVE_TRANSFER_EVENT event, uintptr_t contextHandle);
 
 com_adapter_result_t COM_Initialize(uint16_t maximumBufferLength)
 {
@@ -104,7 +105,7 @@ com_adapter_result_t COM_Initialize(uint16_t maximumBufferLength)
     if (0U != maximumBufferLength)
     {
         maxBufferLength = maximumBufferLength;
-        SERCOM0_I2CS_SetCallbackHandler(&SERCOM_EventHandler);
+        SERCOM0_I2C_CallbackRegister(&SERCOM_EventHandler, 0U);
         result = COM_PASS;
     }
     else
@@ -115,103 +116,106 @@ com_adapter_result_t COM_Initialize(uint16_t maximumBufferLength)
     return result;
 }
 
-static void SERCOM_EventHandler(void)
+static bool SERCOM_EventHandler(SERCOM_I2C_SLAVE_TRANSFER_EVENT event, uintptr_t contextHandle)
 {
+    (void)contextHandle;
+    bool result = false;
     uint8_t nextByte = 0U;
-    uint32_t errorState = 0U;
-    static volatile I2C_CLIENT_DIR transferDirection;
-    static volatile bool wasTransactionAcknowledged;
-
-    I2C_CLIENT_TRANSFER_EVENT event = SERCOM0_I2CS_GetBusStatus();
+    SERCOM_I2C_SLAVE_ERROR errorState = SERCOM_I2C_SLAVE_INTFLAG_PREC;
+    static volatile SERCOM_I2C_SLAVE_TRANSFER_DIR transferDirection;
+    static volatile bool wasTransactionAcknowledged;    
     
     switch(event)
     {
-     case I2C_CLIENT_TRANSFER_EVENT_ADDR_MATCH:
-        transferDirection = SERCOM0_I2CS_GetTransferDirection();
-
-        if (I2C_CLIENT_DIR_WRITE == transferDirection)
+    case SERCOM_I2C_SLAVE_TRANSFER_EVENT_ADDR_MATCH:
+        
+        transferDirection = SERCOM0_I2C_TransferDirGet(); 
+        
+        // NAK all incoming transactions if the com_adapter is busy processing a previous command
+        if (false == isCommandReadyToProcess) 
         {
-            SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_ACK);
-            wasTransactionAcknowledged = true;
-            *comReceiveBufferIndex = 0x00U;
-            areTooManyBytesInCommand = false;
+            if (SERCOM_I2C_SLAVE_TRANSFER_DIR_WRITE == transferDirection) 
+            {
+                result = true;
+                wasTransactionAcknowledged = true;
+                *comReceiveBufferIndex = 0x00U;
+                areTooManyBytesInCommand = false;
+            }
+            else
+            {
+                if (NOTHING_TO_SEND == comResponseTransferState) 
+                {
+                    result = true;
+                    wasTransactionAcknowledged = false; 
+                }
+                else 
+                { 
+                    result = true;
+                    wasTransactionAcknowledged = true;
+                }
+            }
         }
         else
         {
-            if (NOTHING_TO_SEND == comResponseTransferState)
-            {
-                SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_NAK);
-                wasTransactionAcknowledged = false;
-            }
-            else
-            {
-                SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_ACK);
-                wasTransactionAcknowledged = true;
-            }
-        }
-        SERCOM0_I2CS_ClearInterruptFlags(I2C_CLIENT_INTFLAG_AMATCH);
+            result = false;
+            wasTransactionAcknowledged = false;
+        }  
         break;
 
-    case I2C_CLIENT_TRANSFER_EVENT_RX_READY:
-        nextByte = SERCOM0_I2CS_ReceiveData();
-        SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_SEND_ACK);
-        SERCOM0_I2CS_ClearInterruptFlags(I2C_CLIENT_INTFLAG_DRDY);
+    case SERCOM_I2C_SLAVE_TRANSFER_EVENT_RX_READY:
 
-        if (!isCommandReadyToProcess)
+        nextByte = SERCOM0_I2C_ReadByte();
+        result = true; 
+ 
+        if (!isCommandReadyToProcess) 
         {
+            // Add byte to the buffer if there is space in the buffer
             if (*comReceiveBufferIndex < maxBufferLength)
             {
                 comReceiveBuffer[*comReceiveBufferIndex] = nextByte;
-                (*comReceiveBufferIndex)++;
+                (*comReceiveBufferIndex)++;   
             }
             else
-            {
-                areTooManyBytesInCommand = true;
+            { 
+                areTooManyBytesInCommand = true;  
             }
         }
         break;
 
-    case I2C_CLIENT_TRANSFER_EVENT_TX_READY:
+    case SERCOM_I2C_SLAVE_TRANSFER_EVENT_TX_READY:
         {
-            if (comResponseTransferState != NOTHING_TO_SEND)
-            {
-                uint8_t data_to_write = comResponseBuffer[comResponseBufferIndex];
-                comResponseBufferIndex = comResponseBufferIndex + 1U;
-                SERCOM0_I2CS_SendData(data_to_write);
-                SERCOM0_I2CS_SetCommand(I2C_CLIENT_COMMAND_RECEIVE_ACK_NAK);
-            }
-            SERCOM0_I2CS_ClearInterruptFlags(I2C_CLIENT_INTFLAG_DRDY);
+            result = true; 
+            uint8_t data_to_write = comResponseBuffer[comResponseBufferIndex];
+            comResponseBufferIndex = comResponseBufferIndex+1U;
+            SERCOM0_I2C_WriteByte(data_to_write);
             break;
         }
 
-    case I2C_CLIENT_TRANSFER_EVENT_STOP_BIT_RECEIVED:
-        SERCOM0_I2CS_ClearInterruptFlags(I2C_CLIENT_INTFLAG_PREC);
-        if(wasTransactionAcknowledged)
+    case SERCOM_I2C_SLAVE_TRANSFER_EVENT_STOP_BIT_RECEIVED:
+        if(wasTransactionAcknowledged) 
         {
-            if (I2C_CLIENT_DIR_WRITE == transferDirection)
-            {
-                isCommandReadyToProcess = true;
+            // Set the com response state to nothing if the transfer direction is host write
+            if (SERCOM_I2C_SLAVE_TRANSFER_DIR_WRITE == transferDirection)
+            {              
+                isCommandReadyToProcess = true;                
                 comResponseTransferState = NOTHING_TO_SEND;
             }
-            else
-            {
+            else 
+            { 
                 if (SENDING_LENGTH == comResponseTransferState)
                 {
                     comResponseTransferState = SENDING_RESPONSE;
-                    comResponseBufferIndex = (uint16_t)(LENGTH_PREFIX_SIZE + LENGTH_FIELD_SIZE + FRAME_CHECK_SIZE);
                 }
                 else if (SENDING_RESPONSE == comResponseTransferState)
                 {
-                    comResponseTransferState = NOTHING_TO_SEND;
-                    comResponseBufferIndex = 0U;
-                    isCommandReadyToProcess = false;
+                    comResponseTransferState = NOTHING_TO_SEND; 
                     comStatus = COM_SEND_COMPLETE;
                 }
                 else
                 {
                     //do nothing
                 }
-            }
+            } 
         }
         else
         {
@@ -219,12 +223,11 @@ static void SERCOM_EventHandler(void)
         }
         break;
 
-    case I2C_CLIENT_TRANSFER_EVENT_ERROR:
-        SERCOM0_I2CS_ClearInterruptFlags(I2C_CLIENT_INTFLAG_ERROR);
-        errorState = SERCOM0_I2C_GetError();
+    case SERCOM_I2C_SLAVE_TRANSFER_EVENT_ERROR:
+        errorState = SERCOM0_I2C_ErrorGet();
         if(errorState>0U)
         {
-            comStatus = COM_BUFFER_ERROR;
+            comStatus = COM_FAIL;
         }
         else
         {
@@ -235,6 +238,7 @@ static void SERCOM_EventHandler(void)
         // Default case
         break;
     }
+    return result;
 }
 
 static uint16_t FrameChecksumCalculate(uint8_t * ftpData,uint16_t bufferLength)
@@ -272,15 +276,19 @@ com_adapter_result_t COM_FrameTransfer(uint8_t *receiveBufferPtr,uint16_t *recei
     {
         if (isCommandReadyToProcess == true)
         {
-            if (areTooManyBytesInCommand)
-            {
+            // Set the status to buffer error when the received data length exceeds the max buffer size
+            if (areTooManyBytesInCommand) 
+            { 
                 areTooManyBytesInCommand = false;
                 result = COM_BUFFER_ERROR;
             }
-            else
+            else 
             {
-                uint16_t calcuatedFrameChecksum = FrameChecksumCalculate(receiveBufferPtr,*receiveIndexPtr - FRAME_CHECK_SIZE);
 
+                // Calculate the frame check sequence on the received packet 
+                uint16_t calcuatedFrameChecksum = FrameChecksumCalculate(receiveBufferPtr,*receiveIndexPtr - FRAME_CHECK_SIZE); 
+
+                // Extract the last two bytes from the packet
                 uint8_t *startOfWord = &receiveBufferPtr[*receiveIndexPtr - FRAME_CHECK_SIZE];
                 uint16_t frameCheckSequence = 0x0000U;
 
@@ -290,16 +298,18 @@ com_adapter_result_t COM_FrameTransfer(uint8_t *receiveBufferPtr,uint16_t *recei
                 uint8_t highByte = *workPtr;
                 frameCheckSequence = (uint16_t)((uint16_t)((uint16_t)highByte << 8) | lowByte);
 
+                // Check if calculated checksum and received checksum are equal
                 if (calcuatedFrameChecksum == frameCheckSequence)
                 {
                     result = COM_PASS;
                 }
                 else
                 {
+                    // Set the status to transport failure if checksum mismatch occurs
                     result = COM_TRANSPORT_FAILURE;
                 }
-            }
-        }
+            } 
+        } 
         else
         {
             result = comStatus;
@@ -325,7 +335,7 @@ com_adapter_result_t COM_FrameSet(uint8_t *responseBufferPtr, uint16_t responseL
     {
         sendingLengthChecksum = FrameChecksumCalculate((uint8_t *) & sendingLength, 2U);
         dataChecksum = FrameChecksumCalculate(&(responseBufferPtr[0]),responseLength);
-
+        
         // Copy the length prefix
         comResponseBuffer[0] = (uint8_t)'L';
 
@@ -343,26 +353,26 @@ com_adapter_result_t COM_FrameSet(uint8_t *responseBufferPtr, uint16_t responseL
 
         // Copy the response prefix
         comResponseBuffer[5] = (uint8_t)'R';
-
+        
         // Copy the response into the COM static buffer and set length
         uint16_t limit = (uint16_t)responseLength + (uint16_t)RESPONSE_OFFSET;
         for (uint16_t i = RESPONSE_OFFSET; i < limit; i++)
         {
             comResponseBuffer[i] = responseBufferPtr[i - RESPONSE_OFFSET];
         }
-
+        
         comResponseBuffer[responseLength + RESPONSE_OFFSET] = (uint8_t)dataChecksum & 0x00FFU;
-
+        
         uint16_t highByte = (uint16_t)((uint32_t)responseLength + (uint32_t)RESPONSE_OFFSET + 1U);
-
+        
         comResponseBuffer[highByte] = (uint8_t)(dataChecksum >> 8);
-
+        
         comResponseBufferIndex = 0U;
         result = COM_PASS;
     }
     // Set the state to sending length when the comResponseBuffer is ready
     comResponseTransferState = SENDING_LENGTH;
     isCommandReadyToProcess = false;
-
+    
     return result;
 }

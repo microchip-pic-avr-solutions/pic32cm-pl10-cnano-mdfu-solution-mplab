@@ -1,0 +1,4858 @@
+configVersion: 1.0.0
+componentName: HarmonyCore
+coreVersion: 5.9.0
+device: PIC32CM6408PL10048
+library: []
+dependency:
+- dependencyPackage: class com.microchip.mcc.harmony.HarmonyModule
+  name: HarmonyCore
+  type: module
+  version: ''
+- dependencyPackage: ''
+  name: core
+  type: package
+  version: v3.16.1
+customDataClassName: com.microchip.utils_mh3.utils.persistence.CustomModuleData
+data:
+  attachments: {}
+  elementPosition:
+    attributes:
+      id: __ROOTVIEW
+    children:
+    - children:
+      - attributes:
+          id: HarmonyCore
+          x: '151'
+          y: '36'
+        type: ElementPosition
+      type: ElementPositions
+    type: ComponentGraph
+  symbols:
+    APP0_C:
+      attributes:
+        id: APP0_C
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    APP0_H:
+      attributes:
+        id: APP0_H
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    COMMON_SYMBOL_CNTR:
+      attributes:
+        id: COMMON_SYMBOL_CNTR
+        label: Harmony Core Common Symbol Counter
+      type: KeyValueSet
+    CONFIGURATION_H:
+      attributes:
+        id: CONFIGURATION_H
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    ENABLE_APP_FILE:
+      attributes:
+        id: ENABLE_APP_FILE
+        label: Generate Harmony Application Files
+      children:
+      - children:
+        - attributes:
+            value: 'true'
+          type: User
+        type: Values
+      type: Boolean
+    ENABLE_DRV_COMMON:
+      attributes:
+        id: ENABLE_DRV_COMMON
+        label: Generate Harmony Driver Common Files
+      type: Boolean
+    ENABLE_OSAL:
+      attributes:
+        id: ENABLE_OSAL
+        label: Enable OSAL
+      type: Boolean
+    ENABLE_OSAL_TIMEOUT_FEATURE:
+      attributes:
+        id: ENABLE_OSAL_TIMEOUT_FEATURE
+        label: Use OSAL Timeout?
+      type: Boolean
+    ENABLE_SYS_CACHE:
+      attributes:
+        id: ENABLE_SYS_CACHE
+        label: Enable System Cache
+      type: Boolean
+    ENABLE_SYS_COMMON:
+      attributes:
+        id: ENABLE_SYS_COMMON
+        label: Generate Harmony System Service Common Files
+      type: Boolean
+    ENABLE_SYS_DMA:
+      attributes:
+        id: ENABLE_SYS_DMA
+        label: Enable System DMA
+      type: Boolean
+    ENABLE_SYS_DMA_DEPENDENCY:
+      attributes:
+        id: ENABLE_SYS_DMA_DEPENDENCY
+        label: Enable System DMA Dependencies
+      type: Boolean
+    ENABLE_SYS_INT:
+      attributes:
+        id: ENABLE_SYS_INT
+        label: Enable System Interrupt
+      type: Boolean
+    ENABLE_SYS_MEDIA:
+      attributes:
+        id: ENABLE_SYS_MEDIA
+        label: Generate Harmony System Media Files
+      type: Boolean
+    ENABLE_SYS_PORTS:
+      attributes:
+        id: ENABLE_SYS_PORTS
+        label: Enable System Ports
+      type: Boolean
+    ENABLE_SYS_RESET:
+      attributes:
+        id: ENABLE_SYS_RESET
+        label: Enable System Reset
+      type: Boolean
+    GEN_APP_RTOS_TASK_0_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_0_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_0_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_0_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_0_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_0_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_0_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_0_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_0_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_0_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_0_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_0_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_10_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_10_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_10_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_10_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_10_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_10_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_10_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_10_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_10_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_10_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_10_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_10_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_11_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_11_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_11_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_11_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_11_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_11_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_11_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_11_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_11_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_11_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_11_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_11_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_12_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_12_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_12_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_12_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_12_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_12_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_12_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_12_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_12_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_12_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_12_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_12_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_13_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_13_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_13_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_13_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_13_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_13_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_13_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_13_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_13_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_13_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_13_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_13_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_14_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_14_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_14_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_14_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_14_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_14_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_14_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_14_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_14_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_14_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_14_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_14_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_15_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_15_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_15_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_15_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_15_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_15_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_15_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_15_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_15_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_15_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_15_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_15_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_16_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_16_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_16_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_16_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_16_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_16_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_16_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_16_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_16_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_16_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_16_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_16_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_17_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_17_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_17_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_17_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_17_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_17_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_17_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_17_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_17_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_17_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_17_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_17_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_18_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_18_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_18_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_18_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_18_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_18_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_18_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_18_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_18_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_18_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_18_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_18_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_19_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_19_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_19_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_19_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_19_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_19_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_19_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_19_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_19_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_19_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_19_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_19_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_1_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_1_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_1_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_1_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_1_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_1_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_1_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_1_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_1_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_1_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_1_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_1_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_20_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_20_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_20_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_20_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_20_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_20_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_20_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_20_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_20_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_20_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_20_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_20_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_21_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_21_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_21_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_21_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_21_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_21_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_21_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_21_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_21_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_21_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_21_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_21_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_22_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_22_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_22_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_22_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_22_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_22_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_22_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_22_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_22_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_22_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_22_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_22_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_23_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_23_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_23_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_23_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_23_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_23_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_23_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_23_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_23_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_23_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_23_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_23_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_24_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_24_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_24_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_24_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_24_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_24_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_24_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_24_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_24_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_24_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_24_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_24_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_25_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_25_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_25_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_25_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_25_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_25_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_25_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_25_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_25_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_25_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_25_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_25_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_26_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_26_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_26_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_26_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_26_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_26_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_26_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_26_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_26_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_26_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_26_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_26_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_27_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_27_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_27_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_27_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_27_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_27_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_27_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_27_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_27_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_27_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_27_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_27_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_28_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_28_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_28_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_28_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_28_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_28_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_28_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_28_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_28_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_28_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_28_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_28_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_29_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_29_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_29_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_29_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_29_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_29_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_29_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_29_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_29_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_29_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_29_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_29_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_2_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_2_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_2_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_2_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_2_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_2_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_2_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_2_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_2_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_2_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_2_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_2_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_3_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_3_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_3_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_3_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_3_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_3_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_3_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_3_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_3_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_3_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_3_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_3_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_4_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_4_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_4_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_4_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_4_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_4_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_4_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_4_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_4_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_4_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_4_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_4_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_5_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_5_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_5_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_5_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_5_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_5_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_5_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_5_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_5_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_5_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_5_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_5_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_6_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_6_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_6_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_6_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_6_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_6_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_6_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_6_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_6_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_6_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_6_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_6_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_7_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_7_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_7_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_7_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_7_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_7_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_7_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_7_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_7_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_7_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_7_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_7_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_8_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_8_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_8_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_8_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_8_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_8_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_8_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_8_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_8_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_8_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_8_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_8_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_RTOS_TASK_9_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_DELAY
+        label: Task Delay in ms
+      type: Integer
+    GEN_APP_RTOS_TASK_9_MSG_QTY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_MSG_QTY
+        label: Maximum Message Queue Size
+      type: Integer
+    GEN_APP_RTOS_TASK_9_OPT_NONE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_OPT_NONE
+        label: Task Specific Options
+      type: Boolean
+    GEN_APP_RTOS_TASK_9_OPT_NO_TLS:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_OPT_NO_TLS
+        label: TLS (Thread Local Storage) support needed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_9_OPT_SAVE_FP:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_OPT_SAVE_FP
+        label: Floating-point registers needs to be saved
+      type: Boolean
+    GEN_APP_RTOS_TASK_9_OPT_STK_CHK:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_OPT_STK_CHK
+        label: Stack checking is allowed for the task
+      type: Boolean
+    GEN_APP_RTOS_TASK_9_OPT_STK_CLR:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_OPT_STK_CLR
+        label: Stack needs to be cleared
+      type: Boolean
+    GEN_APP_RTOS_TASK_9_PRIO:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_PRIO
+        label: Task Priority
+      type: Integer
+    GEN_APP_RTOS_TASK_9_SIZE:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_SIZE
+        label: Stack Size (in bytes)
+      type: Integer
+    GEN_APP_RTOS_TASK_9_TIME_QUANTA:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_TIME_QUANTA
+        label: Task Time Quanta
+      type: Integer
+    GEN_APP_RTOS_TASK_9_USE_DELAY:
+      attributes:
+        id: GEN_APP_RTOS_TASK_9_USE_DELAY
+        label: Use Task Delay
+      type: Boolean
+    GEN_APP_TASKS:
+      attributes:
+        id: GEN_APP_TASKS
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    GEN_APP_TASK_0_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_0_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_0_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_0_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_0_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_0_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_0_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_0_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_0_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_0_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_0_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_0_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_0_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_0_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_0_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_0_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_10_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_10_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_10_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_10_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_10_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_10_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_10_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_10_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_10_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_10_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_10_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_10_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_10_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_10_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_10_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_10_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_11_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_11_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_11_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_11_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_11_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_11_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_11_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_11_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_11_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_11_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_11_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_11_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_11_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_11_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_11_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_11_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_12_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_12_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_12_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_12_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_12_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_12_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_12_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_12_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_12_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_12_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_12_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_12_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_12_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_12_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_12_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_12_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_13_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_13_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_13_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_13_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_13_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_13_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_13_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_13_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_13_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_13_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_13_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_13_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_13_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_13_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_13_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_13_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_14_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_14_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_14_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_14_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_14_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_14_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_14_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_14_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_14_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_14_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_14_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_14_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_14_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_14_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_14_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_14_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_15_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_15_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_15_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_15_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_15_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_15_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_15_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_15_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_15_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_15_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_15_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_15_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_15_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_15_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_15_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_15_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_16_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_16_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_16_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_16_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_16_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_16_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_16_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_16_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_16_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_16_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_16_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_16_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_16_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_16_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_16_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_16_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_17_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_17_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_17_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_17_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_17_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_17_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_17_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_17_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_17_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_17_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_17_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_17_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_17_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_17_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_17_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_17_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_18_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_18_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_18_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_18_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_18_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_18_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_18_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_18_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_18_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_18_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_18_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_18_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_18_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_18_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_18_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_18_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_19_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_19_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_19_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_19_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_19_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_19_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_19_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_19_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_19_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_19_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_19_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_19_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_19_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_19_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_19_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_19_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_1_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_1_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_1_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_1_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_1_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_1_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_1_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_1_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_1_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_1_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_1_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_1_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_1_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_1_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_1_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_1_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_20_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_20_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_20_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_20_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_20_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_20_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_20_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_20_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_20_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_20_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_20_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_20_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_20_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_20_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_20_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_20_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_21_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_21_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_21_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_21_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_21_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_21_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_21_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_21_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_21_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_21_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_21_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_21_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_21_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_21_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_21_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_21_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_22_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_22_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_22_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_22_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_22_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_22_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_22_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_22_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_22_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_22_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_22_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_22_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_22_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_22_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_22_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_22_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_23_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_23_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_23_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_23_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_23_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_23_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_23_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_23_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_23_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_23_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_23_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_23_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_23_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_23_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_23_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_23_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_24_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_24_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_24_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_24_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_24_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_24_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_24_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_24_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_24_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_24_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_24_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_24_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_24_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_24_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_24_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_24_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_25_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_25_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_25_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_25_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_25_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_25_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_25_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_25_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_25_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_25_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_25_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_25_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_25_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_25_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_25_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_25_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_26_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_26_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_26_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_26_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_26_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_26_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_26_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_26_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_26_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_26_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_26_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_26_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_26_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_26_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_26_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_26_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_27_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_27_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_27_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_27_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_27_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_27_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_27_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_27_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_27_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_27_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_27_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_27_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_27_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_27_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_27_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_27_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_28_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_28_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_28_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_28_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_28_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_28_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_28_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_28_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_28_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_28_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_28_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_28_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_28_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_28_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_28_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_28_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_29_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_29_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_29_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_29_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_29_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_29_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_29_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_29_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_29_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_29_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_29_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_29_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_29_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_29_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_29_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_29_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_2_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_2_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_2_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_2_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_2_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_2_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_2_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_2_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_2_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_2_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_2_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_2_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_2_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_2_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_2_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_2_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_3_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_3_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_3_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_3_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_3_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_3_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_3_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_3_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_3_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_3_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_3_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_3_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_3_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_3_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_3_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_3_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_4_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_4_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_4_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_4_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_4_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_4_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_4_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_4_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_4_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_4_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_4_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_4_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_4_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_4_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_4_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_4_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_5_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_5_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_5_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_5_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_5_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_5_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_5_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_5_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_5_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_5_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_5_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_5_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_5_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_5_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_5_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_5_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_6_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_6_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_6_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_6_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_6_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_6_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_6_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_6_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_6_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_6_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_6_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_6_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_6_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_6_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_6_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_6_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_7_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_7_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_7_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_7_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_7_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_7_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_7_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_7_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_7_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_7_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_7_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_7_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_7_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_7_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_7_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_7_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_8_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_8_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_8_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_8_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_8_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_8_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_8_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_8_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_8_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_8_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_8_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_8_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_8_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_8_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_8_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_8_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_9_MPU_REG_ATTR_0:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_ATTR_0
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_9_MPU_REG_ATTR_1:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_ATTR_1
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_9_MPU_REG_ATTR_2:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_ATTR_2
+        label: Attributes
+      type: Combo
+    GEN_APP_TASK_9_MPU_REG_ATTR_XN_0:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_ATTR_XN_0
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_9_MPU_REG_ATTR_XN_1:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_ATTR_XN_1
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_9_MPU_REG_ATTR_XN_2:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_ATTR_XN_2
+        label: Execute Never
+      type: Boolean
+    GEN_APP_TASK_9_MPU_REG_BADDR_0:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_BADDR_0
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_9_MPU_REG_BADDR_1:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_BADDR_1
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_9_MPU_REG_BADDR_2:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_BADDR_2
+        label: Base Address (Hex string/Valid C language identifier)
+      type: String
+    GEN_APP_TASK_9_MPU_REG_CFG_0:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_CFG_0
+        label: MPU Region 0
+      type: Boolean
+    GEN_APP_TASK_9_MPU_REG_CFG_1:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_CFG_1
+        label: MPU Region 1
+      type: Boolean
+    GEN_APP_TASK_9_MPU_REG_CFG_2:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_CFG_2
+        label: MPU Region 2
+      type: Boolean
+    GEN_APP_TASK_9_MPU_REG_LEN_0:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_LEN_0
+        label: Length
+      type: Integer
+    GEN_APP_TASK_9_MPU_REG_LEN_1:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_LEN_1
+        label: Length
+      type: Integer
+    GEN_APP_TASK_9_MPU_REG_LEN_2:
+      attributes:
+        id: GEN_APP_TASK_9_MPU_REG_LEN_2
+        label: Length
+      type: Integer
+    GEN_APP_TASK_COUNT:
+      attributes:
+        id: GEN_APP_TASK_COUNT
+        label: Number of Applications
+      type: Integer
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_0:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_0
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_1:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_1
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_10:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_10
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_11:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_11
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_12:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_12
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_13:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_13
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_14:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_14
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_15:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_15
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_16:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_16
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_17:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_17
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_18:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_18
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_19:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_19
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_2:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_2
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_20:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_20
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_21:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_21
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_22:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_22
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_23:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_23
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_24:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_24
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_25:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_25
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_26:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_26
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_27:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_27
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_28:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_28
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_29:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_29
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_3:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_3
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_4:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_4
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_5:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_5
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_6:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_6
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_7:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_7
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_8:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_8
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_PRIVILEGED_TASK_9:
+      attributes:
+        id: GEN_APP_TASK_CREATE_PRIVILEGED_TASK_9
+        label: Create Privileged Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_0:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_0
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_1:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_1
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_10:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_10
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_11:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_11
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_12:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_12
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_13:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_13
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_14:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_14
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_15:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_15
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_16:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_16
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_17:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_17
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_18:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_18
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_19:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_19
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_2:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_2
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_20:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_20
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_21:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_21
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_22:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_22
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_23:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_23
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_24:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_24
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_25:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_25
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_26:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_26
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_27:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_27
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_28:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_28
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_29:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_29
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_3:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_3
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_4:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_4
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_5:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_5
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_6:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_6
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_7:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_7
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_8:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_8
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_CREATE_RESTRICTED_TASK_9:
+      attributes:
+        id: GEN_APP_TASK_CREATE_RESTRICTED_TASK_9
+        label: Create Restricted Task?
+      type: Boolean
+    GEN_APP_TASK_ENABLE_0:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_0
+        label: Enable Application 0 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_1:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_1
+        label: Enable Application 1 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_10:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_10
+        label: Enable Application 10 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_11:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_11
+        label: Enable Application 11 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_12:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_12
+        label: Enable Application 12 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_13:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_13
+        label: Enable Application 13 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_14:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_14
+        label: Enable Application 14 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_15:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_15
+        label: Enable Application 15 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_16:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_16
+        label: Enable Application 16 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_17:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_17
+        label: Enable Application 17 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_18:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_18
+        label: Enable Application 18 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_19:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_19
+        label: Enable Application 19 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_2:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_2
+        label: Enable Application 2 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_20:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_20
+        label: Enable Application 20 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_21:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_21
+        label: Enable Application 21 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_22:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_22
+        label: Enable Application 22 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_23:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_23
+        label: Enable Application 23 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_24:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_24
+        label: Enable Application 24 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_25:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_25
+        label: Enable Application 25 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_26:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_26
+        label: Enable Application 26 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_27:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_27
+        label: Enable Application 27 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_28:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_28
+        label: Enable Application 28 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_29:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_29
+        label: Enable Application 29 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_3:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_3
+        label: Enable Application 3 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_4:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_4
+        label: Enable Application 4 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_5:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_5
+        label: Enable Application 5 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_6:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_6
+        label: Enable Application 6 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_7:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_7
+        label: Enable Application 7 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_8:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_8
+        label: Enable Application 8 Configuration
+      type: Boolean
+    GEN_APP_TASK_ENABLE_9:
+      attributes:
+        id: GEN_APP_TASK_ENABLE_9
+        label: Enable Application 9 Configuration
+      type: Boolean
+    GEN_APP_TASK_NAME_0:
+      attributes:
+        id: GEN_APP_TASK_NAME_0
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_1:
+      attributes:
+        id: GEN_APP_TASK_NAME_1
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_10:
+      attributes:
+        id: GEN_APP_TASK_NAME_10
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_11:
+      attributes:
+        id: GEN_APP_TASK_NAME_11
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_12:
+      attributes:
+        id: GEN_APP_TASK_NAME_12
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_13:
+      attributes:
+        id: GEN_APP_TASK_NAME_13
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_14:
+      attributes:
+        id: GEN_APP_TASK_NAME_14
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_15:
+      attributes:
+        id: GEN_APP_TASK_NAME_15
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_16:
+      attributes:
+        id: GEN_APP_TASK_NAME_16
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_17:
+      attributes:
+        id: GEN_APP_TASK_NAME_17
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_18:
+      attributes:
+        id: GEN_APP_TASK_NAME_18
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_19:
+      attributes:
+        id: GEN_APP_TASK_NAME_19
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_2:
+      attributes:
+        id: GEN_APP_TASK_NAME_2
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_20:
+      attributes:
+        id: GEN_APP_TASK_NAME_20
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_21:
+      attributes:
+        id: GEN_APP_TASK_NAME_21
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_22:
+      attributes:
+        id: GEN_APP_TASK_NAME_22
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_23:
+      attributes:
+        id: GEN_APP_TASK_NAME_23
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_24:
+      attributes:
+        id: GEN_APP_TASK_NAME_24
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_25:
+      attributes:
+        id: GEN_APP_TASK_NAME_25
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_26:
+      attributes:
+        id: GEN_APP_TASK_NAME_26
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_27:
+      attributes:
+        id: GEN_APP_TASK_NAME_27
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_28:
+      attributes:
+        id: GEN_APP_TASK_NAME_28
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_29:
+      attributes:
+        id: GEN_APP_TASK_NAME_29
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_3:
+      attributes:
+        id: GEN_APP_TASK_NAME_3
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_4:
+      attributes:
+        id: GEN_APP_TASK_NAME_4
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_5:
+      attributes:
+        id: GEN_APP_TASK_NAME_5
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_6:
+      attributes:
+        id: GEN_APP_TASK_NAME_6
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_7:
+      attributes:
+        id: GEN_APP_TASK_NAME_7
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_8:
+      attributes:
+        id: GEN_APP_TASK_NAME_8
+        label: Application Name
+      type: String
+    GEN_APP_TASK_NAME_9:
+      attributes:
+        id: GEN_APP_TASK_NAME_9
+        label: Application Name
+      type: String
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_0:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_0
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_1:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_1
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_10:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_10
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_11:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_11
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_12:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_12
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_13:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_13
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_14:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_14
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_15:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_15
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_16:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_16
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_17:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_17
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_18:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_18
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_19:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_19
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_2:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_2
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_20:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_20
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_21:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_21
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_22:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_22
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_23:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_23
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_24:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_24
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_25:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_25
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_26:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_26
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_27:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_27
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_28:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_28
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_29:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_29
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_3:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_3
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_4:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_4
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_5:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_5
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_6:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_6
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_7:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_7
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_8:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_8
+        label: Use Static Allocation?
+      type: Boolean
+    GEN_APP_TASK_USE_STATIC_ALLOCATION_9:
+      attributes:
+        id: GEN_APP_TASK_USE_STATIC_ALLOCATION_9
+        label: Use Static Allocation?
+      type: Boolean
+    OSAL_TIMEOUT_PERIPHERAL:
+      attributes:
+        id: OSAL_TIMEOUT_PERIPHERAL
+        label: OSAL Timeout Peripheral
+      type: String
+    SELECT_RTOS:
+      attributes:
+        id: SELECT_RTOS
+        label: Select any RTOS or Bare-metal
+      type: Combo
+    SYS_TASKS_H:
+      attributes:
+        id: SYS_TASKS_H
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    TASKS_C:
+      attributes:
+        id: TASKS_C
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+    USER_H:
+      attributes:
+        id: USER_H
+      children:
+      - children:
+        - attributes:
+            id: enabled
+          children:
+          - type: Value
+            value: 'true'
+          type: Boolean
+        type: Attributes
+      type: File
+  userData: {}

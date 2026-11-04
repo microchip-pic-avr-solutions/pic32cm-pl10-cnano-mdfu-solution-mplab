@@ -87,11 +87,8 @@ void SERCOM0_SPI_CallbackRegister(SERCOM_SPI_SLAVE_CALLBACK callBack, uintptr_t 
 SPI_SLAVE_ERROR SERCOM0_SPI_ErrorGet(void);
 bool SERCOM0_SPI_IsBusy(void);
 void SERCOM0_SPI_Ready(void);
-bool SERCOM0_Open(void);
-uint8_t SERCOM0_ByteRead(void);
-void SERCOM0_ByteWrite(uint8_t data);
-uint8_t SERCOM0_IsTxReady(void);
-uint8_t SERCOM0_IsRxReady(void);
+
+
 #ifdef __cplusplus // Provide C++ Compatibility
 }
 #endif

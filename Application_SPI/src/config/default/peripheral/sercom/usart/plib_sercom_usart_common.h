@@ -1,5 +1,25 @@
 /*******************************************************************************
-* Copyright  2025 Microchip Technology Inc. and its subsidiaries.
+  SERCOM Universal Synchronous/Asynchronous Receiver/Transmitter PLIB
+
+  Company
+    Microchip Technology Inc.
+
+  File Name
+    plib_sercom_usart_common.h
+
+  Summary
+    Data Type definition of the USART Peripheral Interface Plib.
+
+  Description
+    This file defines the Data Types for the USART Plib.
+
+  Remarks:
+    None.
+*******************************************************************************/
+
+// DOM-IGNORE-BEGIN
+/*******************************************************************************
+* Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -20,201 +40,366 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
+// DOM-IGNORE-END
 
-/**
- * @file plib_sercom_usart_common.h
- * @brief SERCOM USART Peripheral Library Common Definitions
- *
- * This file provides the common definitions for Macros, Enums, Structures, Variables etc.
- */
+#ifndef PLIB_SERCOM_USART_COMMON_H // Guards against multiple inclusion
+#define PLIB_SERCOM_USART_COMMON_H
 
-#ifndef PLIB_SERCOM_USART_COMMON_H
-#define	PLIB_SERCOM_USART_COMMON_H
+// *****************************************************************************
+// *****************************************************************************
+// Section: Included Files
+// *****************************************************************************
+// *****************************************************************************
 
-#ifdef	__cplusplus
-extern "C" {
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdint.h>
+#include "device.h"
+
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus // Provide C++ Compatibility
+
+    extern "C" {
+
 #endif
+// DOM-IGNORE-END
 
-/**
- * @def USART_ERROR_NONE
- * @brief Error status when no error has occurred.
- */
+// *****************************************************************************
+// *****************************************************************************
+// Section:Preprocessor macros
+// *****************************************************************************
+// *****************************************************************************
+// *****************************************************************************
+
+// *****************************************************************************
+/* USART Error convenience macros */
+// *****************************************************************************
+// *****************************************************************************
+    /* Error status when no error has occurred */
 #define USART_ERROR_NONE 0U
 
-/**
- * @def USART_ERROR_PARITY
- * @brief Error status when a parity error has occurred.
- */
+    /* Error status when parity error has occurred */
 #define USART_ERROR_PARITY SERCOM_USART_STATUS_PERR_Msk
 
-/**
- * @def USART_ERROR_FRAMING
- * @brief Error status when a framing error has occurred.
- */
+    /* Error status when framing error has occurred */
 #define USART_ERROR_FRAMING SERCOM_USART_STATUS_FERR_Msk
 
-/**
- * @def USART_ERROR_OVERRUN
- * @brief Error status when an overrun error has occurred.
- */
+    /* Error status when overrun error has occurred */
 #define USART_ERROR_OVERRUN SERCOM_USART_STATUS_BUFOVF_Msk
 
-/**
- * @def USART_ERROR_COLLISION
- * @brief Error status when a collision detection has occurred.
- */
-#define USART_ERROR_COLLISION SERCOM_USART_STATUS_COLL_Msk
 
-/**
- * @typedef USART_ERROR
- * @brief Type for representing USART error status.
- */
+// *****************************************************************************
+// *****************************************************************************
+// Section: Data Types
+// *****************************************************************************
+// *****************************************************************************
+// *****************************************************************************
+
+// *****************************************************************************
+/* USART Errors
+
+  Summary:
+    Defines the data type for the USART peripheral errors.
+
+  Description:
+    This may be used to check the type of error occurred with the USART
+    peripheral during error status.
+
+  Remarks:
+    None.
+*/
+
 typedef uint16_t USART_ERROR;
 
-/**
- * @brief Global variable to hold the current USART error status.
- */
-//extern USART_ERROR usart0_srror_status;
+// *****************************************************************************
+/* USART DATA
 
-/**
- * @enum USART_HWREG_STATUS
- * @brief Status codes for USART hardware register operations.
- */
-typedef enum {
- 
-    USART_HWREG_OK = 0,           /**< Operation successful */
-    USART_HWREG_ERROR,            /**< Generic error */
-    USART_HWREG_INVALID_PARAM,    /**< Invalid parameter passed */
-    USART_HWREG_TIMEOUT,          /**< Operation timed out */
-    USART_HWREG_BUSY,             /**< Hardware is busy */
-    USART_HWREG_UNSUPPORTED       /**< Operation not supported */
-} USART_HWREG_STATUS;
+  Summary:
+    Defines the data type for the USART peripheral data.
 
-/**
- * @enum USART_OPMODE
- * @brief USART operating mode selection.
- */
-typedef enum {
- 
-    USART_EXT = 0,           /**< External clock mode */
-    USART_INT = 1            /**< Internal clock mode */
-} USART_OPMODE;
+  Description:
+    This may be used to check the type of data with the USART
+    peripheral during serial setup.
 
-/**
- * @enum USART_CHARSIZE
- * @brief USART character size selection.
- */
-typedef enum {
- 
-    USART_DATA_8_BIT = 0,    /**< 8-bit data */
-    USART_DATA_9_BIT = 1,    /**< 9-bit data */
-    USART_DATA_5_BIT = 5,    /**< 5-bit data */
-    USART_DATA_6_BIT = 6,    /**< 6-bit data */
-    USART_DATA_7_BIT = 7     /**< 7-bit data */
-} USART_CHARSIZE;
+  Remarks:
+    None.
+*/
 
-/**
- * @enum USART_FRAME_FORMAT
- * @brief USART frame format selection.
- */
-typedef enum {
- 
-    USART_FRAME = 0,                 /**< Standard frame */
-    USART_FRAME_WITH_PARITY = 1      /**< Frame with parity */
-} USART_FRAME_FORMAT;
+typedef enum
+{
+        USART_DATA_5_BIT = SERCOM_USART_CTRLB_CHSIZE_5_BIT,
+    USART_DATA_6_BIT = SERCOM_USART_CTRLB_CHSIZE_6_BIT,
+    USART_DATA_7_BIT = SERCOM_USART_CTRLB_CHSIZE_7_BIT,
+    USART_DATA_8_BIT = SERCOM_USART_CTRLB_CHSIZE_8_BIT,
+    USART_DATA_9_BIT = SERCOM_USART_CTRLB_CHSIZE_9_BIT,
 
-/**
- * @enum USART_PARITY_MODE
- * @brief USART parity mode selection.
- */
-typedef enum {
- 
-    USART_EVEN_PARITY = 0,   /**< Even parity */
-    USART_ODD_PARITY = 1     /**< Odd parity */
-} USART_PARITY_MODE;
 
-/**
- * @enum USART_COMM_MODE
- * @brief USART communication mode selection.
- */
-typedef enum {
- 
-    USART_ASYNC_MODE = 0,    /**< Asynchronous mode */
-    USART_SYNC_MODE = 1      /**< Synchronous mode */
-} USART_COMM_MODE;
+    /* Force the compiler to reserve 32-bit memory for each enum */
+    USART_DATA_INVALID = 0xFFFFFFFFU
 
-/**
- * @enum USART_STOPBITS
- * @brief USART stop bits selection.
- */
-typedef enum {
- 
-    USART_STOP_1_BIT = 0,    /**< 1 stop bit */
-    USART_STOP_2_BIT = 1     /**< 2 stop bits */
-} USART_STOPBITS;
+} USART_DATA;
 
-/**
- * @enum USART_DATA_ORDER
- * @brief USART data order selection.
- */
-typedef enum {
- 
-    USART_MSB_FIRST = 0,     /**< MSB first */
-    USART_LSB_FIRST = 1      /**< LSB first */
-} USART_DATA_ORDER;
+// *****************************************************************************
+/* USART PARITY
 
-/**
- * @enum USART_RXDATA_PINOUT
- * @brief USART RX data pinout selection.
- */
-typedef enum {
- 
-    USART_RX_PAD0 = 0,       /**< RX on PAD0 */
-    USART_RX_PAD1 = 1,       /**< RX on PAD1 */
-    USART_RX_PAD2 = 2,       /**< RX on PAD2 */
-    USART_RX_PAD3 = 3        /**< RX on PAD3 */
-} USART_RXDATA_PINOUT;
+  Summary:
+    Defines the data type for the USART peripheral parity.
 
-/**
- * @enum USART_TXDATA_PINOUT
- * @brief USART TX data pinout selection.
- */
-typedef enum {
- 
-    USART_TX_PAD0 = 0,                   /**< TX on PAD0 */
-    USART_TX_PAD2 = 1,                   /**< TX on PAD2 */
-    USART_TX_PAD0_WITH_RTS_CTS = 2,      /**< TX on PAD0 with RTS/CTS */
-    USART_TX_PAD0_WITH_TE = 3            /**< TX on PAD0 with TE */    
-} USART_TXDATA_PINOUT;
+  Description:
+    This may be used to check the type of parity with the USART
+    peripheral during serial setup.
 
-/**
- * @enum USART_EVENT
- * @brief USART interrupt event list.
- */
-typedef enum {
- 
-    USART_EVENT_REGISTER_EMPTY = 0,
-    USART_EVENT_TRANSMIT_COMPLETE,
-    USART_EVENT_RECEIVE_COMPLETE,
-    USART_EVENT_ERROR 
-} USART_EVENT;
+  Remarks:
+    None.
+*/
 
-/**
- * @typedef SERCOM_USART_CALLBACK_HANDLER
- * @brief Function pointer type for SERCOM USART event callback handler.
- *
- * This typedef defines a callback function type that is called when a USART event occurs.
- * The callback receives a single parameter indicating the event type.
- *
- * @param event The USART event that triggered the callback.
- *
- * @see USART_EVENT
- */
-typedef void (*SERCOM_USART_CALLBACK_HANDLER)(USART_EVENT event);
+typedef enum
+{
+    USART_PARITY_EVEN = SERCOM_USART_CTRLB_PMODE_EVEN,
 
-#ifdef	__cplusplus
-}
+    USART_PARITY_ODD = SERCOM_USART_CTRLB_PMODE_ODD,
+
+    /* This enum is defined to set frame format only
+     * This value won't be written to register
+     */
+    USART_PARITY_NONE = 0x2,
+
+    /* Force the compiler to reserve 32-bit memory for each enum */
+    USART_PARITY_INVALID = 0xFFFFFFFFU
+
+} USART_PARITY;
+
+// *****************************************************************************
+/* USART STOP
+
+  Summary:
+    Defines the data type for the USART peripheral stop bits.
+
+  Description:
+    This may be used to check the type of stop bits with the USART
+    peripheral during serial setup.
+
+  Remarks:
+    None.
+*/
+
+typedef enum
+{
+        USART_STOP_0_BIT = SERCOM_USART_CTRLB_SBMODE_1_BIT,
+    USART_STOP_1_BIT = SERCOM_USART_CTRLB_SBMODE_2_BIT,
+
+
+    /* Force the compiler to reserve 32-bit memory for each enum */
+    USART_STOP_INVALID = 0xFFFFFFFFU
+
+} USART_STOP;
+
+// *****************************************************************************
+/* USART LIN Command
+
+  Summary:
+    Defines the data type for the USART peripheral LIN Command.
+
+  Description:
+    This may be used to set the USART LIN Master mode command.
+
+  Remarks:
+    None.
+*/
+
+typedef enum
+{
+    USART_LIN_MASTER_CMD_NONE = SERCOM_USART_CTRLB_LINCMD_NONE,
+
+    USART_LIN_MASTER_CMD_SOFTWARE_CONTROLLED = SERCOM_USART_CTRLB_LINCMD_SOFTWARE_CONTROL_TRANSMIT_CMD,
+
+    USART_LIN_MASTER_CMD_AUTO_TRANSMIT = SERCOM_USART_CTRLB_LINCMD_AUTO_TRANSMIT_CMD
+
+} USART_LIN_MASTER_CMD;
+
+// *****************************************************************************
+/* USART Serial Configuration
+
+  Summary:
+    Defines the data type for the USART serial configurations.
+
+  Description:
+    This may be used to set the serial configurations for USART.
+
+  Remarks:
+    None.
+*/
+
+typedef struct
+{
+    uint32_t baudRate;
+
+    USART_PARITY parity;
+
+    USART_DATA dataWidth;
+
+    USART_STOP stopBits;
+
+} USART_SERIAL_SETUP;
+
+// *****************************************************************************
+/* Callback Function Pointer
+
+  Summary:
+    Defines the data type and function signature for the USART peripheral
+    callback function.
+
+  Description:
+    This data type defines the function signature for the USART peripheral
+    callback function. The USART peripheral will call back the client's
+    function with this signature when the USART buffer event has occurred.
+
+  Remarks:
+    None.
+*/
+
+typedef void (*SERCOM_USART_CALLBACK)( uintptr_t context );
+
+// *****************************************************************************
+/* SERCOM USART Object
+
+  Summary:
+    Defines the data type for the data structures used for
+    peripheral operations.
+
+  Description:
+    This may be for used for peripheral operations.
+
+  Remarks:
+    None.
+*/
+
+typedef struct
+{
+    void *                              txBuffer;
+
+    size_t                              txSize;
+
+    size_t                              txProcessedSize;
+
+    SERCOM_USART_CALLBACK               txCallback;
+
+    uintptr_t                           txContext;
+
+    bool                                txBusyStatus;
+
+    void *                              rxBuffer;
+
+    size_t                              rxSize;
+
+    size_t                              rxProcessedSize;
+
+    SERCOM_USART_CALLBACK               rxCallback;
+
+    uintptr_t                           rxContext;
+
+    bool                                rxBusyStatus;
+
+    USART_ERROR                         errorStatus;
+
+} SERCOM_USART_OBJECT;
+
+
+typedef enum
+{
+    /* Threshold number of bytes are available in the receive ring buffer */
+    SERCOM_USART_EVENT_READ_THRESHOLD_REACHED = 0,
+
+    /* Receive ring buffer is full. Application must read the data out to avoid missing data on the next RX interrupt. */
+    SERCOM_USART_EVENT_READ_BUFFER_FULL,
+
+    /* USART error. Application must call the SERCOMx_USART_ErrorGet API to get the type of error and clear the error. */
+    SERCOM_USART_EVENT_READ_ERROR,
+
+    /* Threshold number of free space is available in the transmit ring buffer */
+    SERCOM_USART_EVENT_WRITE_THRESHOLD_REACHED,
+
+    /* Recevie break signal is detected */
+    SERCOM_USART_EVENT_BREAK_SIGNAL_DETECTED,
+}SERCOM_USART_EVENT;
+
+// *****************************************************************************
+/* Callback Function Pointer
+
+  Summary:
+    Defines the data type and function signature for the USART peripheral
+    callback function.
+
+  Description:
+    This data type defines the function signature for the USART peripheral
+    callback function. The USART peripheral will call back the client's
+    function with this signature when the USART buffer event has occurred.
+
+  Remarks:
+    None.
+*/
+
+typedef void (*SERCOM_USART_RING_BUFFER_CALLBACK)(SERCOM_USART_EVENT event, uintptr_t context );
+
+// *****************************************************************************
+/* SERCOM USART Ring Buffer Object
+
+  Summary:
+    Defines the data type for the data structures used for
+    peripheral operations.
+
+  Description:
+    This may be for used for peripheral operations.
+
+  Remarks:
+    None.
+*/
+
+typedef struct
+{
+    SERCOM_USART_RING_BUFFER_CALLBACK                   wrCallback;
+
+    uintptr_t                                           wrContext;
+
+    uint32_t                                            wrInIndex;
+
+    uint32_t                                            wrOutIndex;
+
+    uint32_t                                            wrBufferSize;
+
+    bool                                                isWrNotificationEnabled;
+
+    uint32_t                                            wrThreshold;
+
+    bool                                                isWrNotifyPersistently;
+
+    SERCOM_USART_RING_BUFFER_CALLBACK                   rdCallback;
+
+    uintptr_t                                           rdContext;
+
+    uint32_t                                            rdInIndex;
+
+    uint32_t                                            rdOutIndex;
+
+    uint32_t                                            rdBufferSize;
+
+    bool                                                isRdNotificationEnabled;
+
+    uint32_t                                            rdThreshold;
+
+    bool                                                isRdNotifyPersistently;
+
+    USART_ERROR                                         errorStatus;
+
+} SERCOM_USART_RING_BUFFER_OBJECT;
+
+// *****************************************************************************
+// DOM-IGNORE-BEGIN
+#ifdef __cplusplus  // Provide C++ Compatibility
+
+    }
+
 #endif
+// DOM-IGNORE-END
 
-#endif	/* PLIB_SERCOM_USART_COMMON_H */
-
+#endif //PLIB_SERCOM_USART_COMMON_H

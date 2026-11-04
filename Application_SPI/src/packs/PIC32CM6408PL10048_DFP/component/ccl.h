@@ -1,7 +1,7 @@
 /*
  * Component description for CCL
  *
- * Copyright (c) 2025 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * SPDX-License-Identifier: Apache-2.0
  *
@@ -23,7 +23,9 @@
 #ifndef _PIC32CMPL10_CCL_COMPONENT_H_
 #define _PIC32CMPL10_CCL_COMPONENT_H_
 
+#if !defined(DISABLE_CMSIS)
 #include "core_cm0plus.h"
+#endif /* !defined(DISABLE_CMSIS) */
 
 /* ************************************************************************** */
 /*                      SOFTWARE API DEFINITION FOR CCL                       */

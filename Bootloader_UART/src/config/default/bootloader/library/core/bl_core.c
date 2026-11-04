@@ -308,9 +308,11 @@ static void DownloadAreaErase(uint32_t startAddress)
     }
 }
 
+
 bool BL_CheckForcedEntry(void)
-{
+{            
     uint32_t * entryFlagArray = (uint32_t *) (BL_SOFTWARE_ENTRY_PATTERN_START_ADDRESS);
+    
     if (
             (entryFlagArray[0] == BL_SOFTWARE_ENTRY_PATTERN)
             && (entryFlagArray[1] == BL_SOFTWARE_ENTRY_PATTERN)
@@ -319,6 +321,11 @@ bool BL_CheckForcedEntry(void)
         )
     {
         entryFlagArray[0] = 0U;
+        return true;
+    }
+    
+    if(BL_ENTRY_Get() == 0U)
+    {
         return true;
     }
 

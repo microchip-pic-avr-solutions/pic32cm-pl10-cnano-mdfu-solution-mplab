@@ -1,5 +1,5 @@
 /**
- * � 2026 Microchip Technology Inc. and its subsidiaries.
+ * © 2026 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip 
  * software and any derivatives exclusively with Microchip products. 
@@ -22,7 +22,7 @@
  * HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
  *
  * @file    com_adapter.h
- * @defgroup com_adapter_i2c Inter-Integrated Circuit (I2C) Communication Adapter
+ * @defgroup com_adapter_i2c I2C Communication Adapter
  * @brief This layer implements the custom transport layer that is defined by the MDFU protocol.
  */
  /**@misradeviation{@advisory, 2.5} This is a false positive.
@@ -32,13 +32,12 @@
 #define COM_ADAPTER_H
 
 #include <stdint.h>
-#include <stdbool.h>
 
 /**
  * @ingroup com_adapter_i2c
  * @def MULTI_STAGE_RESPONSE
  * Removes and includes firmware that is required only when the communication
- * protocol used requires more than one stage to transfer the complete MDFU data packet (e.g., Serial Peripheral Interface (SPI), Inter-Integrated Circuit (I2C), etc.).
+ * protocol used requires more than one stage to transfer the complete MDFU data packet. (e.g., Serial Peripheral Interface (SPI), I2C, etc.)
  *
  * Taking SPI as an example, the first stage of the SPI response is always a length packet that tells the MDFU host how many bytes it
  * needs to read in order to receive the rest of the MDFU response. The second stage is when the actually response 
@@ -60,7 +59,7 @@
  * @def FRAME_CHECK_SIZE
  * @brief Length of the frame bytes needed.
  * 
- * This is the length of bytes that must be defined in the FTP handler buffer in order
+ * This is the length of bytes that must be defined in the FTP Handler buffer in order
  * to properly implement the current transport layer.
  */
 #define COM_FRAME_BYTE_COUNT (FRAME_CHECK_SIZE)
@@ -119,7 +118,7 @@ com_adapter_result_t COM_FrameSet(uint8_t *responseBufferPtr, uint16_t responseL
 
 /**
  @ingroup com_adapter_i2c
- @brief Performs initialization actions for the communication peripheral and adapter code.
+ @brief Performs initialization actions for the communication peripheral and adapter code. 
  @param [in] maximumBufferLength - Maximum length that the COM adapter is allowed to read
  @return @ref COM_PASS - Specified arguments were valid and initialization was successful \n
  @return @ref COM_INVALID_ARG - Specified arguments were invalid \n
